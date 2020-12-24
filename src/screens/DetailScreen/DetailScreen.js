@@ -21,7 +21,7 @@ export const DetailScreen = (props) => {
   const { item } = props.route.params;
   const [message, setMessage] = useState('');
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const [color, setColor] = useState(Colors.lighter_green);
+  // const [color, setColor] = useState(Colors.lighter_green);
   //color
   const type = item.color;
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,12 +30,14 @@ export const DetailScreen = (props) => {
     state.fav.favoriteList.some((product) => product._id === item._id),
   );
   useEffect(() => {
-    const checkColor = async () => {
-      const getColor = await colorCheck(type);
-      setColor(getColor);
-    };
-    checkColor();
+    // const checkColor = async () => {
+    //   const getColor = await colorCheck(type);
+    //   setColor(getColor);
+    // };
+    // checkColor();
   }, [item]);
+
+  const color = Colors.light_green
 
   return (
     <View style={styles.container}>

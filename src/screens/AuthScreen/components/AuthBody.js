@@ -47,7 +47,7 @@ export const AuthBody = ({ navigation }) => {
           style={[
             styles.signinContainer,
             {
-              backgroundColor: Colors.leave_green,
+              backgroundColor: Colors.light_green,
               marginTop: 15,
               borderWidth: 0,
             },
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: Colors.leave_green,
+    borderColor: Colors.light_green,
   },
   text: {
     fontSize: 20,

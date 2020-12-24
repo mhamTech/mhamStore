@@ -51,7 +51,7 @@ export const Header = ({ navigation, scrollY, item }) => {
           style={styles.goBackIcon}
         >
           <View>
-            <Ionicons name="ios-arrow-back" size={25} color="#fff" />
+            <Ionicons name="ios-arrow-back" size={25} color={Colors.lighter_green} />
           </View>
         </TouchableOpacity>
         <Animated.View style={{ opacity: headerOpacity }}>

@@ -24,12 +24,12 @@ export const Header = ({ navigation }) => {
             navigation.toggleDrawer();
           }}
         >
-          <MaterialCommunityIcons name='menu' size={25} color='#fff' />
+          <MaterialCommunityIcons name='menu' size={40} color={Colors.lighter_green} />
         </TouchableOpacity>
       </View>
       <Image
         style={styles.image}
-        source={require("../../../assets/Images/logoTextWhite.png")}
+        source={require("../../../assets/Images/logo1.png")}
       />
     </View>
   );
@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 15,
-    height: 70,
+    height: 150,
+    width:150,
     resizeMode: "contain",
   },
 });

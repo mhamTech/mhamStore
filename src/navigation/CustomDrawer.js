@@ -7,6 +7,8 @@ import {
   Alert,
   Text,
   Platform,
+  Button,
+  I18nManager,
 } from "react-native";
 //Drawer
 import {
@@ -27,7 +29,9 @@ import { Logout as LogoutAction } from "../reducers";
 import { OpenURL } from "../utils/Tools";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const fbURL = "https://www.facebook.com/daquyankhangthinhvuong/";
+//change lang
+
+const fbURL = "https://www.facebook.com/";
 const youtubeURL = "https://www.youtube.com/";
 
 //custom drawer content
@@ -81,7 +85,7 @@ export default (props) => {
               <View style={{ justifyContent: "center" }}>
                 <Text
                   style={{
-                    color: Colors.green,
+                    color: Colors.light_green,
                     fontSize: 18,
                     paddingHorizontal: 10,
                     paddingVertical: 0,
@@ -95,9 +99,7 @@ export default (props) => {
                     fontSize: 15,
                     paddingHorizontal: 10,
                   }}
-                >
-                  See your profile
-                </Text>
+                ></Text>
               </View>
             </View>
           </>

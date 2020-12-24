@@ -21,6 +21,9 @@ import * as Font from "expo-font";
 //redux form
 import { reducer as formReducer } from "redux-form";
 import { StatusBar } from "expo-status-bar";
+//prevent RTl
+import { I18nManager ,NativeModules, Platform } from "react-native";
+import { Restart } from "fiction-expo-restart";
 //Notification
 import LocalNotication from "./src/components/Notification/LocalNotification";
 
@@ -32,7 +35,7 @@ const rootReducer = combineReducers({
   fav: favoriteReducer,
   form: formReducer,
 });
-
+//store
 const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(ReduxThunk))
@@ -73,8 +76,22 @@ const LoadAssets = async () => {
 
   return await Promise.all([imageAssets, fetchFonts]);
 };
+
 export default function App() {
+  ;
   const [assetLoaded, setAssetLoaded] = useState(false);
+
+  //prevent Rtl 
+  React.useEffect(() => {
+    // I18nManager.forceRTL(true)
+    if (I18nManager.isRTL) {
+      I18nManager.forceRTL(false);
+    }
+    
+    // I18nManager.forceRTL(true)
+  },[]); 
+
+  console.log(false)
   if (!assetLoaded) {
     return (
       <AppLoading

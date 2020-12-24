@@ -9,10 +9,10 @@ export default {
   bg: "#0f7e4a",
   yellow: "#fed922",
   light_bg: "#e0e0e2",
-  light_green: "#0f7e4a",
+  light_green: "#d1a145",// gold
   // light_green: "#18945a",
-  lighter_green: "#2ba56a",
-  leave_green: "#18a561",
+  lighter_green: "#ac7226",// gold
+  leave_green: "#18a561",// gold 
   purple: "#876aba",
   water: "#6f8bc8",
   green: "#1baa43",

@@ -169,11 +169,11 @@ export class Header extends React.Component {
                   color={Colors.lighter_green}
                 />
               </TouchableOpacity>
-              <View>
+              <View >
                 <Image
                   source={require("../../../assets/Images/logoNoText.png")}
                   style={{
-                    width: height < 668 ? 130 : 120,
+                    width: height < 668 ? 80 : 75,
                     resizeMode: "contain",
                   }}
                 />

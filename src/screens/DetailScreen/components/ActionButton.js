@@ -60,15 +60,15 @@ export const ActionButton = ({
       setShowSnackbar(true);
     } else if (FavoriteProducts) {
       Alert.alert(
-        'Bỏ yêu thích',
-        'Bạn có muốn bỏ sản phẩm ra khỏi mục yêu thích?',
+        'Already favorite',
+        'Do you want to remove this products from favorites?',
         [
           {
-            text: 'Hủy',
+            text: 'Cancel',
             style: 'cancel',
           },
           {
-            text: 'Đồng ý',
+            text: 'Confirm',
             onPress: () => dispatch(removeFavorite(item._id)),
           },
         ],

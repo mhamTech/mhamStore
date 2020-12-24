@@ -67,7 +67,8 @@ export const DetailBody = ({ item, color }) => {
         </CustomText>
         <View style={styles.infoContainer}>
           <CustomText>Color: </CustomText>
-          <CustomText style={{ color: color }}>{item.color}</CustomText>
+          {/* <CustomText style={{ color: color }}>{item.color}</CustomText> */}
+          <CustomText >{item.color}</CustomText>
         </View>
         <View style={styles.infoContainer}>
           <CustomText>Status: </CustomText>

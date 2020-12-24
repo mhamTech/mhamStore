@@ -36,7 +36,9 @@ export const HomeScreen = ({ navigation }) => {
   let scrollY = new Animated.Value(0);
   const user = useSelector((state) => state.auth.user);
   const products = useSelector((state) => state.store.products);
-  // console.log(products)
+  
+  // console.log(products)///
+  
   const isLoading = useSelector((state) => state.store.isLoading);
   const notification = useSelector((state) => state.auth.notification);
   //fetch Api
