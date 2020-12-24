@@ -111,7 +111,7 @@ const Login = (props) => {
         }}
         style={{ position: "absolute", top: 50, left: 20 }}
       >
-        <Ionicons name="ios-arrow-back" size={35} color={Colors.light_green} />
+        <Ionicons name="ios-arrow-back" size={35} color={Colors.light_gold} />
       </TouchableOpacity>
 
       <View style={styles.header}>
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   title: {
-    color: Colors.light_green,
+    color: Colors.light_gold,
     fontSize: 40,
     letterSpacing: 5,
     fontFamily: "Roboto-Bold",
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 5,
     flexDirection: "row",
-    backgroundColor: Colors.lighter_green,
+    backgroundColor: Colors.lighter_gold,
   },
   textSign: {
     fontSize: 15,
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Medium",
   },
   textSignSmall: {
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
     textAlign: "center",
   },
   center: {
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     width: 70,
   },
   loginOpt: {
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
     fontFamily: "Roboto-Medium",
     marginBottom: 10,
   },

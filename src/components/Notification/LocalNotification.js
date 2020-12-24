@@ -28,11 +28,14 @@ const LocalNotification = () => {
     const triggerNotificationHandler = async () => {
       await Notifications.scheduleNotificationAsync({
         content: {
-          title: "Welcom to Mham Store^^",
-          body: "Hope will have a great experience",
+          title: "Welcom to Mham Store",
+          body: "Hope you will have a great experience",
           data: { mySpecialData: "Some text" },
         },
         trigger: trigger,
+        // trigger: {
+        //   seconds:30
+        // },
       });
     };
     triggerNotificationHandler();

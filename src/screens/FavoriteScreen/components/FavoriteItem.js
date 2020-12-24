@@ -153,7 +153,7 @@ export const FavoriteItem = ({ navigation, item }) => {
                 value={item.price}
                 displayType={"text"}
                 thousandSeparator={true}
-                suffix={"SAR"}
+                suffix={" SAR"}
                 renderText={(formattedValue) => (
                   <View style={styles.priceContainer}>
                     <CustomText style={styles.price}>

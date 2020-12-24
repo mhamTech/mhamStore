@@ -18,7 +18,7 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token }) => {
         <View style={styles.option}>
           <Checkbox
             status={!payByCard ? "checked" : "unchecked"}
-            color={Colors.lighter_green}
+            color={Colors.lighter_gold}
             onPress={() => {
               setPayByCard(false);
             }}
@@ -26,7 +26,7 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token }) => {
           <MaterialCommunityIcons
             name="cash"
             size={40}
-            color={Colors.lighter_green}
+            color={Colors.lighter_gold}
             style={{ marginLeft: 10 }}
           />
           <CustomText style={styles.optionText}>Cash payment</CustomText>
@@ -34,14 +34,14 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token }) => {
         <View style={styles.option}>
           <Checkbox
             status={payByCard ? "checked" : "unchecked"}
-            color={Colors.lighter_green}
+            color={Colors.lighter_gold}
             onPress={() => navigation.navigate("AddCreditCardScreen")}
             // containerStyle={{ padding: 5 }}
           />
           <MaterialCommunityIcons
             name="credit-card-outline"
             size={35}
-            color={Colors.lighter_green}
+            color={Colors.lighter_gold}
             style={{ marginLeft: 10 }}
           />
           <View style={styles.cardContainer}>

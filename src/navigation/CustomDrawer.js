@@ -85,7 +85,7 @@ export default (props) => {
               <View style={{ justifyContent: "center" }}>
                 <Text
                   style={{
-                    color: Colors.light_green,
+                    color: Colors.light_gold,
                     fontSize: 18,
                     paddingHorizontal: 10,
                     paddingVertical: 0,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     height: 100,
   },
   logoutSection: {
-    backgroundColor: Colors.lighter_green,
+    backgroundColor: Colors.lighter_gold,
     borderRadius: 5,
     marginHorizontal: 10,
     height: 50,

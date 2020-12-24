@@ -151,6 +151,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "500",
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
   },
 });

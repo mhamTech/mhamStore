@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: Colors.lighter_green,
+    backgroundColor: Colors.lighter_gold,
     borderRadius: 5,
-    borderColor: Colors.lighter_green,
+    borderColor: Colors.lighter_gold,
     marginTop: 10,
   },
   center: {

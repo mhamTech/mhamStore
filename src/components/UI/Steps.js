@@ -9,30 +9,30 @@ const secondIndicatorStyles = {
   currentStepIndicatorSize: 40,
   separatorStrokeWidth: 2,
   currentStepStrokeWidth: 4,
-  stepStrokeCurrentColor: Colors.lighter_green,
+  stepStrokeCurrentColor: Colors.lighter_gold,
   stepStrokeWidth: 2,
   separatorStrokeFinishedWidth: 3,
-  stepStrokeFinishedColor: Colors.lighter_green,
-  stepStrokeUnFinishedColor: Colors.lighter_green,
-  separatorFinishedColor: Colors.lighter_green,
+  stepStrokeFinishedColor: Colors.lighter_gold,
+  stepStrokeUnFinishedColor: Colors.lighter_gold,
+  separatorFinishedColor: Colors.lighter_gold,
   separatorUnFinishedColor: '#aaaaaa',
-  stepIndicatorFinishedColor: Colors.lighter_green,
+  stepIndicatorFinishedColor: Colors.lighter_gold,
   stepIndicatorUnFinishedColor: '#ffffff',
   stepIndicatorCurrentColor: '#ffffff',
   stepIndicatorLabelFontSize: 13,
   currentStepIndicatorLabelFontSize: 13,
-  stepIndicatorLabelCurrentColor: Colors.lighter_green,
+  stepIndicatorLabelCurrentColor: Colors.lighter_gold,
   stepIndicatorLabelFinishedColor: '#ffffff',
   stepIndicatorLabelUnFinishedColor: '#aaaaaa',
   labelColor: '#999999',
   labelSize: 13,
-  currentStepLabelColor: Colors.lighter_green,
+  currentStepLabelColor: Colors.lighter_gold,
 };
 
 const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
   const iconConfig = {
     name: 'feed',
-    color: stepStatus === 'finished' ? '#ffffff' : Colors.lighter_green,
+    color: stepStatus === 'finished' ? '#ffffff' : Colors.lighter_gold,
     size: 15,
   };
   switch (position) {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'center',
     fontWeight: '500',
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
   },
   stepLabelSelected: {
     fontSize: 12,

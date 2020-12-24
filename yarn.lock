@@ -1280,7 +1280,7 @@
   resolved "https://registry.yarnpkg.com/@expo/websql/-/websql-1.0.1.tgz#fff0cf9c1baa1f70f9e1d658b7c39a420d9b10a9"
   integrity sha1-//DPnBuqH3D54dZYt8OaQg2bEKk=
   dependencies:
-    argsarray "^0.0.1"
+    arg SARray "^0.0.1"
     immediate "^3.2.2"
     noop-fn "^1.0.0"
     pouchdb-collections "^1.0.1"
@@ -2131,9 +2131,9 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-argsarray@^0.0.1:
+arg SARray@^0.0.1:
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/argsarray/-/argsarray-0.0.1.tgz#6e7207b4ecdb39b0af88303fa5ae22bda8df61cb"
+  resolved "https://registry.yarnpkg.com/arg SARray/-/arg SARray-0.0.1.tgz#6e7207b4ecdb39b0af88303fa5ae22bda8df61cb"
   integrity sha1-bnIHtOzbObCviDA/pa4ivajfYcs=
 
 arr-diff@^1.0.1:
@@ -2954,7 +2954,7 @@ deep-equal@^2.0.3:
     is-arguments "^1.0.4"
     is-date-object "^1.0.2"
     is-regex "^1.0.5"
-    isarray "^2.0.5"
+    i SARray "^2.0.5"
     object-is "^1.1.2"
     object-keys "^1.1.1"
     object.assign "^4.1.0"
@@ -3146,7 +3146,7 @@ es-get-iterator@^1.1.0:
     is-map "^2.0.1"
     is-set "^2.0.1"
     is-string "^1.0.5"
-    isarray "^2.0.5"
+    i SARray "^2.0.5"
 
 es-to-primitive@^1.2.1:
   version "1.2.1"
@@ -4415,14 +4415,14 @@ is-wsl@^1.1.0:
   resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
   integrity sha1-HxbkqiKwTRM2tmGIpmrzxgDDpm0=
 
-isarray@1.0.0, isarray@~1.0.0:
+i SARray@1.0.0, i SARray@~1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
+  resolved "https://registry.yarnpkg.com/i SARray/-/i SARray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
-isarray@^2.0.5:
+i SARray@^2.0.5:
   version "2.0.5"
-  resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.5.tgz#8af1e4c1221244cc62459faf38940d4e644a5723"
+  resolved "https://registry.yarnpkg.com/i SARray/-/i SARray-2.0.5.tgz#8af1e4c1221244cc62459faf38940d4e644a5723"
   integrity sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==
 
 isexe@^2.0.0:
@@ -4435,7 +4435,7 @@ isobject@^2.0.0:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"
   integrity sha1-8GVWEJaj8dou9GJy+BXIQNh+DIk=
   dependencies:
-    isarray "1.0.0"
+    i SARray "1.0.0"
 
 isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
@@ -6165,7 +6165,7 @@ readable-stream@^2.0.1, readable-stream@^2.0.6, readable-stream@^2.2.2, readable
   dependencies:
     core-util-is "~1.0.0"
     inherits "~2.0.3"
-    isarray "~1.0.0"
+    i SARray "~1.0.0"
     process-nextick-args "~2.0.0"
     safe-buffer "~5.1.1"
     string_decoder "~1.1.1"

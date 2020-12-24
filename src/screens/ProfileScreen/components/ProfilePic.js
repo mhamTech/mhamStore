@@ -113,12 +113,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.leave_green,
+    backgroundColor: Colors.leave_gold,
   },
   userName: {
     fontSize: 20,
     marginTop: 10,
-    color: Colors.leave_green,
+    color: Colors.leave_gold,
     textAlign: "center",
   },
 });

@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     width: "100%",
     position: "absolute",
     height: HEADER_HEIGHT,
-    backgroundColor: Colors.lighter_green,
+    backgroundColor: Colors.lighter_gold,
   },
   title: {
     marginTop: Platform.OS === "android" ? 0 : 5,

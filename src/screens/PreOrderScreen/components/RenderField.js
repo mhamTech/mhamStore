@@ -24,8 +24,8 @@ export default renderField = ({
         <TextInput
           label={label}
           mode='outlined'
-          theme={{ colors: { primary: Colors.leave_green } }}
-          selectionColor={Colors.leave_green}
+          theme={{ colors: { primary: Colors.leave_gold } }}
+          selectionColor={Colors.leave_gold}
           style={{
             marginVertical: 10,
             backgroundColor: Colors.white,

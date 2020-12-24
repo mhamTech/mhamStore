@@ -22,7 +22,7 @@ export const Header = ({ navigation, user, carts }) => {
         <Ionicons
           name='ios-arrow-back'
           size={30}
-          color={Colors.lighter_green}
+          color={Colors.lighter_gold}
         />
       </TouchableOpacity>
       <CustomText style={styles.titleHeader}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   titleHeader: {
     textAlign: "center",
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
     fontSize: 20,
     paddingBottom: 5,
     fontFamily: "Roboto-Medium",

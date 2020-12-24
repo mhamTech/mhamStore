@@ -13,7 +13,7 @@ const Number = ({ price, color }, props) => {
       value={price}
       displayType={"text"}
       thousandSeparator={true}
-      suffix={"SAR"}
+      suffix={" SAR"}
       renderText={(formattedValue) => (
         <View
           style={

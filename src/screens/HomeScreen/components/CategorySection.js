@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: Colors.light_green,
+    color: Colors.light_gold,
     fontWeight: "500",
   },
   list: {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   productList: {
     width: "100%",
-    marginTop: 10,
+    marginTop: 2,
     paddingHorizontal: 10,
   },
   seeMore: {
@@ -111,6 +111,6 @@ const styles = StyleSheet.create({
   },
   seeMoreText: {
     fontSize: 14,
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
   },
 });

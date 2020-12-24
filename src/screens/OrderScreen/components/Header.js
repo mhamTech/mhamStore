@@ -20,7 +20,7 @@ export const Header = ({ navigation }) => {
           <MaterialCommunityIcons
             name='menu'
             size={25}
-            color={Colors.light_green}
+            color={Colors.light_gold}
           />
         </TouchableOpacity>
       </View>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   titleHeader: {
     textAlign: "center",
-    color: Colors.light_green,
+    color: Colors.light_gold,
     fontSize: 20,
   },
 });

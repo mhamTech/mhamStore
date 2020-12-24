@@ -193,7 +193,7 @@ export const TabScreen = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
           let iconName;
-          const color = focused ? Colors.lighter_green : Colors.grey;
+          const color = focused ? Colors.lighter_gold : Colors.grey;
           if (route.name === "HomeTab") {
             iconName = "home";
           } else if (route.name === "Favorite") {
@@ -209,7 +209,7 @@ export const TabScreen = () => {
         height: 50,
         justifyContent: "center",
       }}
-      activeColor={Colors.lighter_green}
+      activeColor={Colors.lighter_gold}
       inactiveColor={Colors.grey}
     >
       <Tab.Screen
@@ -282,7 +282,7 @@ export const DrawerNavigator = () => {
                 style={{
                   fontSize: 14,
                   fontWeight: "500",
-                  color: focused ? Colors.lighter_green : Colors.grey,
+                  color: focused ? Colors.lighter_gold : Colors.grey,
                   fontFamily: "Roboto-Medium",
                 }}
               >
@@ -293,7 +293,7 @@ export const DrawerNavigator = () => {
               <MaterialCommunityIcons
                 name={icon}
                 size={23}
-                color={focused ? Colors.lighter_green : Colors.grey}
+                color={focused ? Colors.lighter_gold : Colors.grey}
               />
             ),
           })}
@@ -310,7 +310,7 @@ export const DrawerNavigator = () => {
                 style={{
                   fontSize: 14,
                   fontWeight: "500",
-                  color: focused ? Colors.lighter_green : Colors.grey,
+                  color: focused ? Colors.lighter_gold : Colors.grey,
                   fontFamily: "Roboto-Medium",
                 }}
               >
@@ -321,7 +321,7 @@ export const DrawerNavigator = () => {
               <MaterialCommunityIcons
                 name="login"
                 size={23}
-                color={focused ? Colors.lighter_green : Colors.grey}
+                color={focused ? Colors.lighter_gold : Colors.grey}
               />
             ),
           })}
@@ -337,7 +337,7 @@ export const DrawerNavigator = () => {
                   style={{
                     fontSize: 14,
                     fontWeight: "500",
-                    color: focused ? Colors.lighter_green : Colors.grey,
+                    color: focused ? Colors.lighter_gold : Colors.grey,
                     fontFamily: "Roboto-Medium",
                   }}
                 >
@@ -348,7 +348,7 @@ export const DrawerNavigator = () => {
                 <MaterialCommunityIcons
                   name="security"
                   size={25}
-                  color={focused ? Colors.lighter_green : Colors.grey}
+                  color={focused ? Colors.lighter_gold : Colors.grey}
                 />
               ),
             })}
@@ -362,7 +362,7 @@ export const DrawerNavigator = () => {
                   style={{
                     fontSize: 14,
                     fontWeight: "500",
-                    color: focused ? Colors.lighter_green : Colors.grey,
+                    color: focused ? Colors.lighter_gold : Colors.grey,
                     fontFamily: "Roboto-Medium",
                   }}
                 >
@@ -373,7 +373,7 @@ export const DrawerNavigator = () => {
                 <MaterialCommunityIcons
                   name="face-profile"
                   size={25}
-                  color={focused ? Colors.lighter_green : Colors.grey}
+                  color={focused ? Colors.lighter_gold : Colors.grey}
                 />
               ),
             })}

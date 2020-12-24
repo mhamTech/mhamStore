@@ -24,7 +24,7 @@ export const Header = ({ navigation }) => {
             navigation.toggleDrawer();
           }}
         >
-          <MaterialCommunityIcons name='menu' size={40} color={Colors.lighter_green} />
+          <MaterialCommunityIcons name='menu' size={40} color={Colors.lighter_gold} />
         </TouchableOpacity>
       </View>
       <Image
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     height: 200,
-    backgroundColor: Colors.lighter_green,
+    backgroundColor: Colors.lighter_gold,
     justifyContent: "center",
   },
   image: {

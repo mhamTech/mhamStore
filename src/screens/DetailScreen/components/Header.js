@@ -51,7 +51,7 @@ export const Header = ({ navigation, scrollY, item }) => {
           style={styles.goBackIcon}
         >
           <View>
-            <Ionicons name="ios-arrow-back" size={25} color={Colors.lighter_green} />
+            <Ionicons name="ios-arrow-back" size={25} color={Colors.lighter_gold} />
           </View>
         </TouchableOpacity>
         <Animated.View style={{ opacity: headerOpacity }}>
@@ -75,7 +75,7 @@ export const Header = ({ navigation, scrollY, item }) => {
           top: 0,
           left: 0,
           right: 0,
-          backgroundColor: Colors.lighter_green,
+          backgroundColor: Colors.lighter_gold,
           overflow: "hidden",
           opacity: headerOpacity,
           height: HEADER_MAX_HEIGHT,

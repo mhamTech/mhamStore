@@ -125,6 +125,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "Roboto-Medium",
     fontSize: 15,
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
   },
 });

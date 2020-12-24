@@ -63,7 +63,7 @@ const SignupForm = (props) => {
         <Feather
           name='arrow-left-circle'
           size={30}
-          color={Colors.lighter_green}
+          color={Colors.lighter_gold}
         />
       </TouchableOpacity>
       <View style={styles.content}>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    color: Colors.lighter_green,
+    color: Colors.lighter_gold,
     fontSize: 30,
   },
   signIn: {
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: "row",
     marginBottom: 10,
-    backgroundColor: Colors.lighter_green,
+    backgroundColor: Colors.lighter_gold,
   },
   textSign: {
     fontSize: 15,

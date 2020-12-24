@@ -19,13 +19,13 @@ export default renderField = ({
         autoCapitalize='none'
         clearButtonMode='always'
         mode='outlined'
-        selectionColor={Colors.leave_green}
-        theme={{ colors: { primary: Colors.leave_green } }}
+        selectionColor={Colors.leave_gold}
+        theme={{ colors: { primary: Colors.leave_gold } }}
         left={
           <TextInput.Icon
             name={icon}
             size={24}
-            color={Colors.lighter_green}
+            color={Colors.lighter_gold}
             style={{ paddingRight: 10 }}
           />
         }

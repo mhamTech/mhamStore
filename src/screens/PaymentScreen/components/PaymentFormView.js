@@ -32,7 +32,7 @@ export default class PaymentFormView extends React.Component {
           ]}
         >
           <Button
-            title='Xác nhận'
+            title="Confirm"
             disabled={!this.state.cardData.valid || submitted}
             onPress={() => onSubmit(this.state.cardData)}
           />
@@ -41,7 +41,7 @@ export default class PaymentFormView extends React.Component {
             <View style={styles.alertWrapper}>
               <View style={styles.alertIconWrapper}>
                 <FontAwesome
-                  name='exclamation-circle'
+                  name="exclamation-circle"
                   size={20}
                   style={{ color: "#c22" }}
                 />

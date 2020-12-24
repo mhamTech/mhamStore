@@ -27,13 +27,13 @@ export default renderField = ({
         autoCapitalize={autoCapitalize ? "words" : "none"}
         clearButtonMode={passIcon ? "never" : "always"}
         mode="outlined"
-        selectionColor={Colors.leave_green}
-        theme={{ colors: { primary: Colors.leave_green } }}
+        selectionColor={Colors.leave_gold}
+        theme={{ colors: { primary: Colors.leave_gold } }}
         left={
           <TextInput.Icon
             name={icon}
             size={24}
-            color={Colors.lighter_green}
+            color={Colors.lighter_gold}
             style={{ paddingRight: 10 }}
           />
         }
@@ -55,7 +55,7 @@ export default renderField = ({
           }}
           name={showPass ? "eye" : "eye-off"}
           size={24}
-          color={Colors.lighter_green}
+          color={Colors.lighter_gold}
           style={{
             position: "absolute",
             top: "40%",
@@ -70,7 +70,7 @@ export default renderField = ({
           }}
           name={showConfirmPass ? "eye" : "eye-off"}
           size={24}
-          color={Colors.lighter_green}
+          color={Colors.lighter_gold}
           style={{
             position: "absolute",
             top: "40%",

@@ -21,7 +21,7 @@ const UploadButton = ({
         style={{
           height: 50,
           justifyContent: "center",
-          backgroundColor: Colors.leave_green,
+          backgroundColor: Colors.leave_gold,
         }}
       >
         Update Profile Picture
@@ -37,7 +37,7 @@ const UploadButton = ({
             height: 50,
             marginTop: 10,
             justifyContent: "center",
-            backgroundColor: Colors.leave_green,
+            backgroundColor: Colors.leave_gold,
           }}
         >
           Cancel
