@@ -43,7 +43,7 @@ export const ActionButton = ({
   //Set Colors
   const addToCartAct = async () => {
     if (Object.keys(user).length === 0) {
-      setMessage(Messages['user.login.require']);
+      setMessage(Messages['user.login.require']); //without login 
       setShowSnackbar(true);
     } else {
       try {

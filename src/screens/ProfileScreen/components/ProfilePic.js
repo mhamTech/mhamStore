@@ -15,6 +15,7 @@ import CustomText from "../../../components/UI/CustomText";
 import { useActionSheet } from "@expo/react-native-action-sheet";
 //PropTypes check
 import PropTypes from "prop-types";
+import { set } from "react-native-reanimated";
 
 export const ProfilePic = ({
   user,
@@ -24,6 +25,7 @@ export const ProfilePic = ({
   setType,
   setUploadButton,
 }) => {
+  const [error, setError] = React.useState(false);
   const { showActionSheetWithOptions } = useActionSheet();
 
   const UploadProfileHandler = () => {
@@ -57,10 +59,24 @@ export const ProfilePic = ({
       }
     );
   };
+
+  React.useEffect(() => {
+    fetch(user.profilePicture)
+      .then((response) => {
+        if (!response.ok) {
+          setError(true);
+        }
+        // console.log(response.status, response.ok); // 404 false
+      })
+      .catch((error) => {
+        // console.log("API failure" + error);
+      });
+  }, []);
+
   return (
     <View>
       <View style={{ height: 50, alignItems: "center" }}>
-        <Image
+        {/* <Image
           style={styles.profilePic}
           source={
             imageUri.length === 0
@@ -69,7 +85,15 @@ export const ProfilePic = ({
                 : { uri: user.profilePicture }
               : { uri: imageUri }
           }
-        />
+        /> */}
+        <Image
+          style={styles.profilePic}
+          source={
+            error
+              ? require("../../../assets/Images/defaultprofile.png")
+              : { uri: user.profilePicture }
+          }
+        /> 
         <View
           style={{
             width: "100%",

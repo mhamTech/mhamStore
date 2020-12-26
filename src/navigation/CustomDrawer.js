@@ -28,6 +28,7 @@ import { Logout as LogoutAction } from "../reducers";
 //Link
 import { OpenURL } from "../utils/Tools";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { set } from "react-native-reanimated";
 
 //change lang
 
@@ -36,6 +37,7 @@ const youtubeURL = "https://www.youtube.com/";
 
 //custom drawer content
 export default (props) => {
+  const [error, setError] = React.useState(false);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const Logout = () => {
@@ -57,6 +59,19 @@ export default (props) => {
   const newState = { ...state }; //copy from state before applying any filter. do not change original state
   // newState.routes = newState.routes.filter((item) => item.name !== 'Profile'); //replace "Login' with your route name
 
+  React.useEffect(() => {
+    fetch(user.profilePicture)
+  .then(response => {
+    if(!response.ok){ 
+      setError(true)
+    }
+    // console.log(response.status, response.ok); // 404 false 
+  })
+  .catch(error => {
+    // console.log('API failure' + error);
+  });
+  }, []);  
+ 
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -73,10 +88,18 @@ export default (props) => {
               <TouchableOpacity
                 onPress={() => props.navigation.navigate("Profile")}
               >
-                <Image
+                {/* <Image
                   style={styles.profilePic}
                   source={
-                    user.profilePicture.length === 0
+                    user.profilePicture === 0
+                      ? require("../assets/Images/defaultprofile.png")
+                      : { uri: user.profilePicture }
+                  }
+                /> */}
+                <Image
+                  style={styles.profilePic}
+                  source={ 
+                    error
                       ? require("../assets/Images/defaultprofile.png")
                       : { uri: user.profilePicture }
                   }
@@ -85,7 +108,7 @@ export default (props) => {
               <View style={{ justifyContent: "center" }}>
                 <Text
                   style={{
-                    color: Colors.light_gold,
+                    color: Colors.light_green,
                     fontSize: 18,
                     paddingHorizontal: 10,
                     paddingVertical: 0,
@@ -195,7 +218,7 @@ const styles = StyleSheet.create({
     height: 100,
   },
   logoutSection: {
-    backgroundColor: Colors.lighter_gold,
+    backgroundColor: Colors.lighter_green,
     borderRadius: 5,
     marginHorizontal: 10,
     height: 50,
