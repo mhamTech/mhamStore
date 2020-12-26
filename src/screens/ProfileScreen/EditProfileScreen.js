@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput, Button, Text } from "react-native-paper";
 import Colors from "../../utils/Colors";
 //Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { EditInfo } from "../../reducers";
 //Loader
 import Loader from "../../components/Loaders/Loader";
+import { add, set } from "react-native-reanimated";
 
 export const EditProfileScreen = (props) => {
   const { user } = props.route.params;
@@ -47,46 +48,52 @@ export const EditProfileScreen = (props) => {
       {loading ? <Loader /> : <></>}
       <View style={styles.backIcon}>
         <TouchableOpacity onPress={() => props.navigation.goBack()}>
-          <MaterialCommunityIcons name='arrow-left' size={30} color='black' />
+          <MaterialCommunityIcons name="arrow-left" size={30} color="black" />
         </TouchableOpacity>
       </View>
       <View>
         <View style={styles.infoContainer}>
           <TextInput
-            label='Email'
+            label="Email"
             value={user.email}
             disabled
-            mode='outlined'
+            mode="outlined"
             theme={{ colors: { primary: Colors.leave_gold } }}
             selectionColor={Colors.leave_gold}
             style={{ marginVertical: 10 }}
           />
           <TextInput
-            label='Phone'
+            label="Phone"
             value={phone}
-            mode='outlined'
+            mode="outlined"
             theme={{ colors: { primary: Colors.leave_gold } }}
             selectionColor={Colors.leave_gold}
             onChangeText={(text) => setPhone(text)}
             style={{ marginVertical: 10 }}
-            keyboardType='numeric'
-            returnKeyType='done'
+            keyboardType="numeric"
+            returnKeyType="done"
           />
+          {phone.length < 10 ? (
+            <Text style={{ color: "red" }}>Phone number must be more then 10</Text>
+          ) : null}
           <TextInput
-            label='Address'
+            label="Address"
             value={address}
-            mode='outlined'
+            mode="outlined"
             theme={{ colors: { primary: Colors.leave_gold } }}
             selectionColor={Colors.leave_gold}
             onChangeText={(text) => setAddress(text)}
             style={{ marginVertical: 10 }}
-            autoCapitalize='words'
+            autoCapitalize="words"
           />
+          {address.length < 6 ? (
+            <Text style={{ color: "red" }}>Address Must be more then 6 characters</Text>
+          ) : null}
         </View>
         <View style={styles.button}>
           <Button
-            icon='update'
-            mode='contained'
+            icon="update"
+            mode="contained"
             loading={loading}
             disabled={disableButton}
             onPress={updateInfoHandler}

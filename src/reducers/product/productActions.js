@@ -5,7 +5,6 @@ export const PRODUCT_LOADING = "PRODUCT_LOADING";
 export const PRODUCT_FAILURE = "PRODUCT_FAILURE";
 
 export const fetchProducts = () => {
-  console.log('running')
   return async (dispatch) => {
     dispatch({
       type: PRODUCT_LOADING,

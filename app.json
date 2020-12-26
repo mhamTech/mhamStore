@@ -39,6 +39,6 @@
       "softwareKeyboardLayoutMode": "pan"
     },
     "notification": { "icon": "./src/assets/icon.png" },
-    "description": "E-commerce app contains all neces SARy features"
+    "description": "E-commerce app contains all necessary features"
   }
 }

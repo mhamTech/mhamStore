@@ -35,7 +35,16 @@ export const fetchOrder = () => {
       }
       const resData = await response.json();
       const filterUserOrder = resData.content.filter(
-        (userOrder) => userOrder.userId._id === user.userid
+        (userOrder) => {
+          try {
+            console.log(user.userid)
+            return userOrder.userId._id === user.userid
+
+          } catch (error) {
+            // console.log(error)
+          }
+        
+        }
       );
       dispatch({
         type: FETCH_ORDER,
