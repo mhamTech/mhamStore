@@ -1,5 +1,5 @@
 const orderMessages = {
-  'order.add.success': 'Đặt hàng thành công',
-  'order.add.fail': 'Có lỗi khi đặt hàng',
+  'order.add.success': 'order has been added',
+  'order.add.fail': 'something went wrong',
 };
 export default orderMessages;

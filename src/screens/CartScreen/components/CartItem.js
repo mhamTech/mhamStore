@@ -68,7 +68,7 @@ export class CartItem extends React.PureComponent {
             </View>
           </View>
           <CustomText style={{ color: Colors.grey, fontSize: 12 }}>
-            Provided by Cat Mham Store
+            Provided by Mham Store
           </CustomText>
           <NumberFormat price={sum.toString()} />
           <View style={styles.box}>

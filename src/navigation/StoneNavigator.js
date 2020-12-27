@@ -188,6 +188,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 export const TabScreen = () => {
   const carts = useSelector((state) => state.cart.cartItems);
+  const cartNoAith = useSelector((state) => state.CartNoAuthReducer.items);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -231,7 +232,10 @@ export const TabScreen = () => {
         component={CartStackScreen}
         options={() => ({
           tabBarLabel: "Cart",
-          tabBarBadge: carts.items.length === 0 ? null : carts.items.length,
+          tabBarBadge:
+            carts.items.length || Object.keys(cartNoAith).length === 0
+              ? null
+              : carts.items.length || Object.keys(cartNoAith).length,
         })}
       />
     </Tab.Navigator>

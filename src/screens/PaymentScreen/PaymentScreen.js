@@ -40,6 +40,7 @@ export const PaymentScreen = (props) => {
   const dispatch = useDispatch();
   const {
     orderItems,
+    NeworderItems,
     name,
     phone,
     total,

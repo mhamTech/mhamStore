@@ -5,9 +5,10 @@ import {
   StyleSheet,
   FlatList,
   Alert,
+  Text,
 } from "react-native";
 //Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 //Action
 import { removeFromCart, addToCart, decCartQuantity } from "../../../reducers";
 //Text
@@ -15,6 +16,9 @@ import CustomText from "../../../components/UI/CustomText";
 //Colors
 import Colors from "../../../utils/Colors";
 import { CartItem } from "./CartItem";
+import { CartItemNoAuth } from "./CartItemNoAuth";
+import * as cartActions from "../../../reducerTest/CartNoAuthAction";
+
 import Messages from "../../../messages/user";
 //PropTypes check
 import PropTypes from "prop-types";
@@ -40,15 +44,59 @@ export const CartBody = ({
       },
     ]);
   };
+
+  //test
+  const test = useSelector((state) => state.CartNoAuthReducer.items);
+  const cartItemTest = useSelector((state) => {
+    const transformedCartItem = [];
+    for (const key in state.CartNoAuthReducer.items) {
+      transformedCartItem.push({
+        productId: key,
+        productTitle: state.CartNoAuthReducer.items[key].productTitle,
+        productPrice: state.CartNoAuthReducer.items[key].productPrice,
+        quantity: state.CartNoAuthReducer.items[key].quantity,
+        productImg: state.CartNoAuthReducer.items[key].image,
+      });
+      // console.log(state.CartNoAuthReducer.items[key].img)
+    }
+    return transformedCartItem;
+  });
+  React.useEffect(() => {
+    // console.log(cartItemTest);
+    // console.log(test);
+  });
+
+  //end of test
   return (
     <View style={styles.footer}>
       {Object.keys(user).length === 0 ? (
-        <View style={styles.center}>
-          <CustomText>{Messages["user.login.require"]}</CustomText>
-          <View style={styles.nextButton}>
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <CustomText style={{ color: "#fff" }}>Continue</CustomText>
-            </TouchableOpacity>
+        <View style={{ marginBottom: 80 }}>
+          <FlatList
+            data={cartItemTest}
+            keyExtractor={(item) => item.productId}
+            renderItem={({ item }) => (
+              <CartItemNoAuth
+                onRemove={() => {
+                  dispatch(cartActions.removeFromCart(item.productId));
+                  // console.log(item.productId);
+                }}
+                onDelete={() => {
+                  // console.log('hi')
+                  dispatch(cartActions.deleteFromCart(item.productId));
+                }}
+                onAdd={() => {
+                  dispatch(cartActions.addToCart(item));
+                }}
+                item={item}
+              />
+            )}
+          />
+          <View style={styles.center}>
+            <View style={styles.nextButton}>
+              <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+                <CustomText style={{ color: "#fff" }}>Order now</CustomText>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       ) : carts.items.length === 0 ? (
@@ -70,7 +118,7 @@ export const CartBody = ({
                   item={item}
                   onRemove={() => {
                     // onRemove(item.item._id);
-                    dispatch(removeFromCart(carts._id, item.item._id))
+                    dispatch(removeFromCart(carts._id, item.item._id));
                   }}
                   onAdd={() => {
                     dispatch(addToCart(item.item, user.token));
@@ -109,9 +157,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   center: {
-    height: "100%",
-    width: "100%",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
   },
 });
+
+// old code for
+// <View style={styles.center}>
+//   <CustomText>{Messages["user.login.require"]}</CustomText>
+//   <View style={styles.nextButton}>
+//     <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+//       <CustomText style={{ color: "#fff" }}>Continue</CustomText>
+//     </TouchableOpacity>
+//   </View>
+// </View>

@@ -1,26 +1,38 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { View, StyleSheet, Platform, Dimensions } from 'react-native';
+import React, { useEffect, useState, useCallback } from "react";
+import { View, StyleSheet, Platform, Dimensions } from "react-native";
 //Redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 //Action
-import { fetchCart } from '../../reducers';
+import { fetchCart } from "../../reducers";
 //component
-import Colors from '../../utils/Colors';
-import { Header, CartBody, TotalButton } from './components';
+import Colors from "../../utils/Colors";
+import { Header, CartBody, TotalButton } from "./components";
 //Loader
-import Loader from '../../components/Loaders/Loader';
+import Loader from "../../components/Loaders/Loader";
 
-const { height } = Dimensions.get('window');
+const { height } = Dimensions.get("window");
 
 export const CartScreen = (props) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const user = useSelector((state) => state.auth.user);
   const carts = useSelector((state) => state.cart.cartItems);
+
   const loading = useSelector((state) => state.cart.isLoading);
+
+  //old cart
   const cartItems = carts.items;
+  console.log(cartItems)
+  //new cart
+  const newCart = useSelector((state) => state.CartNoAuthReducer.items);
+  console.log(newCart);
+  //old cart item 
   const cartId = carts._id;
+
   const dispatch = useDispatch();
+  //old total
   let total = 0;
+  //new total
+  let sum = 0;
   carts.items.map((item) => (total += +item.item.price * +item.quantity));
   const loadCarts = useCallback(async () => {
     setIsRefreshing(true);
@@ -54,6 +66,7 @@ export const CartScreen = (props) => {
         <TotalButton
           total={total}
           cartItems={cartItems}
+          newCartItems ={newCart}
           cartId={cartId}
           navigation={props.navigation}
         />
@@ -67,21 +80,21 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   header: {
-    width: '100%',
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    height: Platform.OS === 'android' ? 70 : height < 668 ? 70 : 90,
+    width: "100%",
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    height: Platform.OS === "android" ? 70 : height < 668 ? 70 : 90,
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
   centerLoader: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    width: '100%',
-    position: 'absolute',
-    top: Platform.OS === 'android' ? 70 : height < 668 ? 70 : 90,
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    top: Platform.OS === "android" ? 70 : height < 668 ? 70 : 90,
   },
 });

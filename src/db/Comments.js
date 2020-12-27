@@ -1,34 +1,34 @@
 export default comments = [
   {
     id: 1,
-    username: "Lionel Nguyen",
-    content: "Sản phẩm đẹp, giao hàng nhanh",
+    username: "khaled",
+    content: "منتج جميل",
   },
   {
     id: 2,
-    username: "Kim Tinh",
+    username: "hiba",
     content:
-      "Mình mua vòng này mang được hơn 1 tháng, vòng rất sáng chất lượng tốt. Cảm ơn Shop nhiều",
+      "السعر  مناسب",
   },
   {
     id: 3,
-    username: "Nam Thọ",
+    username: "mohammed",
     content:
-      "Vòng đẹp, màu sắc như hình, chất lượng thì để mang một thời gian nữa rồi vào đánh giá tiếp ^^",
+      "المنتج ممتاز عن تجربه",
   },
   {
     id: 4,
-    username: "Nguyên Hưng",
-    content: "Cho 5 sao, hàng đẹp xịn xò",
+    username: "raed",
+    content: "التوصيل سريع",
   },
   {
     id: 5,
-    username: "Hà Bò",
-    content: "Vừa đặt ở đây, chủ shop thân thiện, sản phẩm đẹp",
+    username: "Mustafa",
+    content: "منتج اكثر من رائع",
   },
   {
     id: 6,
-    username: "Khiêm",
-    content: "Vòng đẹp, chất lượng đúng như quảng cảo",
+    username: "Asama",
+    content: "انصح باستخدامه",
   },
 ];

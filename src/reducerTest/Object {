@@ -1,0 +1,24 @@
+Object {
+  "__v": 0,
+  "_id": "5fe18dd3eac5405adfbd0345",
+  "color": "red",
+  "createdAt": "2020-12-22T06:10:27.217Z",
+  "description": "this product is one of the best selling product so far",
+  "filename": "book",
+  "origin": "saudi",
+  "price": "23",
+  "standard": "available",
+  "thumb": "http://192.168.8.138:8080/public/api/static/images/productPictures/256x144-book.jpg",
+  "type": "book",
+  "updatedAt": "2020-12-22T06:10:27.217Z",
+  "url": "http://192.168.8.138:8080/public/api/static/images/productPictures/book.jpg",
+}
+
+
+
+const newCartItem = new CartItem(1, producPrice, prodTitle, producPrice);
+return {
+  ...state,
+  items: { ...state.items, [productId]: newCartItem },
+  totalAmount: state.totalAmount + producPrice,
+};

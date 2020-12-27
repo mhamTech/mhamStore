@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 export class TotalButton extends React.PureComponent {
   render() {
-    const { total, navigation, cartItems, cartId } = this.props;
+    const { total, navigation, cartItems, cartId , newCartItems} = this.props;
     return (
       <View style={styles.total}>
         <View
@@ -33,6 +33,7 @@ export class TotalButton extends React.PureComponent {
               cartItems,
               total,
               cartId,
+              newCartItems
             });
           }}
         >

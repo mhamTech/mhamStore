@@ -11,7 +11,9 @@ import {
   favoriteReducer,
   orderReducer,
   productReducer,
+  CartwithoutloginReducer
 } from "./src/reducers";
+import CartNoAuthReducer from './src/reducerTest/CartNoAuthReducer'
 //Navigator
 import { AppNavigator } from "./src/navigation";
 import { AppLoading } from "expo";
@@ -31,6 +33,7 @@ import LocalNotication from "./src/components/Notification/LocalNotification";
 const rootReducer = combineReducers({
   store: productReducer,
   cart: cartReducer,
+  CartNoAuthReducer: CartNoAuthReducer,
   order: orderReducer,
   auth: authReducer,
   fav: favoriteReducer,

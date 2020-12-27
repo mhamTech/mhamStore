@@ -15,7 +15,7 @@ export const PreOrderScreen = (props) => {
   const isFocused = useIsFocused();
   const [loading, setLoading] = useState(true);
   const carts = useSelector((state) => state.cart.cartItems);
-  const { cartItems, total, cartId } = props.route.params;
+  const { cartItems, total, cartId, newCartItems } = props.route.params; //comes from cart screen
   const [error, setError] = useState("");
   //Can Toi uu lai
   const [name, setName] = useState("");
@@ -54,6 +54,12 @@ export const PreOrderScreen = (props) => {
   cartItems.map((item) => {
     orderItems.push({ item: item.item._id, quantity: item.quantity });
   });
+  console.log(orderItems)
+
+  let NeworderItems = []; //item.productId //item.quantity
+  // newCartItems.map((item) => {
+  //   NeworderItems.push({ item: item.item._id, quantity: item.quantity });
+  // });
 
   const fullAddress = `${address}, ${town} ,${province}`;
   const toPayment = async () => {
@@ -64,6 +70,7 @@ export const PreOrderScreen = (props) => {
           params: {
             fullAddress,
             orderItems,
+            NeworderItems,
             name,
             phone,
             total,
