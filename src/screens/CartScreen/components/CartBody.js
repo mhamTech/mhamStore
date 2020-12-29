@@ -69,28 +69,29 @@ export const CartBody = ({
   //end of test
   return (
     <View style={styles.footer}>
-      {Object.keys(user).length === 0 ? (
-        <View style={{ marginBottom: 80 }}>
-          <FlatList
-            data={cartItemTest}
-            keyExtractor={(item) => item.productId}
-            renderItem={({ item }) => (
-              <CartItemNoAuth
-                onRemove={() => {
-                  dispatch(cartActions.removeItemFromCart(item.productId));
-                  // console.log(item.productId);
-                }}
-                onDelete={() => {
-                  // console.log('hi')
-                  dispatch(cartActions.deleteFromCart(item.productId));
-                }}
-                onAdd={() => {
-                  dispatch(cartActions.addToCart(item));
-                }}
-                item={item}
-              />
-            )}
-          />
+      {/* {Object.keys(user).length === 0 ? ( */}
+      <View style={{ marginBottom: 80 }}>
+        <FlatList
+          data={cartItemTest}
+          keyExtractor={(item) => item.productId}
+          renderItem={({ item }) => (
+            <CartItemNoAuth
+              onRemove={() => {
+                dispatch(cartActions.removeFromCart(item.productId));
+                // console.log(item.productId);
+              }}
+              onDelete={() => {
+                // console.log('hi')
+                dispatch(cartActions.deleteFromCart(item.productId));
+              }}
+              onAdd={() => {
+                dispatch(cartActions.addToCart(item));
+              }}
+              item={item}
+            />
+          )}
+        />
+        {Object.keys(user).length === 0 ? (
           <View style={styles.center}>
             <View style={styles.nextButton}>
               <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
@@ -98,8 +99,9 @@ export const CartBody = ({
               </TouchableOpacity>
             </View>
           </View>
-        </View>
-      ) : carts.items.length === 0 ? (
+        ) : null}
+      </View>
+      {/* ) : carts.items.length === 0 ? (
         <View style={styles.center}>
           <CustomText style={{ fontSize: 16 }}>
             No products in the shopping cart
@@ -130,8 +132,8 @@ export const CartBody = ({
               );
             }}
           />
-        </View>
-      )}
+        </View> */}
+      {/* )} */}
     </View>
   );
 };

@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 
 const { height } = Dimensions.get("window");
 
-export const Header = ({ navigation, user, carts }) => {
+export const Header = ({ navigation, user, carts  ,Cartlength}) => {
   return (
     <View style={styles.header}>
       <TouchableOpacity
@@ -27,11 +27,11 @@ export const Header = ({ navigation, user, carts }) => {
       </TouchableOpacity>
       <CustomText style={styles.titleHeader}>
         Cart{" "}
-        {Object.keys(user).length === 0
+        {Cartlength === 0
           ? ""
-          : carts.items.length === 0
+          : Cartlength === 0
           ? ""
-          : `(${carts.items.length})`}
+          : `(${Cartlength})`}
       </CustomText>
       <View style={{ width: 15 }} />
     </View>

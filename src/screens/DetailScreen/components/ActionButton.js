@@ -107,7 +107,7 @@ export const ActionButton = ({
             <Ionicons name="ios-heart-empty" size={27} color={color} />
           )}
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={[styles.addCart, { backgroundColor: color }]}
           onPress={addToCartAct}
         >
@@ -116,10 +116,8 @@ export const ActionButton = ({
           ) : (
             <CustomText style={styles.actionText}>Add to cart</CustomText>
           )}
-        </TouchableOpacity>
-      </View>
-      {/* test */}
-      <TouchableOpacity
+        </TouchableOpacity> */}
+        <TouchableOpacity
         style={[styles.addCart, { backgroundColor: color }]}
         onPress={test}
       >
@@ -129,6 +127,19 @@ export const ActionButton = ({
           <CustomText style={styles.actionText}>Add to cart</CustomText>
         )}
       </TouchableOpacity>
+        
+      </View>
+      {/* test */}
+      {/* <TouchableOpacity
+        style={[styles.addCart, { backgroundColor: color }]}
+        onPress={test}
+      >
+        {cartLoading ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <CustomText style={styles.actionText}>Add to cart</CustomText>
+        )}
+      </TouchableOpacity> */}
     </Animatable.View>
   );
 };

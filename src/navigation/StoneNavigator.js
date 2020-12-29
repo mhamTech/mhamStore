@@ -236,6 +236,10 @@ export const TabScreen = () => {
           //   carts.items.length || Object.keys(cartNoAith).length === 0
           //     ? null
           //     : carts.items.length || Object.keys(cartNoAith).length,
+          tabBarBadge:
+            Object.keys(cartNoAith).length === 0
+              ? null
+              : Object.keys(cartNoAith).length,
         })}
       />
     </Tab.Navigator>

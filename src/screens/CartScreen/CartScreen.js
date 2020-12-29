@@ -25,7 +25,8 @@ export const CartScreen = (props) => {
   // console.log("CartScreen.js ", cartItems);
   //new cart
   const newCartItems = useSelector((state) => state.CartNoAuthReducer.items);
-  // console.log("CartScreen.js newCartItems", newCartItems);
+  
+  console.log("CartScreen.js newCartItems", Object.keys(newCartItems).length);
 
   //old cart item
   const cartId = carts._id;
@@ -56,7 +57,7 @@ export const CartScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <Header user={user} carts={carts} navigation={props.navigation} />
+      <Header Cartlength={Object.keys(newCartItems).length} user={user} carts={carts} navigation={props.navigation} />
       {loading ? <Loader /> : <></>}
       <CartBody
         user={user}
@@ -67,11 +68,11 @@ export const CartScreen = (props) => {
       />
       {Object.keys(user).length === 0 ? (
         <></>
-      ) : carts.items.length === 0 ? (
+      ) : Object.keys(newCartItems).length=== 0 ? ( 
         <View />
       ) : (
         <TotalButton
-          total={total}
+          total={newTotal}
           cartItems={cartItems}
           newCartItems={newCartItems}
           cartId={cartId}
