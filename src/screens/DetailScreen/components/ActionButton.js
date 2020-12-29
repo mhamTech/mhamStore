@@ -58,6 +58,11 @@ export const ActionButton = ({
       }
     }
   };
+  // test
+  const test = async () => {
+    //new code
+    dispatch(cartActions.addToCart(item));
+  };
   const toggleFavorite = () => {
     if (Object.keys(user).length === 0) {
       setMessage(Messages["user.login.require"]);
@@ -113,6 +118,17 @@ export const ActionButton = ({
           )}
         </TouchableOpacity>
       </View>
+      {/* test */}
+      <TouchableOpacity
+        style={[styles.addCart, { backgroundColor: color }]}
+        onPress={test}
+      >
+        {cartLoading ? (
+          <ActivityIndicator size="small" color="#fff" />
+        ) : (
+          <CustomText style={styles.actionText}>Add to cart</CustomText>
+        )}
+      </TouchableOpacity>
     </Animatable.View>
   );
 };

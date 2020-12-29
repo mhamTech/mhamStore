@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, StyleSheet, Dimensions, Platform } from "react-native";
+import { View, StyleSheet, Dimensions, Platform, Button } from "react-native";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 //Action
@@ -14,6 +14,8 @@ export const OrderScreen = ({ navigation }) => {
   const user = useSelector((state) => state.auth.user);
   const orders = useSelector((state) => state.order.orders);
   const dispatch = useDispatch();
+  // console.log("OrderScreen.js orders", orders);
+
   const loadOrders = useCallback(async () => {
     setIsRefreshing(true);
     try {
@@ -23,9 +25,13 @@ export const OrderScreen = ({ navigation }) => {
     }
     setIsRefreshing(false);
   }, [dispatch, setIsRefreshing]);
+
+  
   useEffect(() => {
-    loadOrders();
+    loadOrders(); 
   }, [user.userid]);
+  
+  
 
   return (
     <View style={styles.container}>

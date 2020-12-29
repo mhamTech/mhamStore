@@ -14,7 +14,7 @@ export const ProductScreen = (props) => {
     const data = products.filter((product) =>
       product.filename.toLowerCase().includes(text.toLowerCase())
     );
-    console.log(data)
+    // console.log(data)
     setproductsFilter(data);
   };
   return (

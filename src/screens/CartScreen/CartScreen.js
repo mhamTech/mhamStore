@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, StyleSheet, Platform, Dimensions } from "react-native";
+import { View, StyleSheet, Platform, Dimensions} from "react-native";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
 //Action
@@ -18,22 +18,29 @@ export const CartScreen = (props) => {
   const carts = useSelector((state) => state.cart.cartItems);
 
   const loading = useSelector((state) => state.cart.isLoading);
-
+  //test
+  
   //old cart
   const cartItems = carts.items;
-  console.log(cartItems)
+  // console.log("CartScreen.js ", cartItems);
   //new cart
-  const newCart = useSelector((state) => state.CartNoAuthReducer.items);
-  console.log(newCart);
-  //old cart item 
+  const newCartItems = useSelector((state) => state.CartNoAuthReducer.items);
+  // console.log("CartScreen.js newCartItems", newCartItems);
+
+  //old cart item
   const cartId = carts._id;
 
   const dispatch = useDispatch();
   //old total
   let total = 0;
-  //new total
-  let sum = 0;
   carts.items.map((item) => (total += +item.item.price * +item.quantity));
+  //new total
+
+  let newTotal = 0;
+  for (const key in newCartItems) {
+    newTotal += newCartItems[key].productPrice * +newCartItems[key].quantity;
+  }
+
   const loadCarts = useCallback(async () => {
     setIsRefreshing(true);
     try {
@@ -66,9 +73,10 @@ export const CartScreen = (props) => {
         <TotalButton
           total={total}
           cartItems={cartItems}
-          newCartItems ={newCart}
+          newCartItems={newCartItems}
           cartId={cartId}
           navigation={props.navigation}
+          newTotal={newTotal}
         />
       )}
     </View>

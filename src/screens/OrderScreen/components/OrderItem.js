@@ -43,7 +43,7 @@ export const OrderItem = ({ order }) => {
         <View style={styles.textContainer}>
           <CustomText style={styles.text}>Date of ordering: </CustomText>
           <CustomText style={styles.detail}>
-            {moment(order.date).format("Do MMMM  YYYY, hh:mm a ")}
+            {moment(order.updatedAt).format("Do MMMM  YYYY, hh:mm a ")}
           </CustomText>
         </View>
         <View style={styles.detailButtom}>

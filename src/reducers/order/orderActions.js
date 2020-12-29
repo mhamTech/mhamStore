@@ -8,6 +8,7 @@ export const ERROR = "ERROR";
 
 //Fetch order
 export const fetchOrder = () => {
+  console.log("orderAction.js fetchOrder working")
   return async (dispatch, getState) => {
     dispatch({
       type: ORDER_LOADING,
@@ -34,11 +35,11 @@ export const fetchOrder = () => {
         throw new Error("Something went wrong! Can't get your order");
       }
       const resData = await response.json();
-      const filterUserOrder = resData.content.filter(
+      const filterUserOrder = resData.content.filter(  
         (userOrder) => {
           try {
-            console.log(user.userid)
-            return userOrder.userId._id === user.userid
+            // console.log("orderAction.js ",user.userid)
+            return userOrder.userId._id === user.userid 
 
           } catch (error) {
             // console.log(error)
@@ -50,8 +51,9 @@ export const fetchOrder = () => {
         type: FETCH_ORDER,
         orderData: filterUserOrder,
       });
-    } catch (err) {
+    } catch (err) { 
       throw err;
+      console.log(err.message)
     }
   };
 };

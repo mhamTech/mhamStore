@@ -232,10 +232,10 @@ export const TabScreen = () => {
         component={CartStackScreen}
         options={() => ({
           tabBarLabel: "Cart",
-          tabBarBadge:
-            carts.items.length || Object.keys(cartNoAith).length === 0
-              ? null
-              : carts.items.length || Object.keys(cartNoAith).length,
+          // tabBarBadge:
+          //   carts.items.length || Object.keys(cartNoAith).length === 0
+          //     ? null
+          //     : carts.items.length || Object.keys(cartNoAith).length,
         })}
       />
     </Tab.Navigator>

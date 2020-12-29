@@ -77,7 +77,7 @@ export const CartBody = ({
             renderItem={({ item }) => (
               <CartItemNoAuth
                 onRemove={() => {
-                  dispatch(cartActions.removeFromCart(item.productId));
+                  dispatch(cartActions.removeItemFromCart(item.productId));
                   // console.log(item.productId);
                 }}
                 onDelete={() => {

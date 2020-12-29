@@ -41,6 +41,7 @@ export const PaymentScreen = (props) => {
   const {
     orderItems,
     NeworderItems,
+    newTotal,
     name,
     phone,
     total,
@@ -55,9 +56,11 @@ export const PaymentScreen = (props) => {
       await dispatch(
         addOrder(
           token,
-          orderItems,
+          // orderItems,
+          NeworderItems,
           name,
-          total,
+          // total,
+          newTotal,
           paymentMethod,
           fullAddress,
           phone

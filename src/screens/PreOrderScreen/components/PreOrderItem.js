@@ -9,7 +9,7 @@ import CustomText from "../../../components/UI/CustomText";
 class PreOrderItem extends React.PureComponent {
   render() {
     const { item } = this.props;
-    const total = +item.quantity * +item.item.price;
+    const total = +item.quantity * +item.price;
     return (
       <View style={styles.container}>
         <View style={styles.left}>
@@ -20,12 +20,12 @@ class PreOrderItem extends React.PureComponent {
               resizeMode: "stretch",
               borderRadius: 5,
             }}
-            source={{ uri: item.item.thumb }}
+            source={{ uri: item.thumb }}
           />
         </View>
         <View style={styles.right}>
           <View>
-            <CustomText style={styles.title}>{item.item.filename}</CustomText>
+            <CustomText style={styles.title}>{item.filename}</CustomText>
           </View>
           <NumberFormat
             value={total.toString()}

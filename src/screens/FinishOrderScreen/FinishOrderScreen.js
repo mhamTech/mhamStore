@@ -32,7 +32,7 @@ export const FinishOrderScreen = (props) => {
       </View>
       <View style={styles.buttom}>
         <TouchableOpacity onPress={() => props.navigation.navigate("Home")}>
-          <CustomText style={{ ...styles.title, color: "#fff" }}>
+          <CustomText style={{ ...styles.title, color: Colors.light_grey }}>
             go back to the main page
           </CustomText>
         </TouchableOpacity>

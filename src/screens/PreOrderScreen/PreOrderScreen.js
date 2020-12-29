@@ -15,7 +15,13 @@ export const PreOrderScreen = (props) => {
   const isFocused = useIsFocused();
   const [loading, setLoading] = useState(true);
   const carts = useSelector((state) => state.cart.cartItems);
-  const { cartItems, total, cartId, newCartItems } = props.route.params; //comes from cart screen
+  const {
+    cartItems,
+    total,
+    cartId,
+    newCartItems,
+    newTotal,
+  } = props.route.params; //comes from cart screen
   const [error, setError] = useState("");
   //Can Toi uu lai
   const [name, setName] = useState("");
@@ -54,12 +60,22 @@ export const PreOrderScreen = (props) => {
   cartItems.map((item) => {
     orderItems.push({ item: item.item._id, quantity: item.quantity });
   });
-  console.log(orderItems)
+  //new total
+
+  // console.log(orderItems);
 
   let NeworderItems = []; //item.productId //item.quantity
-  // newCartItems.map((item) => {
-  //   NeworderItems.push({ item: item.item._id, quantity: item.quantity });
-  // });
+  for (const key in newCartItems) {
+    NeworderItems.push({
+      item: key,
+      quantity: newCartItems[key].quantity,
+    });
+  }
+
+  console.log("PreOrderScreen.js oldOrderItems", orderItems);
+  console.log("PreOrderScreen.js oldTotal", newTotal);
+  console.log("PreOrderScreen.js newOrderItems", NeworderItems);
+  console.log("PreOrderScreen.js newTotal", newTotal);
 
   const fullAddress = `${address}, ${town} ,${province}`;
   const toPayment = async () => {
@@ -76,6 +92,7 @@ export const PreOrderScreen = (props) => {
             total,
             cartId,
             carts,
+            newTotal,
           },
         });
       } else {
@@ -115,7 +132,12 @@ export const PreOrderScreen = (props) => {
               checkValidation={checkValidation}
             />
             <Address getInfo={getInfo} />
-            <SummaryOrder cartItems={cartItems} total={total} />
+            <SummaryOrder
+              newCartItems={newCartItems}
+              cartItems={cartItems}
+              total={newTotal}
+            />
+            {/* <SummaryOrder cartItems={cartItems} total={total} /> */}
           </ScrollView>
           <TotalButton toPayment={toPayment} />
         </>
