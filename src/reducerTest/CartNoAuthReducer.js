@@ -2,6 +2,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   DELETE_FROM_CART,
+  CART_REST
 } from "./CartNoAuthAction";
 import CartItem from "../../src/modelTest/cart-item";
 
@@ -78,6 +79,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         items: List,
+      };
+    case CART_REST:
+      return {
+        ...state,
+        items: {},
       };
   }
   return state;

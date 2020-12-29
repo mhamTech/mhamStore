@@ -26,7 +26,8 @@ export const CartScreen = (props) => {
   //new cart
   const newCartItems = useSelector((state) => state.CartNoAuthReducer.items);
   
-  console.log("CartScreen.js newCartItems", Object.keys(newCartItems).length);
+  // console.log("CartScreen.js newCartItems", Object.keys(newCartItems).length);
+  console.log("CartScreen.js newCartItems", newCartItems);
 
   //old cart item
   const cartId = carts._id;

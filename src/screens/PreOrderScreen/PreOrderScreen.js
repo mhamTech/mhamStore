@@ -93,7 +93,8 @@ export const PreOrderScreen = (props) => {
             cartId,
             carts,
             newTotal,
-            newCartItems
+            newCartItems,
+            cartItems
           },
         });
       } else {

@@ -11,6 +11,10 @@ import CustomText from "../../components/UI/CustomText";
 import { Header, PaymentBody } from "./components";
 import { SummaryOrder } from "../PreOrderScreen/components";
 
+import * as cartActions from "../../reducerTest/CartNoAuthAction";
+
+
+
 export const PaymentScreen = (props) => {
   const [loading, setLoading] = useState(true);
   const carts = useSelector((state) => state.cart.cartItems);
@@ -47,9 +51,10 @@ export const PaymentScreen = (props) => {
     total,
     cartId,
     fullAddress,
-    newCartItems
+    newCartItems,
+    cartItems
   } = props.route.params;
-  console.log("paymentScreen.js" , )
+  console.log("paymentScreen.js");
 
   //action Add Order
   const addOrderAct = async () => {
@@ -68,7 +73,8 @@ export const PaymentScreen = (props) => {
           phone
         )
       );
-      await dispatch(resetCart(cartId));
+      // await dispatch(resetCart(cartId));
+      await dispatch(cartActions.cartRest(cartId));
       props.navigation.navigate("FinishOrder");
     } catch (err) {
       alert(err);
@@ -89,7 +95,12 @@ export const PaymentScreen = (props) => {
               setPayByCard={setPayByCard}
               token={token}
             />
-            <SummaryOrder cartItems={carts.items} total={total} />
+            <SummaryOrder
+              newCartItems={newCartItems}
+              cartItems={cartItems}
+              total={newTotal}
+            />
+            {/* <SummaryOrder cartItems={carts.items} total={total} /> */}
           </ScrollView>
           <View style={styles.total}>
             <View style={styles.orderButton}>
