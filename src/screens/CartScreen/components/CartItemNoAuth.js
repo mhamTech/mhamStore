@@ -22,13 +22,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import * as cartActions from "../../../reducerTest/CartNoAuthAction";
 
-export const CartItemNoAuth = ({ item, onRemove , onAdd , onDelete}) => {
+export const CartItemNoAuth = ({ item, onRemove, onAdd, onDelete }) => {
   //, onAdd, onDes, onRemove
   const dispatch = useDispatch();
 
- 
-
-  const sum = +item.price * +item.quantity;
+  
+  const sum = +item.productPrice * +item.quantity;
   return (
     <View style={styles.container}>
       <View style={styles.left}>

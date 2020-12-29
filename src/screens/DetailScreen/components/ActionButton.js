@@ -46,16 +46,14 @@ export const ActionButton = ({
   }, []);
   //Set Colors
   const addToCartAct = async () => {
-    if (Object.keys(user).length === 0) {
-      //new code
-      dispatch(cartActions.addToCart(item));
-    } else {
-      try {
-        await dispatch(addToCart(item, user.token));
-        setModalVisible(true);
-      } catch (err) {
-        throw err;
-      }
+    //new code
+    dispatch(cartActions.addToCart(item));
+
+    try {
+      await dispatch(addToCart(item, user.token));
+      setModalVisible(true);
+    } catch (err) {
+      throw err;
     }
   };
   // test
@@ -118,16 +116,15 @@ export const ActionButton = ({
           )}
         </TouchableOpacity> */}
         <TouchableOpacity
-        style={[styles.addCart, { backgroundColor: color }]}
-        onPress={test}
-      >
-        {cartLoading ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <CustomText style={styles.actionText}>Add to cart</CustomText>
-        )}
-      </TouchableOpacity>
-        
+          style={[styles.addCart, { backgroundColor: color }]}
+          onPress={addToCartAct}
+        >
+          {cartLoading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <CustomText style={styles.actionText}>Add to cart</CustomText>
+          )}
+        </TouchableOpacity>
       </View>
       {/* test */}
       {/* <TouchableOpacity

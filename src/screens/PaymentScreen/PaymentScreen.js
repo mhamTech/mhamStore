@@ -47,7 +47,9 @@ export const PaymentScreen = (props) => {
     total,
     cartId,
     fullAddress,
+    newCartItems
   } = props.route.params;
+  console.log("paymentScreen.js" , )
 
   //action Add Order
   const addOrderAct = async () => {
