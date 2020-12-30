@@ -29,6 +29,7 @@ export const CartBody = ({
   carts,
   loadCarts,
   isRefreshing,
+  Cartlength,
 }) => {
   const dispatch = useDispatch();
   const onRemove = (itemId) => {
@@ -61,37 +62,46 @@ export const CartBody = ({
     }
     return transformedCartItem;
   });
-  React.useEffect(() => {
-    // console.log(cartItemTest);
-    // console.log(test);
-  });
+  // React.useEffect(() => {
+  //   // console.log(cartItemTest);
+  //   // console.log(test);
+  // });
+
+  // console.log("CartBody.js cartLength", Cartlength);
 
   //end of test
   return (
     <View style={styles.footer}>
       {/* {Object.keys(user).length === 0 ? ( */}
-      <View style={{ marginBottom: 80 }}>
-        <FlatList
-          data={cartItemTest}
-          keyExtractor={(item) => item.productId}
-          renderItem={({ item }) => (
-            <CartItemNoAuth
-              onRemove={() => {
-                dispatch(cartActions.removeFromCart(item.productId));
-                // console.log(item.productId);
-              }}
-              onDelete={() => {
-                // console.log('hi')
-                dispatch(cartActions.deleteFromCart(item.productId));
-              }}
-              onAdd={() => {
-                dispatch(cartActions.addToCart(item));
-              }}
-              item={item}
-            />
-          )}
-        />
-        {Object.keys(user).length === 0 ? (
+
+      {Cartlength === 0 ? (
+        <View style={styles.center}>
+          <CustomText style={{ fontSize: 16 }}>
+            No products in the shopping cart
+          </CustomText>
+        </View>
+      ) : Object.keys(user).length === 0 ? (
+        <View style={{ marginBottom: 0 }}>
+          <FlatList
+            data={cartItemTest}
+            keyExtractor={(item) => item.productId}
+            renderItem={({ item }) => (
+              <CartItemNoAuth
+                onRemove={() => {
+                  dispatch(cartActions.removeFromCart(item.productId));
+                  // console.log(item.productId);
+                }}
+                onDelete={() => {
+                  // console.log('hi')
+                  dispatch(cartActions.deleteFromCart(item.productId));
+                }}
+                onAdd={() => {
+                  dispatch(cartActions.addToCart(item));
+                }}
+                item={item}
+              />
+            )}
+          />
           <View style={styles.center}>
             <View style={styles.nextButton}>
               <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
@@ -99,14 +109,38 @@ export const CartBody = ({
               </TouchableOpacity>
             </View>
           </View>
-        ) : null}
-      </View>
-      {/* ) : carts.items.length === 0 ? (
-        <View style={styles.center}>
-          <CustomText style={{ fontSize: 16 }}>
-            No products in the shopping cart
-          </CustomText>
         </View>
+      ) : (
+        <View style={{ marginBottom: 80 }}>
+          <FlatList
+            data={cartItemTest}
+            keyExtractor={(item) => item.productId}
+            renderItem={({ item }) => (
+              <CartItemNoAuth
+                onRemove={() => {
+                  dispatch(cartActions.removeFromCart(item.productId));
+                  // console.log(item.productId);
+                }}
+                onDelete={() => {
+                  // console.log('hi')
+                  dispatch(cartActions.deleteFromCart(item.productId));
+                }}
+                onAdd={() => {
+                  dispatch(cartActions.addToCart(item));
+                }}
+                item={item}
+              />
+            )}
+          />
+        </View>
+      )}
+      {/* ) :
+      //  carts.items.length === 0 ? (
+      //   <View style={styles.center}>
+      //     <CustomText style={{ fontSize: 16 }}>
+      //       No products in the shopping cart
+      //     </CustomText>
+      //   </View>
       ) : (
         <View style={{ marginBottom: 80 }}>
           <FlatList
@@ -140,10 +174,10 @@ export const CartBody = ({
 
 CartBody.propTypes = {
   user: PropTypes.object.isRequired,
-  carts: PropTypes.object.isRequired,
-  loadCarts: PropTypes.func.isRequired,
-  isRefreshing: PropTypes.bool.isRequired,
-  navigation: PropTypes.object.isRequired,
+  carts: PropTypes.object,
+  loadCarts: PropTypes.func,
+  isRefreshing: PropTypes.bool,
+  navigation: PropTypes.object,
 };
 const styles = StyleSheet.create({
   footer: {
@@ -159,6 +193,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   center: {
+    height: "50%",
+    width: "100%",
     alignItems: "center",
     justifyContent: "flex-end",
   },

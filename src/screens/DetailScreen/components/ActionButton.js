@@ -47,10 +47,10 @@ export const ActionButton = ({
   //Set Colors
   const addToCartAct = async () => {
     //new code
-    dispatch(cartActions.addToCart(item));
+    // dispatch(cartActions.addToCart(item));
 
     try {
-      await dispatch(addToCart(item, user.token));
+      await dispatch(cartActions.addToCart(item));
       setModalVisible(true);
     } catch (err) {
       throw err;

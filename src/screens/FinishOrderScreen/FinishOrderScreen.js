@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   buttom: {
     marginTop: 20,
-    backgroundColor: Colors.blue,
+    backgroundColor: Colors.lighter_gold,
     width: 200,
     paddingVertical: 10,
     borderRadius: 5,

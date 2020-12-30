@@ -72,10 +72,10 @@ export const PreOrderScreen = (props) => {
     });
   }
 
-  console.log("PreOrderScreen.js oldOrderItems", orderItems);
-  console.log("PreOrderScreen.js oldTotal", newTotal);
-  console.log("PreOrderScreen.js newOrderItems", NeworderItems);
-  console.log("PreOrderScreen.js newTotal", newTotal);
+  // console.log("PreOrderScreen.js oldOrderItems", orderItems);
+  // console.log("PreOrderScreen.js oldTotal", newTotal);
+  // console.log("PreOrderScreen.js newOrderItems", NeworderItems);
+  // console.log("PreOrderScreen.js newTotal", newTotal);
 
   const fullAddress = `${address}, ${town} ,${province}`;
   const toPayment = async () => {

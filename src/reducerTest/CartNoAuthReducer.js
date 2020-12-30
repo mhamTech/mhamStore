@@ -2,7 +2,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   DELETE_FROM_CART,
-  CART_REST
+  CART_REST,
 } from "./CartNoAuthAction";
 import CartItem from "../../src/modelTest/cart-item";
 
@@ -72,13 +72,14 @@ export default (state = initialState, action) => {
         totalAmount: state.totalAmount - selectedCartItem.productPrice,
       };
     case DELETE_FROM_CART:
-      console.log("DELETE_FROM_CART");
-      const List = state.items;
+      let updatedCart;
 
-      delete List[action.pid];
+      updatedCart = { ...state.items };
+      delete updatedCart[action.pid];
       return {
         ...state,
-        items: List,
+        items: updatedCart,
+        // items: List,
       };
     case CART_REST:
       return {

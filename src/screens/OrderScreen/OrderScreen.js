@@ -26,12 +26,18 @@ export const OrderScreen = ({ navigation }) => {
     setIsRefreshing(false);
   }, [dispatch, setIsRefreshing]);
 
-  
-  useEffect(() => {
-    loadOrders(); 
-  }, [user.userid]);
-  
-  
+  useEffect(
+    () => {
+      loadOrders();
+    },
+    [Object.keys(orders).length],
+    user.userid
+  );
+  // useEffect(() => {
+  //   loadOrders();
+  // }, [user.userid]);
+
+  console.log("OrderScreen.js order.length", Object.keys(orders).length);
 
   return (
     <View style={styles.container}>
