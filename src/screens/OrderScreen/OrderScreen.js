@@ -7,14 +7,18 @@ import { fetchOrder } from "../../reducers";
 import { Header, OrderBody } from "./components";
 import SkeletonLoadingCart from "../../components/Loaders/SkeletonLoadingCart";
 
+import { useIsFocused, useFocusEffect } from "@react-navigation/native";
+
 const { height } = Dimensions.get("window");
 
-export const OrderScreen = ({ navigation }) => {
+export const OrderScreen = ({ route, navigation }) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const user = useSelector((state) => state.auth.user);
   const orders = useSelector((state) => state.order.orders);
   const dispatch = useDispatch();
   // console.log("OrderScreen.js orders", orders);
+  // console.log("OrderScreen.js test", route.params.test);
+  const isFocused = useIsFocused();
 
   const loadOrders = useCallback(async () => {
     setIsRefreshing(true);
@@ -26,18 +30,34 @@ export const OrderScreen = ({ navigation }) => {
     setIsRefreshing(false);
   }, [dispatch, setIsRefreshing]);
 
-  useEffect(
-    () => {
+  // useEffect(() => {
+  //   loadOrders();
+  //   // console.log('orderScreen.js')
+  // }, [isFocused]);
+
+  useFocusEffect(
+    React.useCallback(() => {
       loadOrders();
-    },
-    [Object.keys(orders).length],
-    user.userid
+      console.log("useFocusEffect")
+    }, [])
   );
+
+  // useEffect(
+  //   () => {
+  //     loadOrders();
+  //   },
+  //   [Object.keys(orders).length],
+  //   user.userid
+  // );
+  // useEffect(() => {
+  //   loadOrders();
+  // }, []);
+ 
   // useEffect(() => {
   //   loadOrders();
   // }, [user.userid]);
 
-  console.log("OrderScreen.js order.length", Object.keys(orders).length);
+  // console.log("OrderScreen.js order.length", Object.keys(orders).length);
 
   return (
     <View style={styles.container}>
