@@ -23,7 +23,7 @@ export const FloatButton = () => {
         },
         {
           icon: 'chat-processing',
-          onPress: () => Linking.openURL('https://zalo.me/0359688238'),
+          onPress: () => Linking.openURL('https://google.com'),
         },
         {
           icon: 'facebook-messenger',

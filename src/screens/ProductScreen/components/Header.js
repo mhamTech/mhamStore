@@ -49,6 +49,8 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
   return (
     <>
       <View style={styles.topBar}>
+
+        {/* Go back button */}
         <View style={{ position: "absolute", left: 0, top: 40, zIndex: 10 }}>
           <TouchableOpacity
             onPress={() => {
@@ -59,6 +61,8 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
             <Ionicons name="ios-arrow-back" size={25} color={Colors.white} />
           </TouchableOpacity>
         </View>
+
+        {/* Share button */}
         <View style={styles.shareItem}>
           <ShareItem
             imageURL="https://www.facebook.com/daquyankhangthinhvuong/"
@@ -67,51 +71,42 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
             color="black"
           />
         </View>
+
+      </View>
+      
+      
+      {/* <SearchInput inputValue={searchFilterFunction} /> */}
+      <Animated.View
+        style={[
+          styles.header, { flexDirection: 'column', justifyContent: 'center', transform: [{ translateY: headerHeight }]}]}>
         <Animated.View
           style={{
+            opacity: titleOpacity,
+            height: 50,
+          }}>
+          <CustomText style={styles.title}>All products</CustomText>
+        </Animated.View>
+        {/* <Animated.View
+          style={{
+            margin: 10,
             position: "absolute",
             width: inputWidth,
-            height: 40,
+            height: '50%',
             transform: [{ translateY: inputTranslate }],
-            bottom: -HEADER_MIN + 20,
-          }}
-        >
+            bottom: HEADER_MIN,
+          }}> */}
           <BlurView
             tint="dark"
             intensity={40}
-            style={[{ width: "100%", borderRadius: 5 }]}
-          >
+            style={{ height: 40, width: "90%", borderRadius: 20, marginHorizontal: 10 }}>
             <TextInput
               placeholder="Search product"
               placeholderTextColor={Colors.white}
               clearButtonMode="always"
               onChangeText={(text) => searchFilterFunction(text)}
-              style={{
-                height: 40,
-                marginHorizontal: 20,
-                color: Colors.white,
-              }}
-            />
+              style={{ height: 40, marginHorizontal: 20, color: Colors.white }}/>
           </BlurView>
-        </Animated.View>
-      </View>
-      <Animated.View
-        style={[
-          styles.header,
-          {
-            transform: [{ translateY: headerHeight }],
-          },
-        ]}
-      >
-        {/* <SearchInput inputValue={searchFilterFunction} /> */}
-        <Animated.View
-          style={{
-            opacity: titleOpacity,
-            height: 50,
-          }}
-        >
-          <CustomText style={styles.title}>All products</CustomText>
-        </Animated.View>
+        {/* </Animated.View> */}
       </Animated.View>
     </>
   );

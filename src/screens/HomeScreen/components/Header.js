@@ -35,9 +35,9 @@ export class Header extends React.Component {
     };
     // animation values
     this._input_box_translate_x = new Value(width);
-    this._back_button_opacity = new Value(0);
+    this._back_button_opacity = new Value(0.01);
     this._content_translate_y = new Value(height);
-    this._content_opacity = new Value(0);
+    this._content_opacity = new Value(0.01);
   }
   //Search
   searchFilterFunction = (searchText) => {

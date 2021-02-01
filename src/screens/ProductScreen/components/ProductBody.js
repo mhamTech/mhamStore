@@ -19,21 +19,15 @@ ITEM_HEIGHT = 100;
 
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
-export const ProductBody = ({
-  navigation,
-  productsFilter,
-  searchFilterFunction,
-}) => {
+export const ProductBody = ({navigation, productsFilter, searchFilterFunction}) => {
   const DATA = [];
-  const books = productsFilter.filter(
-    (book) => book.type === "book"
-  );
-  const pens = productsFilter.filter((pen) => pen.type === "pen");
-  const bags = productsFilter.filter((bag) => bag.type === "bag");
-  DATA.push({ title: "books", data: books });
-  DATA.push({ title: "Pens", data: pens });
-  DATA.push({ title: "bags", data: bags });
-  const scrollY = new Value(0);
+  const mobiles = productsFilter.filter((mobile) => mobile.type === "mobile");
+  const watches = productsFilter.filter((watch) => watch.type === "watch");
+  // const bags = productsFilter.filter((bag) => bag.type === "bag");
+  DATA.push({ title: "Mobiles", data: mobiles });
+  DATA.push({ title: "Watches", data: watches });
+  // DATA.push({ title: "bags", data: bags });
+  const scrollY = new Value(0.01);
   const sectionListRef = useRef(null);
   // const scrollToSection = (index) => {
   //   sectionListRef.current.scrollToLocation({
@@ -57,25 +51,28 @@ export const ProductBody = ({
   // };
 
   return (
-    <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <View style={{...styles.container}}>
+      <View style={{ height: 200}}>
+      <TouchableWithoutFeedback>
         <Header
           navigation={navigation}
           searchFilterFunction={searchFilterFunction}
           scrollY={scrollY}
         />
       </TouchableWithoutFeedback>
+      </View>
       {productsFilter.length === 0 ? (
         <CustomText style={{ textAlign: "center", marginTop: 110 }}>
           No product found
         </CustomText>
       ) : (
+        // console.log('productsFilter', productsFilter),
         <AnimatedSectionList
           sections={DATA} // REQUIRED: SECTIONLIST DATA
           keyExtractor={(item) => item._id}
           ref={sectionListRef}
           renderSectionHeader={({ section: { title } }) => (
-            <View style={styles.header}>
+            <View style={{...styles.header, backgroundColor: null}}>
               <CustomText style={styles.title}>{title}</CustomText>
             </View>
           )}
@@ -89,8 +86,9 @@ export const ProductBody = ({
             { useNativeDriver: true }
             // { listener: HandleScrollY, useNativeDriver: false }
           )}
-          contentContainerStyle={{ marginTop: 90, paddingBottom: 100 }}
+          contentContainerStyle={{ marginTop: 0, paddingBottom: 100 }}
         />
+        // null
       )}
       {/* <View style={styles.tabBar}>
         <FlatList
@@ -143,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    height: 40,
+    height: 20,
     paddingHorizontal: 20,
     justifyContent: "center",
     backgroundColor: Colors.white,

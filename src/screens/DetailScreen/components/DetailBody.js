@@ -21,8 +21,7 @@ export const DetailBody = ({ item, color }) => {
       <Animatable.View
         animation="lightSpeedIn"
         delay={1000}
-        style={styles.footer_header}
-      >
+        style={styles.footer_header}>
         <CustomText selectable={true} style={{ ...styles.title, color }}>
           {item.filename}
         </CustomText>

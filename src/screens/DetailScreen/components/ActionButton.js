@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -34,7 +34,6 @@ export const ActionButton = ({
   setMessage,
 }) => {
   //console log the items
-  // console.log(item.thumb)
 
   const dispatch = useDispatch();
   const cartLoading = useSelector((state) => state.cart.isLoading);

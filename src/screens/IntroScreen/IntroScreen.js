@@ -20,7 +20,7 @@ const { height, width } = Dimensions.get("window");
 export const IntroScreen = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const scrollX = useRef(new Animated.Value(0)).current;
+  const scrollX = useRef(new Animated.Value(0.01)).current;
   const scrollClick = useRef(null);
   const unmounted = useRef(false);
   useEffect(() => {
@@ -30,7 +30,7 @@ export const IntroScreen = () => {
   }, []);
   const backgroundColor = scrollX.interpolate({
     inputRange: [0, width, width * 2],
-    outputRange: ["#BFEAF5", "#BEECC4", "#FFE4D9"],
+    outputRange: ["#eeeeee", "#e8bf4d", "#ac7226"],
     extrapolate: "clamp",
   });
   const textTranslate = scrollX.interpolate({

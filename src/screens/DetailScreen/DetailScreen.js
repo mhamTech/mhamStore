@@ -16,7 +16,7 @@ import {
 import { colorCheck } from '../../utils/Tools';
 
 export const DetailScreen = (props) => {
-  const scrollY = new Animated.Value(0);
+  const scrollY = new Animated.Value(0.01);
   const user = useSelector((state) => state.auth.user);
   const { item } = props.route.params;
   const [message, setMessage] = useState('');

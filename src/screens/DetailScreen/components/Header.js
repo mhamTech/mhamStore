@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
+  Text
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 //Animatable
@@ -56,12 +57,11 @@ export const Header = ({ navigation, scrollY, item }) => {
         </TouchableOpacity>
         <Animated.View style={{ opacity: headerOpacity }}>
           <CustomText
-            style={{ fontSize: 16, color: "#fff", fontWeight: "500" }}
-          >
+            style={{ fontSize: 26, color: "red", fontWeight: "500" }}>
             {item.filename}
           </CustomText>
         </Animated.View>
-        <View style={styles.shareIcon}>
+        <View style={{...styles.shareIcon}}>
           <ShareItem
             imageURL={item.url}
             title={item.filename}
@@ -96,7 +96,7 @@ export const Header = ({ navigation, scrollY, item }) => {
         }}
         onLoadEnd={() => setIsLoading(false)}
       />
-      {isLoading && <ActivityIndicator size="small" color={Colors.grey} />}
+      {isLoading && <ActivityIndicator size="large" color={Colors.dark} />}
     </Animatable.View>
   );
 };
@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
     right: 0,
     width: null,
     height: HEADER_MAX_HEIGHT,
-    resizeMode: "stretch",
+    resizeMode: "contain",
   },
 });

@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 const { width } = Dimensions.get("window");
 
 export const Carousel = () => {
-  const scrollX = useRef(new Animated.Value(0)).current;
+  const scrollX = useRef(new Animated.Value(0.01)).current;
   return (
     <View style={styles.container}>
       <Animated.ScrollView

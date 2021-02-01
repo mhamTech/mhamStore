@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
   Image,
+  Text
 } from "react-native";
 //import CustomText
 import CustomText from "../../../components/UI/CustomText";

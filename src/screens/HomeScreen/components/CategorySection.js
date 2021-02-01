@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  Image,
-  Button,
 } from "react-native";
+import { fetchCategories } from "../../../reducers";
 import { ProductItem } from "./ProductItem";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 import { BlurView } from "expo-blur";
+import { useSelector, useDispatch } from "react-redux";
 
 //Translation
 
@@ -18,23 +18,52 @@ import { BlurView } from "expo-blur";
 import PropTypes from "prop-types";
 
 export const CategorySection = ({ data, name, bg, navigation }) => {
-  // const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  // const user = useSelector((state) => state.auth.user);
+  // const categories = useSelector((state) => state.store.categories);
+  // console.log('categories', categories)
+  const state = useSelector((state) => state);
+  console.log(state);
 
-  const books = data.filter((book) => book.type === "book"); //filter items of type X
-  // console.log(rings)
-  const bags = data.filter((bag) => bag.type === "bag"); //filter items of type y
+  // console.log('data', data);
+  // console.log(name)
+  // const books = data.filter((book) => book.type === "book"); //filter items of type X
+  // const bags = data.filter((bag) => bag.type === "bag"); //filter items of type y
 
-  const pens = data.filter((pen) => pen.type === "pen"); //filter items of type z
+  const watches = data.filter((watch) => watch.type === "watch"); //filter items of type X
+  const mobiles = data.filter((mobile) => mobile.type === "mobile"); //filter items of type y
+
+  // const pens = data.filter((pen) => pen.type === "pen"); //filter items of type z
   function getItems() {
-    const items = name === "Books" ? books : name === "Bags" ? bags : pens;
+    const items =
+      name === "Watches" ?
+        watches
+      :
+      name === "Mobiles" ?
+        mobiles
+      :
+        null
+        // pens;
     return items;
   }
+
+  useEffect(() => {
+    const fetching = async () => {
+      try {
+        await dispatch(fetchCategories());
+      } catch (error) {
+        // alert(error)
+        console.log('error', error)
+      }
+    };
+    fetching();
+  }, [])
+
   return (
-    <View style={[styles.category]}>
-      <Image style={styles.background} source={bg} blurRadius={10} />
+    <View style={styles.category}>
+      <View style={{...styles.background, backgroundColor: bg }} />
       <View style={styles.titleHeader}>
         <CustomText style={styles.title}>{name}</CustomText>
-
       </View>
       <View style={styles.productList}>
         <FlatList
@@ -44,7 +73,11 @@ export const CategorySection = ({ data, name, bg, navigation }) => {
           columnWrapperStyle={styles.list}
           renderItem={({ item }) => {
             return (
-              <ProductItem key={item._id} item={item} navigation={navigation} />
+              <ProductItem
+                key={item._id}
+                item={item}
+                navigation={navigation}
+              />
             );
           }}
         />
@@ -77,7 +110,7 @@ const styles = StyleSheet.create({
   },
   background: {
     position: "absolute",
-    resizeMode: "stretch",
+    // resizeMode: "stretch",
     borderRadius: 5,
     height: 518,
     width: "100%",

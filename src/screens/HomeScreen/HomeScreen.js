@@ -33,11 +33,11 @@ const { height } = Dimensions.get("window");
 export const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   //Header Animation
-  let scrollY = new Animated.Value(0);
+  let scrollY = new Animated.Value(0.01);
   const user = useSelector((state) => state.auth.user);
   const products = useSelector((state) => state.store.products);
-  
-  // console.log(products)///
+
+  // const state = useSelector((state) => console.log('state', state));
   
   const isLoading = useSelector((state) => state.store.isLoading);
   const notification = useSelector((state) => state.auth.notification);
@@ -64,7 +64,7 @@ export const HomeScreen = ({ navigation }) => {
             scrollPoint={scrollY}
             navigation={navigation}
             products={products}
-          ></Header>
+            ></Header>
           <Portal>
             <FloatButton />
           </Portal>
@@ -94,6 +94,7 @@ export const HomeScreen = ({ navigation }) => {
                 data={products}
                 navigation={navigation}
               />
+              // null
             )}
           />
           {Object.keys(notification).length === 0 ? (
