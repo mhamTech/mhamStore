@@ -11,14 +11,9 @@ export const ProductScreen = (props) => {
   const products = useSelector((state) => state.store.products);
   const [productsFilter, setproductsFilter] = useState(products);
   const searchFilterFunction = (text) => {
-    // console.log('text', text)
-    // console.log('products', products)
-    const data = products.filter((product) =>
-      // console.log('product', product.filename.toLowerCase())
-      // console.log(('Xiaomi_mi_10t').toLowerCase().includes('xia'));
+    const data = products.filter((product) => (
       product.filename.toLowerCase().includes(text.toLowerCase())
-    );
-    console.log('data', data);
+    ));
     setproductsFilter(data);
   };
   return (

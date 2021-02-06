@@ -29,6 +29,12 @@ export const ProductBody = ({navigation, productsFilter, searchFilterFunction}) 
   // DATA.push({ title: "bags", data: bags });
   const scrollY = new Value(0.01);
   const sectionListRef = useRef(null);
+
+  // function getItems() {
+  //   let items = [];
+  //   items = productsFilter.filter((item) => )
+  // }
+
   // const scrollToSection = (index) => {
   //   sectionListRef.current.scrollToLocation({
   //     animated: true,

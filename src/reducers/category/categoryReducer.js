@@ -6,7 +6,7 @@ import {
 //   import { FIRST_OPEN } from "./checkFirstTimeActions";
   
   const initialState = {
-    products: [],
+    categories: [],
     isFirstOpen: false,
     isLoading: false,
   };
@@ -25,7 +25,7 @@ import {
       case FETCH_CATEGORIES:
         return {
           ...state,
-          products: [...action.products],
+          categories: [...action.categories],
           isLoading: false,
         };
     //   case FIRST_OPEN: {

@@ -10,7 +10,6 @@ import { ProductItem } from "./ProductItem";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 import { BlurView } from "expo-blur";
-import { useSelector, useDispatch } from "react-redux";
 
 //Translation
 
@@ -18,46 +17,12 @@ import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
 export const CategorySection = ({ data, name, bg, navigation }) => {
-  const dispatch = useDispatch();
-  // const user = useSelector((state) => state.auth.user);
-  // const categories = useSelector((state) => state.store.categories);
-  // console.log('categories', categories)
-  const state = useSelector((state) => state);
-  console.log(state);
 
-  // console.log('data', data);
-  // console.log(name)
-  // const books = data.filter((book) => book.type === "book"); //filter items of type X
-  // const bags = data.filter((bag) => bag.type === "bag"); //filter items of type y
-
-  const watches = data.filter((watch) => watch.type === "watch"); //filter items of type X
-  const mobiles = data.filter((mobile) => mobile.type === "mobile"); //filter items of type y
-
-  // const pens = data.filter((pen) => pen.type === "pen"); //filter items of type z
   function getItems() {
-    const items =
-      name === "Watches" ?
-        watches
-      :
-      name === "Mobiles" ?
-        mobiles
-      :
-        null
-        // pens;
+    let items = [];
+    items = data.filter((item) => name.toLowerCase().includes(item.type));
     return items;
   }
-
-  useEffect(() => {
-    const fetching = async () => {
-      try {
-        await dispatch(fetchCategories());
-      } catch (error) {
-        // alert(error)
-        console.log('error', error)
-      }
-    };
-    fetching();
-  }, [])
 
   return (
     <View style={styles.category}>
@@ -84,8 +49,7 @@ export const CategorySection = ({ data, name, bg, navigation }) => {
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("Product")}
-        style={{ marginHorizontal: 10 }}
-      >
+        style={{ marginHorizontal: 10 }}>
         <BlurView tint="light" intensity={100} style={styles.seeMore}>
           <CustomText style={styles.seeMoreText}>See More</CustomText>
         </BlurView>

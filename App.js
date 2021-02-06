@@ -11,6 +11,7 @@ import {
   favoriteReducer,
   orderReducer,
   productReducer,
+  categoryReducer,
   CartwithoutloginReducer
 } from "./src/reducers";
 import CartNoAuthReducer from './src/reducerTest/CartNoAuthReducer'
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   fav: favoriteReducer,
   form: formReducer,
+  category: categoryReducer,
 });
 //store
 const store = createStore(

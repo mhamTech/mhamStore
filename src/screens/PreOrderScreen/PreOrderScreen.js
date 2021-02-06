@@ -118,7 +118,7 @@ export const PreOrderScreen = (props) => {
   };
   useEffect(() => {
     if (carts.items.length === 0) {
-      props.navigation.goBack();
+      // props.navigation.goBack();
     }
   }, [carts.items]);
   return (
