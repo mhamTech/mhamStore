@@ -41,7 +41,8 @@ export const IntroScreen = () => {
 
   const EnterApp = async () => {
     setLoading(true);
-    await dispatch(CheckFirstTimeAction.firstOpen());
+    // await dispatch(CheckFirstTimeAction.firstOpen());
+    await dispatch({type: 'FIRST_OPEN'});
     if (!unmounted.current) {
       setLoading(false);
     }

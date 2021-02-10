@@ -26,7 +26,6 @@ import { reducer as formReducer } from "redux-form";
 import { StatusBar } from "expo-status-bar";
 //prevent RTl
 import { I18nManager, NativeModules, Platform } from "react-native";
-import { Restart } from "fiction-expo-restart";
 import { Updates } from "expo";
 //Notification
 import LocalNotication from "./src/components/Notification/LocalNotification";
@@ -85,7 +84,6 @@ const LoadAssets = async () => {
 
 export default function App() {
   const [assetLoaded, setAssetLoaded] = useState(false);
-
   //prevent Rtl
   React.useEffect(() => {
     if (I18nManager.isRTL) {

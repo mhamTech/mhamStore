@@ -31,7 +31,7 @@ const HorizontalItem = ({ item, navigation }) => {
             style={{
               height: 90,
               width: "100%",
-              resizeMode: "stretch",
+              resizeMode: "contain",
               borderRadius: 15,
             }}
             source={{ uri: item.thumb }}

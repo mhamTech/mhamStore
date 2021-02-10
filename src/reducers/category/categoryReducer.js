@@ -28,12 +28,6 @@ import {
           categories: [...action.categories],
           isLoading: false,
         };
-    //   case FIRST_OPEN: {
-    //     return {
-    //       ...state,
-    //       isFirstOpen: true,
-    //     };
-    //   }
       default:
         return state;
     }

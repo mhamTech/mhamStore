@@ -50,9 +50,9 @@ export const CategorySection = ({ data, name, bg, navigation }) => {
       <TouchableOpacity
         onPress={() => navigation.navigate("Product")}
         style={{ marginHorizontal: 10 }}>
-        <BlurView tint="light" intensity={100} style={styles.seeMore}>
+        {/* <BlurView tint="light" intensity={100} style={styles.seeMore}>
           <CustomText style={styles.seeMoreText}>See More</CustomText>
-        </BlurView>
+        </BlurView> */}
       </TouchableOpacity>
     </View>
   );

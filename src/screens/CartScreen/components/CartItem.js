@@ -20,10 +20,11 @@ import PropTypes from "prop-types";
 export class CartItem extends React.PureComponent {
   render() {
     const { item, onAdd, onDes, onRemove } = this.props;
+    console.log('CartItem props', this.props)
     const AddItemHandler = async () => {
       await onAdd();
     };
-    const sum = +item.item.price * +item.quantity;
+    const sum = 0 // +item.item.price * +item.quantity;
     const checkDesQuantity = async () => {
       if (item.quantity == 1) {
         Alert.alert(
@@ -35,7 +36,7 @@ export class CartItem extends React.PureComponent {
             },
             {
               text: "Confirm",
-              onPress: onRemove,
+              onPress: () => { console.log(item.quantity); onRemove(); console.log(item.quantity); }
             },
           ]
         );
@@ -50,7 +51,7 @@ export class CartItem extends React.PureComponent {
             style={{
               width: "100%",
               height: 90,
-              resizeMode: "stretch",
+              resizeMode: "contain",
               borderRadius: 5,
             }}
             source={{ uri: item.item.thumb }}

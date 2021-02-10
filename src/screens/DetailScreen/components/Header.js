@@ -17,6 +17,7 @@ import ShareItem from "../../../components/UI/ShareItem";
 import CustomText from "../../../components/UI/CustomText";
 //Color
 import Colors from "../../../utils/Colors";
+import { Video } from 'expo-av';
 
 const { height } = Dimensions.get("window");
 
@@ -27,6 +28,12 @@ const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 export const Header = ({ navigation, scrollY, item }) => {
   const [isLoading, setIsLoading] = useState(true);
+  
+  // const _handleVideoRef = component => {
+  //   const playbackObject = component;
+  //   console.log('playbackObject', playbackObject)
+  // }
+  
   const headerTranslate = scrollY.interpolate({
     inputRange: [0, HEADER_SCROLL_DISTANCE],
     outputRange: [0, -HEADER_SCROLL_DISTANCE],
@@ -82,6 +89,19 @@ export const Header = ({ navigation, scrollY, item }) => {
           transform: [{ translateY: headerTranslate }],
         }}
       ></Animated.View>
+      {/* <Animated.View style={{ width: '100%', height: HEADER_MAX_HEIGHT, alignItems: 'center', justifyContent: 'center'}}>
+      <Video
+        ref={_handleVideoRef}
+        source={{ uri: 'https://static.videezy.com/system/resources/previews/000/037/639/original/video_portal_de_belen.mp4' }}
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        resizeMode="cover"
+        shouldPlay
+        isLooping
+        style={{ width: '95%', height: HEADER_MAX_HEIGHT, borderRadius: 8 }}
+      />
+      </Animated.View> */}
       <Animated.Image
         source={{ uri: item.url }}
         style={[
@@ -112,6 +132,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: HEADER_MIN_HEIGHT,
     zIndex: 1000,
+    marginTop: Platform.OS === 'ios' ? 10 : 0,
   },
   goBackIcon: {
     width: 40,
@@ -122,10 +143,11 @@ const styles = StyleSheet.create({
   },
   image: {
     position: "absolute",
-    top: 0,
+    top: Platform.OS === 'ios' ? 25 : 0,
+    // marginTop: Platform.OS === 'ios' ? 20 : 0,
     left: 0,
     right: 0,
-    width: null,
+    width: '100%',
     height: HEADER_MAX_HEIGHT,
     resizeMode: "contain",
   },

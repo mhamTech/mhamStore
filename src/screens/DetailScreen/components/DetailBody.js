@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     marginBottom: 10,
-    marginTop: 200,
-    borderRadius: 30,
+    marginTop: 250,
+    borderRadius: 10,
   },
   footer_header: {
     flexDirection: "row",

@@ -78,7 +78,7 @@ export class ModalComp extends React.PureComponent {
                 source={{ uri: item.thumb }}
                 style={{
                   height: 100,
-                  resizeMode: "stretch",
+                  resizeMode: "contain",
                 }}
               />
             </View>

@@ -36,7 +36,6 @@ export const AppNavigator = () => {
       [urlRedirect],
     );
   }, [urlRedirect]);
-
   useEffect(() => {
     const isFirstTime = async () => {
       const firstOpen = await AsyncStorage.getItem('isFirstTime');
@@ -72,8 +71,9 @@ export const AppNavigator = () => {
     <NavigationContainer ref={navigationRef}>
       <Host>
         {/* <IntroStackScreen /> */}
-        {(isFirstOpen || value !== null) && <DrawerNavigator />}
-        {!isFirstOpen && value === null && <IntroStackScreen />}
+        <DrawerNavigator />
+        {/* {(isFirstOpen || value !== null) && <DrawerNavigator />}
+        {!isFirstOpen && value === null && <IntroStackScreen />} */}
       </Host>
     </NavigationContainer>
   );

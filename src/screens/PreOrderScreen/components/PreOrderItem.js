@@ -17,7 +17,7 @@ class PreOrderItem extends React.PureComponent {
             style={{
               width: "100%",
               height: 50,
-              resizeMode: "stretch",
+              resizeMode: "contain",
               borderRadius: 5,
             }}
             source={{ uri: item.thumb || item.item.thumb  }}
@@ -34,8 +34,8 @@ class PreOrderItem extends React.PureComponent {
             suffix={" SAR"}
             renderText={(formattedValue) => (
               <View style={styles.priceContainer}>
-                <CustomText style={{ fontSize: 13, padding: 0 }}>
-                  SL: x {item.quantity}
+                <CustomText style={{ fontSize: 10, }}>
+                  Quantity: {item.quantity}
                 </CustomText>
                 <CustomText style={styles.price}>{formattedValue}</CustomText>
               </View>

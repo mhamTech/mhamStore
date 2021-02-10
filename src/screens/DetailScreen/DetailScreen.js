@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Dimensions, Animated } from 'react-native';
+import { View, StyleSheet, Dimensions, Animated, Platform } from 'react-native';
 //Color
 import Colors from '../../utils/Colors';
 //Redux
@@ -79,5 +79,10 @@ export const DetailScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', paddingBottom: 20 },
+  container: {
+    flex: 1,
+    backgroundColor: '#ddd',
+    paddingBottom: Platform.OS === 'ios' ? 20 : 5,
+    height: '100%'
+  },
 });

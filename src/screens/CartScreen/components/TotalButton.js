@@ -15,7 +15,6 @@ export class TotalButton extends React.PureComponent {
       navigation,
       cartItems,
       cartId,
-      newCartItems,
       newTotal,
     } = this.props;
     return (
@@ -40,8 +39,7 @@ export class TotalButton extends React.PureComponent {
               cartItems,
               total,
               cartId,
-              newCartItems,
-              newTotal,
+              // newTotal,
             });
           }}
         >

@@ -11,22 +11,7 @@ import PropTypes from "prop-types";
 
 const { height } = Dimensions.get("window");
 
-export const Header = ({
-  navigation,
-  user,
-  carts,
-  // Cartlength,
-  newCartItems,
-}) => {
-  let Cartlength = Object.keys(newCartItems).length;
-  const [length, setLength] = React.useState();
-
-  console.log("Header.js Cartlength :", Cartlength);
-
-  React.useEffect(() => {
-    // loadCarts();
-    setLength(Cartlength);
-  }, [Cartlength]);
+export const Header = ({ navigation, user, carts }) => {
 
   return (
     <View style={styles.header}>
@@ -38,7 +23,12 @@ export const Header = ({
         <Ionicons name="ios-arrow-back" size={30} color={Colors.lighter_gold} />
       </TouchableOpacity>
       <CustomText style={styles.titleHeader}>
-        Cart {Cartlength === 0 ? "" : Cartlength === 0 ? "" : `(${Cartlength})`}
+        Cart
+        {Object.keys(user).length === 0
+          ? ""
+          : carts.items.length === 0
+          ? ""
+          : `(${carts.items.length})`}
       </CustomText>
       <View style={{ width: 15 }} />
     </View>

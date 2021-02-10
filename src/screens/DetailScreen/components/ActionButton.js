@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -33,7 +33,6 @@ export const ActionButton = ({
   setModalVisible,
   setMessage,
 }) => {
-  //console log the items
 
   const dispatch = useDispatch();
   const cartLoading = useSelector((state) => state.cart.isLoading);
@@ -43,46 +42,68 @@ export const ActionButton = ({
       unmounted.current = true;
     };
   }, []);
-  //Set Colors
-  const addToCartAct = async () => {
-    //new code
-    // dispatch(cartActions.addToCart(item));
 
-    try {
-      await dispatch(cartActions.addToCart(item));
-      setModalVisible(true);
-    } catch (err) {
-      throw err;
-    }
-  };
-  // test
-  const test = async () => {
-    //new code
-    dispatch(cartActions.addToCart(item));
-  };
-  const toggleFavorite = () => {
+  // const addToCartAct = async () => {
+  //   try {
+  //     await dispatch(cartActions.addToCart(item));
+  //     setModalVisible(true);
+  //   } catch (err) {
+  //     throw err;
+  //   }
+  // };
+
+  // const addToCartAct = async () => {
+  //   console.log('no auth')
+    // if (Object.keys(user).length === 0) {
+    //   setMessage(Messages['user.login.require']);
+    //   setShowSnackbar(true);
+    // } else {
+    //   try {
+    //     await dispatch(cartActions.addToCart(item));
+    //     setModalVisible(true);
+    //   } catch (err) {
+    //     throw err;
+    //   }
+    // }
+  // };
+  const addToCartAct = async () => {
+    // console.log('user', user)
+    // return
     if (Object.keys(user).length === 0) {
-      setMessage(Messages["user.login.require"]);
+      setMessage(Messages['user.login.require']);
       setShowSnackbar(true);
-    } else if (FavoriteProducts) {
-      Alert.alert(
-        "Already favorite",
-        "Do you want to remove this products from favorites?",
-        [
-          {
-            text: "Cancel",
-            style: "cancel",
-          },
-          {
-            text: "Confirm",
-            onPress: () => dispatch(removeFavorite(item._id)),
-          },
-        ]
-      );
     } else {
-      dispatch(addFavorite(item));
+      try {
+        await dispatch(addToCart(item, user.token));
+        setModalVisible(true);
+      } catch (err) {
+        throw err;
+      }
     }
   };
+  // const toggleFavorite = () => {
+  //   if (Object.keys(user).length === 0) {
+  //     setMessage(Messages["user.login.require"]);
+  //     setShowSnackbar(true);
+  //   } else if (FavoriteProducts) {
+  //     Alert.alert(
+  //       "Already favorite",
+  //       "Do you want to remove this products from favorites?",
+  //       [
+  //         {
+  //           text: "Cancel",
+  //           style: "cancel",
+  //         },
+  //         {
+  //           text: "Confirm",
+  //           onPress: () => dispatch(removeFavorite(item._id)),
+  //         },
+  //       ]
+  //     );
+  //   } else {
+  //     dispatch(addFavorite(item));
+  //   }
+  // };
   return (
     <Animatable.View
       delay={1500}
@@ -90,7 +111,7 @@ export const ActionButton = ({
       style={styles.actionContainer}
     >
       <View style={styles.action}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={toggleFavorite}
           style={[styles.favorite, { borderColor: color }]}
         >
@@ -103,7 +124,7 @@ export const ActionButton = ({
           ) : (
             <Ionicons name="ios-heart-empty" size={27} color={color} />
           )}
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* <TouchableOpacity
           style={[styles.addCart, { backgroundColor: color }]}
           onPress={addToCartAct}
@@ -121,7 +142,7 @@ export const ActionButton = ({
           {cartLoading ? (
             <ActivityIndicator size="small" color="#fff" />
           ) : (
-            <CustomText style={styles.actionText}>Add to cart</CustomText>
+            <CustomText style={styles.actionText}>ORDER NOW</CustomText>
           )}
         </TouchableOpacity>
       </View>
@@ -157,10 +178,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 20,
-    backgroundColor: "#fff",
+    backgroundColor: null,
   },
   addCart: {
-    width: "80%",
+    width: "100%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",

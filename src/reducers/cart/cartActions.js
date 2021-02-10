@@ -89,7 +89,7 @@ export const addToCart = (item) => {
         throw new Error("Something went wrong!");
       }
       dispatch({
-        type: "ADD_CART",
+        type: ADD_CART,
         cartItem: item,
       });
     } catch (err) {
@@ -100,6 +100,7 @@ export const addToCart = (item) => {
 
 //Remove from Cart
 export const removeFromCart = (cartId, itemId) => {
+  console.log('removeFromCart')
   return async (dispatch, getState) => {
     dispatch({
       type: CART_LOADING,
@@ -125,11 +126,13 @@ export const removeFromCart = (cartId, itemId) => {
         });
         throw new Error("Something went wrong!");
       }
+      console.log('itemId', itemId)
       dispatch({
         type: "REMOVE_FROM_CART",
         itemId,
       });
     } catch (err) {
+      console.log('err', err)
       throw err;
     }
   };
@@ -163,7 +166,7 @@ export const decCartQuantity = (cartId, itemId) => {
         throw new Error("Something went wrong!");
       }
       dispatch({
-        type: "DES_CART_QUANTITY",
+        type: DES_CART_QUANTITY,
         cartItemId: itemId,
       });
     } catch (err) {

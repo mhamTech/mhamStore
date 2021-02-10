@@ -3,13 +3,11 @@ import {
   View,
   StyleSheet,
   Dimensions,
-  Platform,
   FlatList,
-  AsyncStorage,
 } from "react-native";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../../reducers";
+import { fetchCategories, fetchProducts } from "../../reducers";
 //Colors
 import Colors from "../../utils/Colors";
 //Animation
@@ -20,7 +18,7 @@ import {
   Header,
   CategorySection,
   FloatButton,
-  categories,
+  // categories,
 } from "./components";
 import Skeleton from "../../components/Loaders/SkeletonLoading";
 import Snackbar from "../../components/Notification/Snackbar";
@@ -36,16 +34,14 @@ export const HomeScreen = ({ navigation }) => {
   let scrollY = new Animated.Value(0.01);
   const user = useSelector((state) => state.auth.user);
   const products = useSelector((state) => state.store.products);
-
-  // const state = useSelector((state) => console.log('state', state));
-  
+  const categories = useSelector((state) => state.category);  
   const isLoading = useSelector((state) => state.store.isLoading);
   const notification = useSelector((state) => state.auth.notification);
   //fetch Api
   useEffect(() => {
-    // AsyncStorage.removeItem("isFirstTime");
     const fetching = async () => {
       try {
+        await dispatch(fetchCategories());
         await dispatch(fetchProducts());
       } catch (err) {
         alert(err);
@@ -85,7 +81,7 @@ export const HomeScreen = ({ navigation }) => {
               ],
               { useNativeDriver: true }
             )}
-            data={categories}
+            data={categories.categories}
             keyExtractor={(item) => item.name}
             renderItem={({ item }) => (
               <CategorySection
@@ -94,7 +90,6 @@ export const HomeScreen = ({ navigation }) => {
                 data={products}
                 navigation={navigation}
               />
-              // null
             )}
           />
           {Object.keys(notification).length === 0 ? (

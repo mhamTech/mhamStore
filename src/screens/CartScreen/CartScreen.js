@@ -14,38 +14,17 @@ import { set } from "react-native-reanimated";
 const { height } = Dimensions.get("window");
 
 export const CartScreen = (props) => {
+  // console.log('CartScreen', props)
   const [isRefreshing, setIsRefreshing] = useState(false);
   const user = useSelector((state) => state.auth.user);
   const carts = useSelector((state) => state.cart.cartItems);
-
   const loading = useSelector((state) => state.cart.isLoading);
-  //test
-
   //old cart
   const cartItems = carts.items;
-  // console.log("CartScreen.js ", cartItems);
-  //new cart
-  const newCartItems = useSelector((state) => state.CartNoAuthReducer.items);
-
-  // console.log("CartScreen.js length", Object.keys(newCartItems).length);
-  console.log("CartScreen.js newCartItems", newCartItems);
-
-  //old cart item
   const cartId = carts._id;
-
   const dispatch = useDispatch();
-  //old total
   let total = 0;
   carts.items.map((item) => (total += +item.item.price * +item.quantity));
-  //new total
-  let newTotal = 0;
-  for (const key in newCartItems) {
-    newTotal += newCartItems[key].productPrice * +newCartItems[key].quantity;
-  }
-  
-
-
-
   const loadCarts = useCallback(async () => {
     setIsRefreshing(true);
     try {
@@ -60,10 +39,21 @@ export const CartScreen = (props) => {
     loadCarts();
   }, [user.userid]);
 
+  //new cart
+  const newCartItems = useSelector((state) => state.CartNoAuthReducer.items);
+
+  // console.log("CartScreen.js newCartItems", newCartItems);
+
+  //new total
+  let newTotal = 0;
+  // for (const key in newCartItems) {
+  //   newTotal += newCartItems[key].productPrice * +newCartItems[key].quantity;
+  // }
+
   return (
     <View style={styles.container}>
       <Header
-        newCartItems={newCartItems}
+        // newCartItems={newCartItems}
         user={user}
         carts={carts}
         navigation={props.navigation}
@@ -75,20 +65,20 @@ export const CartScreen = (props) => {
         loadCarts={loadCarts}
         isRefreshing={isRefreshing}
         navigation={props.navigation}
-        Cartlength={Object.keys(newCartItems).length}
+        // Cartlength={Object.keys(newCartItems).length}
       />
       {Object.keys(user).length === 0 ? (
         <></>
-      ) : Object.keys(newCartItems).length === 0 ? (
+      ) : Object.keys(cartItems).length === 0 ? (
         <View />
       ) : (
         <TotalButton
-          total={newTotal}
+          total={total}
           cartItems={cartItems}
-          newCartItems={newCartItems}
+          // newCartItems={newCartItems}
           cartId={cartId}
           navigation={props.navigation}
-          newTotal={newTotal}
+          // newTotal={newTotal}
         />
       )}
     </View>

@@ -99,10 +99,15 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: Colors.light_grey,
     paddingHorizontal: 20,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    // marginBottom: 10,
   },
   title: {
     fontSize: 16,
     fontWeight: "500",
+    color: 'rgb(0, 0, 153)',
+    textDecorationLine: 'underline'
   },
   commentCount: {
     fontSize: 15,
