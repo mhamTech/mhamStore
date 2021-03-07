@@ -1,20 +1,42 @@
 {
-    "home": {
-        "title": "Welcome Message",
-        "introduction": "This text comes from i18next and is provided in english."
+    "homeScreen": {
+      "recently": "Recently",
+      "categories": "Categories"
     },
-    "page2": {
-        "title": "Page 2",
-        "introduction": "This text on page two."
+    "categoryBody": {
+      "noProducts": "No products"
     },
-    "common": {
-        "currentLanguage": "The current language is ",
-        "actions": {
-            "toggleToGerman": "Deutsch",
-            "toggleToEnglish": "English",
-            "toggleToArabic": "Arabic",
-            "goToPage2": "Open page 2"
-        },
-        "infoText": "<0><0>Zero </O><1>One </1><2>Two </2><3>Three </3><4>Four</4></O>"
+    "drawer": {
+      "home": "Home",
+      "yourOrders": "My orders",
+      "contact": "Contact Us",
+      "login": "Login"
+    },
+    "tab": {
+      "home": "Home",
+      "profile": "Profile",
+      "cart": "Cart"
+    },
+    "profile": {
+      "login": "Login"
+    },
+    "cart": {
+      "remove": "Delete cart",
+      "sureMessage": "هل تريد حذف هذا العنصر بشكل كامل ؟",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "noProduct": "Empty Cart",
+      "total": "total",
+      "proceed": "Continue",
+      "orderSummary": "Order Summary"
+    },
+    "user": {
+      "shipmentDetails": "Shipment Details",
+      "fullname": "Full Name",
+      "phone": "Phone Number",
+      "address": "Address"
+    },
+    "payment": {
+      "methods": "Choose payment methods"
     }
-}
+  }

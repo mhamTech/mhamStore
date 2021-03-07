@@ -8,21 +8,22 @@ const Slide = ({ imageUrl }) => {
       <Image
         style={{
           resizeMode: "cover",
-          width: "100%",
+          width,
           height: 150,
-          borderRadius: 10,
         }}
-        source={imageUrl}
+        // source={imageUrl}
+        source={{ uri: imageUrl }}
       />
     </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width,
+    height: 150,
     alignItems: "center",
-    paddingHorizontal: 15,
+    backgroundColor: '#fff',
+    marginTop: 50,
   },
 });
 

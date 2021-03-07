@@ -19,15 +19,13 @@ export const PreOrderScreen = (props) => {
     cartItems,
     total,
     cartId,
-    newCartItems,
-    newTotal,
   } = props.route.params; //comes from cart screen
   const [error, setError] = useState("");
   //Can Toi uu lai
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [province, setProvince] = useState("");
+  // const [province, setProvince] = useState("");
   const [town, setTown] = useState("");
   useEffect(() => {
     return () => {
@@ -44,10 +42,12 @@ export const PreOrderScreen = (props) => {
     }
     return;
   }, [isFocused]);
-  const getInfo = (province, town) => {
-    setProvince(province);
-    setTown(town);
-  };
+
+  // const getInfo = (province, town) => {
+  //   setProvince(province);
+  //   setTown(town);
+  // };
+  
   const getReceiver = (name, phone, address) => {
     setName(name);
     setPhone(phone);
@@ -60,40 +60,21 @@ export const PreOrderScreen = (props) => {
   cartItems.map((item) => {
     orderItems.push({ item: item.item._id, quantity: item.quantity });
   });
-  //new total
 
-  // console.log(orderItems);
-
-  let NeworderItems = []; //item.productId //item.quantity
-  for (const key in newCartItems) {
-    NeworderItems.push({
-      item: key,
-      quantity: newCartItems[key].quantity,
-    });
-  }
-
-  // console.log("PreOrderScreen.js oldOrderItems", orderItems);
-  // console.log("PreOrderScreen.js oldTotal", newTotal);
-  // console.log("PreOrderScreen.js newOrderItems", NeworderItems);
-  // console.log("PreOrderScreen.js newTotal", newTotal);
-
-  const fullAddress = `${address}, ${town} ,${province}`;
+  const fullAddress = `${address}`;
   const toPayment = async () => {
     try {
-      if (error == undefined && province.length !== 0 && town.length !== 0) {
+      if (error == undefined ) {//&& province.length !== 0 && town.length !== 0) {
         props.navigation.navigate("Payment", {
           screen: "PaymentScreen",
           params: {
             fullAddress,
             orderItems,
-            NeworderItems,
             name,
             phone,
             total,
             cartId,
             carts,
-            newTotal,
-            newCartItems,
             cartItems
           },
         });
@@ -121,6 +102,14 @@ export const PreOrderScreen = (props) => {
       // props.navigation.goBack();
     }
   }, [carts.items]);
+  const user = useSelector((state) => state.auth.user);
+  const initialValues = {
+    name: user.name,
+    phone: user.phone,
+    address: user.address,
+  }
+  // console.log('user', user)
+
   return (
     <View style={styles.container}>
       <Header navigation={props.navigation} />
@@ -132,14 +121,10 @@ export const PreOrderScreen = (props) => {
             <UserForm
               getReceiver={getReceiver}
               checkValidation={checkValidation}
+              initialValues={initialValues}
             />
-            <Address getInfo={getInfo} />
-            <SummaryOrder
-              newCartItems={newCartItems}
-              cartItems={cartItems}
-              total={newTotal}
-            />
-            {/* <SummaryOrder cartItems={cartItems} total={total} /> */}
+            {/* <Address getInfo={getInfo} /> */}
+              <SummaryOrder cartItems={cartItems} total={total} />
           </ScrollView>
           <TotalButton toPayment={toPayment} />
         </>

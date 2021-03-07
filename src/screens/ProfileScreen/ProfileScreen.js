@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, StyleSheet, Dimensions, Alert } from "react-native";
+import { View, StyleSheet, Dimensions, Alert, TouchableOpacity } from "react-native";
+import CustomText from "../../components/UI/CustomText";
+import Messages from "../../messages/user";
+import Colors from "../../utils/Colors";
 //Redux
 import { useDispatch, useSelector } from "react-redux";
 //Action
 import { UploadProfilePic } from "../../reducers";
 import { EditButton, ProfilePic, ProfileBody } from "./components";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+//component
+import { Header } from "./components"
 //Loader
 import Loader from "../../components/Loaders/Loader";
+import { t } from "i18n-js";
 
 const { width, height } = Dimensions.get("window");
 
@@ -43,6 +49,18 @@ export const ProfileScreen = (props) => {
   };
 
   return (
+    <>
+    <Header navigation={props.navigation} />
+    {Object.keys(user).length === 0 ? (
+      <View style={styles.center}>
+        <CustomText>{Messages["user.login.require"]}</CustomText>
+        <View style={styles.nextButton}>
+          <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
+            <CustomText style={{ color: "#fff" }}>{t('profile.login')}</CustomText>
+          </TouchableOpacity>
+        </View>
+      </View>
+    ) : (
     <ActionSheetProvider>
       <View style={styles.container}>
         <View style={styles.header}></View>
@@ -70,10 +88,27 @@ export const ProfileScreen = (props) => {
         </View>
       </View>
     </ActionSheetProvider>
+    )}
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  center: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nextButton: {
+    borderWidth: 1,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: Colors.lighter_gold,
+    borderRadius: 5,
+    borderColor: Colors.lighter_gold,
+    marginTop: 10,
+  },
   container: {
     flex: 1,
   },

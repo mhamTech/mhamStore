@@ -1441,6 +1441,13 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@unimodules/core@~5.1.2":
+  "integrity" "sha512-iCWEbzsNHqDfL6p8FyCGPnL2EW7vdgMJsNNSlWtM/gl8kePdqZMI7aOxTC4cdRS2xm0wzxuDBtpfJkzZsKINZg=="
+  "resolved" "https://registry.npmjs.org/@unimodules/core/-/core-5.1.2.tgz"
+  "version" "5.1.2"
+  dependencies:
+    "compare-versions" "^3.4.0"
+
 "@unimodules/core@~5.3.0":
   "integrity" "sha512-uGpkYE2zI0F1LTv+p6drzCHAZo8UFITxedHUH6pjWQBHdpTtae5cU7l3F/CzQ4WYU6SWhkzaB90/Ydf3DNTuLw=="
   "resolved" "https://registry.npmjs.org/@unimodules/core/-/core-5.3.0.tgz"
@@ -3010,7 +3017,7 @@
   "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-8.2.1.tgz"
   "version" "8.2.1"
 
-"expo-linear-gradient@~8.2.1":
+"expo-linear-gradient@^8.2.2", "expo-linear-gradient@~8.2.1":
   "integrity" "sha512-aAha1FEdKAMv8cpg0E/0ijna9orKpyvi0ivj8ZYHG9Y7Maiwa9sddlTAGvSRT7E0n5qVhiWDUS6Bh8w/FO2hzA=="
   "resolved" "https://registry.npmjs.org/expo-linear-gradient/-/expo-linear-gradient-8.2.2.tgz"
   "version" "8.2.2"
@@ -3030,6 +3037,13 @@
   "version" "9.1.1"
   dependencies:
     "invariant" "^2.2.4"
+
+"expo-localization@^10.0.0":
+  "integrity" "sha512-xCLEwJ0TCrlIzzE/udji3zXWAwRR9CKc75u02Umzj0t9MLm1ALlrote+Tb3lPN5IsoLBCK/F8n56lpWwE9U0Tg=="
+  "resolved" "https://registry.npmjs.org/expo-localization/-/expo-localization-10.0.0.tgz"
+  "version" "10.0.0"
+  dependencies:
+    "rtl-detect" "^1.0.2"
 
 "expo-location@~8.2.1":
   "integrity" "sha512-MixKapt3nijAxyjIISscBzdKi8bwh0H/dWYsL2mCofrjguFHOh2gP07h95902lekb7NVqybl5AIQRW5cvrG4rQ=="
@@ -4468,7 +4482,7 @@
   dependencies:
     "js-tokens" "^3.0.0 || ^4.0.0"
 
-"lottie-ios@^3.1.8":
+"lottie-ios@^3.1.8", "lottie-ios@^3.1.9":
   "integrity" "sha512-iB/jtMQiZnhNvPiQOkyRU3h8y+SKsIL8bqo8aAC9wTv2YStXSInmCPLw3JbIFy0HqW6YPwEFbqgFjtgo9vAHUg=="
   "resolved" "https://registry.npmjs.org/lottie-ios/-/lottie-ios-3.1.9.tgz"
   "version" "3.1.9"
@@ -5520,7 +5534,7 @@
   dependencies:
     "asap" "~2.0.3"
 
-"prop-types@^15.5.10", "prop-types@^15.6.0", "prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@15.7.2":
+"prop-types@^15.5.10", "prop-types@^15.6.0", "prop-types@^15.6.1", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@>=15.5.0", "prop-types@15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -5580,6 +5594,14 @@
     "ini" "~1.3.0"
     "minimist" "^1.2.0"
     "strip-json-comments" "~2.0.1"
+
+"react-addons-shallow-compare@15.6.2":
+  "integrity" "sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8="
+  "resolved" "https://registry.npmjs.org/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz"
+  "version" "15.6.2"
+  dependencies:
+    "fbjs" "^0.8.4"
+    "object-assign" "^4.1.0"
 
 "react-devtools-core@^4.0.6":
   "integrity" "sha512-sXbBjGAWcf9HAblTP/zMtFhGHqxAfIR+GPxONZsSGN9FHnF4635dx1s2LdQWG9rJ+Ehr3nWg+BUAB6P78my5PA=="
@@ -5642,6 +5664,13 @@
     "invariant" "^2.2.4"
     "prop-types" "^15.7.2"
 
+"react-native-image-slider-box@^1.0.12":
+  "integrity" "sha512-Yq7xLmrAxNWjSAZJ78ZQkg13/30UJc17yvBwRFAidGrMaVo2Go9glRdRJ2U212APsQVHskAhSgW6YHinuTLoIA=="
+  "resolved" "https://registry.npmjs.org/react-native-image-slider-box/-/react-native-image-slider-box-1.0.12.tgz"
+  "version" "1.0.12"
+  dependencies:
+    "react-native-snap-carousel" "*"
+
 "react-native-input-credit-card@^0.5.5":
   "integrity" "sha512-paE9+sTNKsrpVaBlSVylA7LAKGSQ5T97zb/NLxCG9rwalzS50j55yORt5mjQy2d2Mmmry0shJBhPx7sPdjh9Bg=="
   "resolved" "https://registry.npmjs.org/react-native-input-credit-card/-/react-native-input-credit-card-0.5.5.tgz"
@@ -5698,6 +5727,11 @@
   "resolved" "https://registry.npmjs.org/react-native-portalize/-/react-native-portalize-1.0.7.tgz"
   "version" "1.0.7"
 
+"react-native-radio-buttons@^1.0.0":
+  "integrity" "sha512-9qglzqVfpFXph2aeRvpg7obDhb8X8LBexMRugXSjud7+2J1teDMsWyypE8PLbF+WCXoCCtW0K+RpHOuzv7kJjA=="
+  "resolved" "https://registry.npmjs.org/react-native-radio-buttons/-/react-native-radio-buttons-1.0.0.tgz"
+  "version" "1.0.0"
+
 "react-native-reanimated@~1.9.0":
   "integrity" "sha512-Aj+spgIHRiVv7ezGADxnSH1EoKrQRD2+XaSiGY0MiB/pvRNNrZPSJ+3NVpvLwWf9lZMOP7dwqqyJIzoZgBDt8w=="
   "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-1.9.0.tgz"
@@ -5722,6 +5756,14 @@
   "resolved" "https://registry.npmjs.org/react-native-screens/-/react-native-screens-2.9.0.tgz"
   "version" "2.9.0"
 
+"react-native-snap-carousel@*", "react-native-snap-carousel@^3.9.1":
+  "integrity" "sha512-xWEGusacIgK1YaDXLi7Gao2+ISLoGPVEBR8fcMf4tOOJQufutlNwkoLu0l6B8Qgsrre0nTxoVZikRgGRDWlLaQ=="
+  "resolved" "https://registry.npmjs.org/react-native-snap-carousel/-/react-native-snap-carousel-3.9.1.tgz"
+  "version" "3.9.1"
+  dependencies:
+    "prop-types" "^15.6.1"
+    "react-addons-shallow-compare" "15.6.2"
+
 "react-native-step-indicator@^1.0.3":
   "integrity" "sha512-WwTb6lpJl0T7MV59sus1utoEQuqbuWHq6V0R0iDWmlPRFjM0qirhTNTS5on1+V9Qmc9dsUCT380/mRgDF+U6zw=="
   "resolved" "https://registry.npmjs.org/react-native-step-indicator/-/react-native-step-indicator-1.0.3.tgz"
@@ -5741,7 +5783,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^15.0.2"
 
-"react-native@*", "react-native@https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz":
+"react-native@*", "react-native@>=0.25.0", "react-native@>=0.46", "react-native@https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz":
   "integrity" "sha512-HHm7uvbNmDFeNoZk+kq8krRpavEveJXY2mX14jd9/uzqOBidM8AHwjYuntsLhJeu/Mb+8Dei9d5W4tq584/4pg=="
   "resolved" "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz"
   dependencies:
@@ -5799,7 +5841,7 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   "version" "0.4.3"
 
-"react@*", "react@16.13.1":
+"react@*", "react@>=15.0.0", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"
@@ -6049,6 +6091,11 @@
   "integrity" "sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA=="
   "resolved" "https://registry.npmjs.org/rsvp/-/rsvp-4.8.5.tgz"
   "version" "4.8.5"
+
+"rtl-detect@^1.0.2":
+  "integrity" "sha512-5X1422hvphzg2a/bo4tIDbjFjbJUOaPZwqE6dnyyxqwFqfR+tBcvfqapJr0o0VygATVCGKiODEewhZtKF+90AA=="
+  "resolved" "https://registry.npmjs.org/rtl-detect/-/rtl-detect-1.0.2.tgz"
+  "version" "1.0.2"
 
 "run-async@^2.2.0":
   "integrity" "sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ=="
@@ -7358,7 +7405,7 @@
     "y18n" "^3.2.1 || ^4.0.0"
     "yargs-parser" "^11.1.1"
 
-"yarn@^1.22.10":
+"yarn@^1.22.5":
   "integrity" "sha512-IanQGI9RRPAN87VGTF7zs2uxkSyQSrSPsju0COgbsKQOOXr5LtcVPeyXWgwVa0ywG3d8dg6kSYKGBuYK021qeA=="
   "resolved" "https://registry.npmjs.org/yarn/-/yarn-1.22.10.tgz"
   "version" "1.22.10"

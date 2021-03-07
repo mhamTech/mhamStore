@@ -27,7 +27,7 @@ export const CartItemNoAuth = ({ item, onRemove, onAdd, onDelete }) => {
   const dispatch = useDispatch();
 
   
-  const sum = +item.productPrice * +item.quantity;
+  // const sum = +item.productPrice * +item.quantity;
   return (
     <View style={styles.container}>
       <View style={styles.left}>

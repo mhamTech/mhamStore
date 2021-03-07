@@ -5,6 +5,7 @@ import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
 import PropTypes from "prop-types";
+import { t } from "i18n-js";
 
 export const TotalButton = ({ toPayment }) => {
   return (
@@ -12,7 +13,7 @@ export const TotalButton = ({ toPayment }) => {
       <TouchableOpacity onPress={toPayment}>
         <View style={styles.buttom}>
           <CustomText style={{ color: "#fff", fontSize: 16 }}>
-            Continue
+            {t("cart.proceed")}
           </CustomText>
         </View>
       </TouchableOpacity>

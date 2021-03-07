@@ -6,18 +6,23 @@ export default {
   white: "#fff",
   light_grey: "#f8f8f8",
   dark: "#2a2c5c",
-  bg: "#0f7e4a",
+  bg: "#66b3ff", // light blue
   yellow: "#fed922",
   light_bg: "#e0e0e2",
-  light_gold: "#d1a145",// gold
+  // light_gold: "#d1a145",// gold
+  light_gold: "#000",// gold
+  // vLight_gold: "#d6ab5c",
+  vLight_gold: "#000",
   // light_gold: "#18945a",
 
   // lighter_gold: "#ac7226",// gold
-  lighter_gold: "#ac7226",// gold
+  // lighter_gold: "#ac7226",// gold
+  lighter_gold: "#000",
   
   // leave_gold: "#ac7226",// gold 
 
-  leave_gold: "#ac7226",// gold 
+  // leave_gold: "#ac7226",// gold 
+  leave_gold: "#000",
   
   purple: "#876aba",
   water: "#6f8bc8",

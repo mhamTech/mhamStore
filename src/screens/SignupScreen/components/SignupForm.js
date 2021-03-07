@@ -39,11 +39,11 @@ const validate = (values) => {
   } else if (values.password.length < 6) {
     errors.password = "Password must be more than or equal to 6 characters";
   }
-  if (!values.confirmpassword) {
-    errors.confirmpassword = "Password cannot be empty";
-  } else if (values.confirmpassword !== values.password) {
-    errors.confirmpassword = "Confirmation password does not match";
-  }
+  // if (!values.confirmpassword) {
+  //   errors.confirmpassword = "Password cannot be empty";
+  // } else if (values.confirmpassword !== values.password) {
+  //   errors.confirmpassword = "Confirmation password does not match";
+  // }
   if (!values.username) {
     errors.username = " Name cannot be blank";
   } else if (values.username.length > 20) {
@@ -141,7 +141,7 @@ const Signup = (props) => {
                 showPass={showPass}
                 setShowPass={setShowPass}
               />
-              <Field
+              {/* <Field
                 name="confirmpassword"
                 keyboardType="default"
                 label="Confirm Password"
@@ -151,7 +151,7 @@ const Signup = (props) => {
                 icon="lock"
                 showConfirmPass={showConfirmPass}
                 setshowConfirmPass={setshowConfirmPass}
-              />
+              /> */}
             </View>
 
             <TouchableOpacity

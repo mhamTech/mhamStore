@@ -63,6 +63,7 @@ export const addToCart = (item) => {
     });
     const user = getState().auth.user;
     try {
+      // console.log('token', user.token)
       const response = await timeoutPromise(
         fetch(`${API_URL}/cart/post`, {
           headers: {
@@ -100,7 +101,6 @@ export const addToCart = (item) => {
 
 //Remove from Cart
 export const removeFromCart = (cartId, itemId) => {
-  console.log('removeFromCart')
   return async (dispatch, getState) => {
     dispatch({
       type: CART_LOADING,
@@ -126,13 +126,11 @@ export const removeFromCart = (cartId, itemId) => {
         });
         throw new Error("Something went wrong!");
       }
-      console.log('itemId', itemId)
-      dispatch({
+      await dispatch({
         type: "REMOVE_FROM_CART",
         itemId,
       });
     } catch (err) {
-      console.log('err', err)
       throw err;
     }
   };
@@ -166,7 +164,7 @@ export const decCartQuantity = (cartId, itemId) => {
         throw new Error("Something went wrong!");
       }
       dispatch({
-        type: DES_CART_QUANTITY,
+        type: "DES_CART_QUANTITY",
         cartItemId: itemId,
       });
     } catch (err) {

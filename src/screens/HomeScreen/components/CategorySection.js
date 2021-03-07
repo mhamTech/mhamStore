@@ -15,6 +15,7 @@ import { BlurView } from "expo-blur";
 
 //PropTypes check
 import PropTypes from "prop-types";
+import { ScrollView } from "react-native-gesture-handler";
 
 export const CategorySection = ({ data, name, bg, navigation }) => {
 
@@ -26,34 +27,37 @@ export const CategorySection = ({ data, name, bg, navigation }) => {
 
   return (
     <View style={styles.category}>
+      {/* <ScrollView style={{ height: null, borderWidth: 1}}> */}
       <View style={{...styles.background, backgroundColor: bg }} />
-      <View style={styles.titleHeader}>
-        <CustomText style={styles.title}>{name}</CustomText>
-      </View>
-      <View style={styles.productList}>
-        <FlatList
-          data={getItems()}
-          keyExtractor={(item) => item._id}
-          numColumns={2}
-          columnWrapperStyle={styles.list}
-          renderItem={({ item }) => {
-            return (
-              <ProductItem
-                key={item._id}
-                item={item}
-                navigation={navigation}
-              />
-            );
-          }}
-        />
-      </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Product")}
-        style={{ marginHorizontal: 10 }}>
-        {/* <BlurView tint="light" intensity={100} style={styles.seeMore}>
-          <CustomText style={styles.seeMoreText}>See More</CustomText>
-        </BlurView> */}
-      </TouchableOpacity>
+        <View style={styles.titleHeader}>
+          <CustomText style={styles.title}>{name}</CustomText>
+        </View>
+        <View style={styles.productList}>
+          <FlatList
+            data={getItems()}
+            keyExtractor={(item) => item._id}
+            numColumns={2}
+            columnWrapperStyle={styles.list}
+            scrollEnabled
+            renderItem={({ item }) => {
+              return (
+                <ProductItem
+                  key={item._id}
+                  item={item}
+                  navigation={navigation}
+                />
+              );
+            }}
+          />
+        </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Product")}
+          style={{ marginHorizontal: 10 }}>
+          <BlurView tint="light" intensity={100} style={styles.seeMore}>
+            <CustomText style={styles.seeMoreText}>See More</CustomText>
+          </BlurView>
+        </TouchableOpacity>
+      {/* </ScrollView> */}
     </View>
   );
 };

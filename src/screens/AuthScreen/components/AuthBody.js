@@ -19,11 +19,11 @@ const { height, width } = Dimensions.get("window");
 export const AuthBody = ({ navigation }) => {
   return (
     <>
-      <ImageBackground
+      {/* <ImageBackground
         style={{ flex: 1, position: "absolute", height, width }}
         source={require("../../../assets/Images/flower3.jpg")}
         blurRadius={10}
-      ></ImageBackground>
+      ></ImageBackground> */}
       <View style={{ position: "absolute", top: 100 }}>
         <Image
           style={styles.logo}
@@ -33,7 +33,6 @@ export const AuthBody = ({ navigation }) => {
       <LottieView
         source={require("../../../components/IconAnimation/welcome.json")}
         autoPlay
-        loop
         resizeMode='contain'
         style={{ height: 115 }}
       />
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
   signinContainer: {
     height: 60,
     width: width - 40,
-    borderRadius: 30,
+    borderRadius: 8,
     backgroundColor: "#ffffff",
     alignItems: "center",
     justifyContent: "center",

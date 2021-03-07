@@ -23,6 +23,9 @@ export const IntroScreen = () => {
   const scrollX = useRef(new Animated.Value(0.01)).current;
   const scrollClick = useRef(null);
   const unmounted = useRef(false);
+  const test = useRef(false);
+  console.log('testing useRef', test);
+  
   useEffect(() => {
     return () => {
       unmounted.current = true;
@@ -41,6 +44,7 @@ export const IntroScreen = () => {
 
   const EnterApp = async () => {
     setLoading(true);
+    // storing firstTime in AsyncStorage
     // await dispatch(CheckFirstTimeAction.firstOpen());
     await dispatch({type: 'FIRST_OPEN'});
     if (!unmounted.current) {

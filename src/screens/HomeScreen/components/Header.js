@@ -20,6 +20,7 @@ import Colors from "../../../utils/Colors";
 import SearchItem from "./SearchItem";
 import Animated, { Easing } from "react-native-reanimated";
 import { TouchableOpacity, TextInput } from "react-native-gesture-handler";
+
 const { Value, timing } = Animated;
 // Calculate window size
 const { width, height } = Dimensions.get("window");
@@ -143,9 +144,7 @@ export class Header extends React.Component {
     // const ViewPlatForm = Platform.OS === "android" ? SafeAreaView : View;
     return (
       <>
-        <SafeAreaView
-          style={{ ...styles.header_safe_area, ...this.props.style }}
-        >
+        <SafeAreaView style={{ ...styles.header_safe_area, ...this.props.style }}>
           <Animated.View
             style={[
               styles.header,
@@ -169,7 +168,7 @@ export class Header extends React.Component {
                   color={Colors.lighter_gold}
                 />
               </TouchableOpacity>
-              <View >
+              {/* <View>
                 <Image
                   source={require("../../../assets/Images/logoNoText.png")}
                   style={{
@@ -177,7 +176,7 @@ export class Header extends React.Component {
                     resizeMode: "contain",
                   }}
                 />
-              </View>
+              </View> */}
               <TouchableOpacity
                 activeOpacity={1}
                 underlayColor={"#ccd0d5"}
@@ -230,10 +229,10 @@ export class Header extends React.Component {
           <View style={styles.content_safe_area}>
             {this.state.keyword === "" ? (
               <View style={styles.image_placeholder_container}>
-                <Image
+                {/* <Image
                   source={require("../../../assets/Images/logo1.png")}
                   style={styles.image_placeholder}
-                />
+                /> */}
                 <Text style={styles.image_placeholder_text}>
                   Enter keywords
                   {"\n"}

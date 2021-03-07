@@ -1,29 +1,18 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 //Text
-import CustomText from "../../../components/UI/CustomText";
 import { TextIcon } from "./TextIcon";
+import { Location } from "./Location";
+import { Phone } from "./Phone";
+import { Hours } from "./Hours";
 
 export const ContactBody = () => {
   return (
     <View style={styles.footer}>
-      <CustomText style={styles.title}>contact us</CustomText>
       <View style={styles.info}>
-        <TextIcon
-          icon={require("../../../components/IconAnimation/location.json")}
-          text='14 test'
-          url='mailto: anhquan291@gmail.com'
-        />
-        <TextIcon
-          icon={require("../../../components/IconAnimation/email3.json")}
-          text='Test@test.com'
-          url='mailto: anhquan291@gmail.com'
-        />
-        <TextIcon
-          icon={require("../../../components/IconAnimation/phone2.json")}
-          text='31123123123231'
-          url='tel:0968729194'
-        />
+        <Location />
+        <Phone />
+        <Hours />
       </View>
     </View>
   );
@@ -38,11 +27,11 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    backgroundColor: "#fff",
-    borderTopRightRadius: 15,
-    borderTopLeftRadius: 15,
-    paddingHorizontal: 15,
-    paddingVertical: 15,
+    backgroundColor: "#eee",
+    // borderTopRightRadius: 15,
+    // borderTopLeftRadius: 15,
+    paddingHorizontal: 45,
+    // paddingVertical: 15,
     marginTop: -20,
   },
   info: {

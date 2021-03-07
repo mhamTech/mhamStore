@@ -1,14 +1,10 @@
 import React from "react";
-import { Platform } from "react-native";
-import {
-  createStackNavigator,
-  CardStyleInterpolators,
-  TransitionPresets,
-} from "@react-navigation/stack";
+import { View } from "react-native";
+import { createStackNavigator, CardStyleInterpolators, TransitionPresets,} from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 // Icon
-import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons, AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 // Color
 import Colors from "../utils/Colors";
 // Custom Drawer
@@ -29,9 +25,14 @@ import { HomeScreen } from "../screens/HomeScreen";
 import { ContactScreen } from "../screens/ContactScreen";
 //Product Screens
 import { CartScreen } from "../screens/CartScreen";
+
+import { DetailScreen2 } from "../screens/DetailScreen2";
+import { DetailScreen3 } from "../screens/DetailScreen3";
+
 import { DetailScreen } from "../screens/DetailScreen";
 import { FavoriteScreen } from "../screens/FavoriteScreen";
 import { ProductScreen } from "../screens/ProductScreen";
+import { CategoryScreen } from "../screens/CategoryScreen";
 // Order Screens
 import { OrderScreen } from "../screens/OrderScreen";
 import { PreOrderScreen } from "../screens/PreOrderScreen";
@@ -43,8 +44,7 @@ import { ProfileScreen } from "../screens/ProfileScreen";
 import { EditProfileScreen } from "../screens/ProfileScreen";
 // redux
 import { useSelector } from "react-redux";
-
-// create Navigator
+import { t } from "i18n-js";
 
 const IntroStack = createStackNavigator();
 export const IntroStackScreen = () => (
@@ -146,7 +146,6 @@ export const ProductStackScreen = () => (
 );
 
 const ProfileStack = createStackNavigator();
-
 export const ProfileStackScreen = () => (
   <ProfileStack.Navigator
     screenOptions={{
@@ -160,6 +159,19 @@ export const ProfileStackScreen = () => (
     <ProfileStack.Screen name="Profile" component={ProfileScreen} />
     <ProfileStack.Screen name="ProfileEdit" component={EditProfileScreen} />
   </ProfileStack.Navigator>
+);
+
+const CategoryStack = createStackNavigator();
+export const CategoryStackScreen = () => (
+  <CategoryStack.Navigator
+    screenOptions={{
+      headerShown: false,
+      cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+    }}
+  >
+    <ProductStack.Screen name="ProductScreen" component={ProductScreen} />
+    <CategoryStack.Screen name="CategoryScreen" component={CategoryScreen} />
+  </CategoryStack.Navigator>
 );
 
 const HomeStack = createStackNavigator();
@@ -176,8 +188,11 @@ export const HomeStackScreen = () => (
       //animationEnabled: false , nằm trong option
     />
     <HomeStack.Screen name="Detail" component={DetailScreen} />
+    <HomeStack.Screen name="Detail2" component={DetailScreen2} />
+    <HomeStack.Screen name="Detail3" component={DetailScreen3} />
     <HomeStack.Screen name="Cart" component={CartStackScreen} />
     <HomeStack.Screen name="Product" component={ProductStackScreen} />
+    <HomeStack.Screen name="Category" component={CategoryStackScreen} />
     <HomeStack.Screen name="FinishOrder" component={FinishOrderScreen} />
     <HomeStack.Screen name="ResetPw" component={ResetPwScreen} />
   </HomeStack.Navigator>
@@ -185,10 +200,8 @@ export const HomeStackScreen = () => (
 
 //Tab
 const Tab = createMaterialBottomTabNavigator();
-
 export const TabScreen = () => {
   const carts = useSelector((state) => state.cart.cartItems);
-  const cartNoAith = useSelector((state) => state.CartNoAuthReducer.items);
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -197,8 +210,9 @@ export const TabScreen = () => {
           const color = focused ? Colors.lighter_gold : Colors.grey;
           if (route.name === "HomeTab") {
             iconName = "home";
-          } else if (route.name === "Favorite") {
-            iconName = "hearto";
+          } else if (route.name === "Profile") {
+            // iconName = "hearto";
+            return <SimpleLineIcons name={"user"} size={23} color={color} />
           } else if (route.name === "Cart") {
             iconName = "shoppingcart";
           }
@@ -206,40 +220,36 @@ export const TabScreen = () => {
         },
       })}
       barStyle={{
-        backgroundColor: Colors.light_grey,
-        height: 50,
+        backgroundColor: '#ffffff',
+        // height: 50,
         justifyContent: "center",
       }}
+      initialRouteName={"HomeTab"}
       activeColor={Colors.lighter_gold}
       inactiveColor={Colors.grey}
     >
+      
+      <Tab.Screen
+        name="Profile"
+        // component={FavoriteStackScreen}
+        component={ProfileStackScreen}
+        options={() => ({
+          tabBarLabel: t("tab.profile"),
+        })}
+      />
       <Tab.Screen
         name="HomeTab"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: t("tab.home"),
         }}
-      />
-      <Tab.Screen
-        name="Favorite"
-        component={FavoriteStackScreen}
-        options={() => ({
-          tabBarLabel: "wishlist",
-        })}
       />
       <Tab.Screen
         name="Cart"
         component={CartStackScreen}
         options={() => ({
-          tabBarLabel: "Cart",
-          // tabBarBadge:
-          //   carts.items.length || Object.keys(cartNoAith).length === 0
-          //     ? null
-          //     : carts.items.length || Object.keys(cartNoAith).length,
-          tabBarBadge:
-            Object.keys(cartNoAith).length === 0
-              ? null
-              : Object.keys(cartNoAith).length,
+          tabBarLabel: t("tab.cart"),
+          tabBarBadge: carts.items.length === 0 ? null : carts.items.length,
         })}
       />
     </Tab.Navigator>
@@ -254,19 +264,19 @@ export const DrawerNavigator = () => {
     {
       name: "HomeTab",
       screen: TabScreen,
-      label: "Home",
+      label: t('drawer.home'),
       icon: "home-outline",
     },
     {
       name: "Order",
       screen: OrderScreen,
-      label: "Your Orders",
+      label: t('drawer.yourOrders'),
       icon: "receipt",
     },
     {
       name: "Contact",
       screen: ContactScreen,
-      label: "Contact",
+      label: t("drawer.contact"),
       icon: "contacts",
     },
   ];
@@ -309,31 +319,35 @@ export const DrawerNavigator = () => {
       ))}
 
       {Object.keys(user).length === 0 ? (
-        <Drawer.Screen
-          name="SignUp"
-          component={AuthStackScreen}
-          options={() => ({
-            title: ({ focused }) => (
-              <CustomText
-                style={{
-                  fontSize: 14,
-                  fontWeight: "500",
-                  color: focused ? Colors.lighter_gold : Colors.grey,
-                  fontFamily: "Roboto-Medium",
-                }}
-              >
-                Log In
-              </CustomText>
-            ),
-            drawerIcon: ({ focused }) => (
-              <MaterialCommunityIcons
-                name="login"
-                size={23}
-                color={focused ? Colors.lighter_gold : Colors.grey}
-              />
-            ),
-          })}
-        />
+        <>
+          <Drawer.Screen
+            name="SignUp"
+            component={AuthStackScreen}
+            options={() => ({
+              title: ({ focused }) => (
+                <>
+                <CustomText
+                  style={{
+                    fontSize: 14,
+                    fontWeight: "500",
+                    color: focused ? Colors.lighter_gold : Colors.grey,
+                    fontFamily: "Roboto-Medium",
+                  }}
+                >
+                  {t('drawer.login')}
+                </CustomText>
+                </>
+              ),
+              drawerIcon: ({ focused }) => (
+                <MaterialCommunityIcons
+                  name="login"
+                  size={23}
+                  color={focused ? Colors.lighter_gold : Colors.grey}
+                />
+              ),
+            })}
+            />
+          </>
       ) : (
         <>
           {/* <Drawer.Screen
@@ -374,12 +388,11 @@ export const DrawerNavigator = () => {
                     fontFamily: "Roboto-Medium",
                   }}
                 >
-                  Personal information
+                  {t("tab.profile")}
                 </CustomText>
               ),
               drawerIcon: ({ focused }) => (
-                <MaterialCommunityIcons
-                  name="face-profile"
+                <SimpleLineIcons name={"user"}
                   size={25}
                   color={focused ? Colors.lighter_gold : Colors.grey}
                 />

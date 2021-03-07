@@ -46,13 +46,15 @@ export const timeoutPromise = (url) => {
   return new Promise((resolve, reject) => {
     const timeoutId = setTimeout(() => {
       reject(new Error("Timeout, Server is not responding"));
-    }, 20 * 1000);
+    }, 20 * 60 * 1000); // 1 min
     url.then(
       (res) => {
+        // console.log(res)
         clearTimeout(timeoutId);
         resolve(res);
       },
       (err) => {
+        // console.log('err', err);
         clearTimeout(timeoutId);
         reject(err);
       }

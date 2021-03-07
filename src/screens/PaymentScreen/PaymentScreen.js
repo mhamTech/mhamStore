@@ -13,11 +13,9 @@ import { SummaryOrder } from "../PreOrderScreen/components";
 
 import * as cartActions from "../../reducerTest/CartNoAuthAction";
 
-
-
 export const PaymentScreen = (props) => {
   const [loading, setLoading] = useState(true);
-  const carts = useSelector((state) => state.cart.cartItems);
+  // const carts = useSelector((state) => state.cart.cartItems);
   const cartLoading = useSelector((state) => state.cart.isLoading);
   const orderLoading = useSelector((state) => state.order.isLoading);
   let token = props.route.params.token;
@@ -43,18 +41,15 @@ export const PaymentScreen = (props) => {
 
   const dispatch = useDispatch();
   const {
+    fullAddress,
     orderItems,
-    NeworderItems,
-    newTotal,
     name,
     phone,
     total,
     cartId,
-    fullAddress,
-    newCartItems,
-    cartItems
+    carts,
+    cartItems,
   } = props.route.params;
-  console.log("paymentScreen.js");
 
   //action Add Order
   const addOrderAct = async () => {
@@ -63,18 +58,16 @@ export const PaymentScreen = (props) => {
       await dispatch(
         addOrder(
           token,
-          // orderItems,
-          NeworderItems,
+          orderItems,
           name,
-          // total,
-          newTotal,
+          total,
           paymentMethod,
           fullAddress,
           phone
         )
       );
-      // await dispatch(resetCart(cartId));
-      await dispatch(cartActions.cartRest(cartId));
+      await dispatch(resetCart(cartId));
+      // await dispatch(cartActions.cartRest(cartId));
       props.navigation.navigate("FinishOrder");
     } catch (err) {
       alert(err);
@@ -94,22 +87,20 @@ export const PaymentScreen = (props) => {
               payByCard={payByCard}
               setPayByCard={setPayByCard}
               token={token}
+              phone={phone}
             />
             <SummaryOrder
-              newCartItems={newCartItems}
               cartItems={cartItems}
-              total={newTotal}
+              total={total}
             />
             {/* <SummaryOrder cartItems={carts.items} total={total} /> */}
           </ScrollView>
           <View style={styles.total}>
-            <View style={styles.orderButton}>
               <TouchableOpacity onPress={addOrderAct}>
-                <CustomText style={{ color: "#fff", fontSize: 16 }}>
-                  Proceed to order
-                </CustomText>
-              </TouchableOpacity>
+            <View style={styles.orderButton}>
+                <CustomText style={{ color: "#fff", fontSize: 16 }}>Proceed to order</CustomText>
             </View>
+              </TouchableOpacity>
           </View>
         </>
       )}

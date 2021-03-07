@@ -1,19 +1,42 @@
 {
-    "home": {
-      "title": "عنوان تجريبي للنص",
-      "introduction": "هذا النص من i18next وهو باللغة الألمانية."
-    },
-    "page2": {
-      "title": "الصفحة 2",
-      "introduction": "النص في الصفحة 2"
-    },
-    "common": {
-      "currentLanguage":  " تم تعيين اللغة على '{{lng}}' ",
-      "actions": {
-        "toggleToGerman": "الألمانية",
-        "toggleToEnglish": "الإنجليزية",
-        "toggleToArabic": "العربية",
-        "goToPage2": "افتح الصفحة 2"
-      }
-    }
+  "homeScreen": {
+    "recently": "المختارة مؤخرًا",
+    "categories": "الفئات"
+  },
+  "categoryBody": {
+    "noProducts": "لا يوجد اي اصناف"
+  },
+  "drawer": {
+    "home": "الصفحة الرئيسية",
+    "yourOrders": "طلباتي",
+    "contact": "تواصل معنا",
+    "login": "تسجل الدخول"
+  },
+  "tab": {
+    "home": "الصفحة الرئيسية",
+    "profile": "الملف الشخصي",
+    "cart": "العربة"
+  },
+  "profile": {
+    "login": "تسجل الدخول"
+  },
+  "cart": {
+    "remove": "حذف العربة",
+    "sureMessage": "هل تريد حذف هذا العنصر بشكل كامل ؟",
+    "cancel": "الغاء",
+    "confirm": "تأكيد",
+    "noProduct": "العربة فارغة",
+    "total": "المجموع",
+    "proceed": "استمرار",
+    "orderSummary": "ملخص العربة"
+  },
+  "user": {
+    "shipmentDetails": "عنوان الشحن",
+    "fullname": "الاسم كامل",
+    "phone": "رقم الهاتف",
+    "address": "العنوان"
+  },
+  "payment": {
+    "methods": "اختر طريقة الدفع"
   }
+}

@@ -7,7 +7,6 @@ import {
   
   const initialState = {
     categories: [],
-    isFirstOpen: false,
     isLoading: false,
   };
   export const categoryReducer = (state = initialState, action) => {

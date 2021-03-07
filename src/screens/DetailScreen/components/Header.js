@@ -64,7 +64,7 @@ export const Header = ({ navigation, scrollY, item }) => {
         </TouchableOpacity>
         <Animated.View style={{ opacity: headerOpacity }}>
           <CustomText
-            style={{ fontSize: 26, color: "red", fontWeight: "500" }}>
+            style={{ fontSize: 26, color: Colors.light_grey, fontWeight: "500" }}>
             {item.filename}
           </CustomText>
         </Animated.View>
@@ -123,7 +123,7 @@ export const Header = ({ navigation, scrollY, item }) => {
 
 const styles = StyleSheet.create({
   topBar: {
-    paddingTop: Platform.OS === "android" ? 15 : 25,
+    paddingTop: 25,
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   image: {
     position: "absolute",
-    top: Platform.OS === 'ios' ? 25 : 0,
+    top: 25,
     // marginTop: Platform.OS === 'ios' ? 20 : 0,
     left: 0,
     right: 0,

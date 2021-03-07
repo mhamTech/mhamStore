@@ -8,7 +8,6 @@ export const ERROR = "ERROR";
 
 //Fetch order
 export const fetchOrder = () => {
-  console.log("orderAction.js fetchOrder working")
   return async (dispatch, getState) => {
     dispatch({
       type: ORDER_LOADING,
@@ -109,7 +108,7 @@ export const addOrder = (
         orderItem: resData.content,
       });
     } catch (err) {
-      throw error;
+      throw err;
     }
   };
 };

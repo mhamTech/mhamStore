@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 const { height, width } = Dimensions.get("window");
 
-const DOT_SIZE = 20;
+const DOT_SIZE = 15;
 
 const Pagination = ({ scrollX, slides }) => {
   const inputRange = [0, width, width * 2, width * 3, width * 4];
@@ -63,7 +63,10 @@ const styles = StyleSheet.create({
     width: DOT_SIZE * 0.3,
     height: DOT_SIZE * 0.3,
     borderRadius: DOT_SIZE * 0.15,
-    backgroundColor: "rgba(198, 198, 198, 0.5)",
+    borderWidth: 0.2,
+    borderColor: '#737373',
+    // backgroundColor: "rgba(198, 198, 198, 0.5)",
+    backgroundColor: "#fff",
   },
   paginationDotContainer: {
     width: DOT_SIZE,

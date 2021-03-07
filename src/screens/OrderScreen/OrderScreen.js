@@ -38,7 +38,6 @@ export const OrderScreen = ({ route, navigation }) => {
   useFocusEffect(
     React.useCallback(() => {
       loadOrders();
-      console.log("useFocusEffect")
     }, [])
   );
 

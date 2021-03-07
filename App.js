@@ -12,9 +12,9 @@ import {
   orderReducer,
   productReducer,
   categoryReducer,
-  CartwithoutloginReducer
+  recentlyReducer
 } from "./src/reducers";
-import CartNoAuthReducer from './src/reducerTest/CartNoAuthReducer'
+// import CartNoAuthReducer from './src/reducerTest/CartNoAuthReducer'
 //Navigator
 import { AppNavigator } from "./src/navigation";
 import { AppLoading } from "expo";
@@ -30,15 +30,17 @@ import { Updates } from "expo";
 //Notification
 import LocalNotication from "./src/components/Notification/LocalNotification";
 
+import i18n from "./src/I18n"
+
 const rootReducer = combineReducers({
   store: productReducer,
   cart: cartReducer,
-  CartNoAuthReducer: CartNoAuthReducer,
   order: orderReducer,
   auth: authReducer,
   fav: favoriteReducer,
-  form: formReducer,
   category: categoryReducer,
+  recentlyReducer: recentlyReducer,
+  form: formReducer,
 });
 //store
 const store = createStore(
@@ -81,17 +83,16 @@ const LoadAssets = async () => {
 
   return await Promise.all([imageAssets, fetchFonts]);
 };
+// I18nManager.forceRTL(true);
 
 export default function App() {
   const [assetLoaded, setAssetLoaded] = useState(false);
   //prevent Rtl
-  React.useEffect(() => {
-    if (I18nManager.isRTL) {
-      I18nManager.allowRTL(false);
-      I18nManager.forceRTL(false);
-      Updates.reload();
-    }
-  }, []);
+  // React.useEffect(() => {
+      // I18nManager.allowRTL(true);
+      // I18nManager.forceRTL(true);
+      // Updates.reload();
+  // }, []);
 
   // I18nManager.forceRTL(true)
 
@@ -106,7 +107,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <StatusBar />
-      <LocalNotication />
+      {/* <LocalNotication /> */}
       <AppNavigator />
     </Provider>
   );

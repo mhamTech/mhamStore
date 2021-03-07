@@ -1,37 +1,42 @@
-import React, { useRef } from "react";
-import { View, Animated, Dimensions, StyleSheet } from "react-native";
-import banners from "../../../db/Banners";
+import React, { useState, useRef, useEffect } from "react";
+import { View, Animated, Dimensions, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+// import banners from "../../../db/Banners";
 import Slide from "./Slide";
 import Pagination from "./Pagination";
-const { width } = Dimensions.get("window");
+
+import { SliderBox } from "react-native-image-slider-box";
+
+const { width } = Dimensions.get('window');
 
 export const Carousel = () => {
-  const scrollX = useRef(new Animated.Value(0.01)).current;
+  
+  const banners = [
+    "https://picsum.photos/392/200",
+    "https://picsum.photos/392/200",
+    "https://picsum.photos/392/200",
+    "https://picsum.photos/392/200",
+    "https://picsum.photos/392/200",
+    // '','','',
+  ];
+
   return (
     <View style={styles.container}>
-      <Animated.ScrollView
-        horizontal
-        snapToInterval={width}
-        decelerationRate='fast'
-        showsHorizontalScrollIndicator={false}
-        bounces={false}
-        scrollEventThrottle={1}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-          { useNativeDriver: false } //
-        )}
-      >
-        {banners.map((slide) => {
-          return <Slide key={slide.id} imageUrl={slide.imageUrl} />;
-        })}
-      </Animated.ScrollView>
-      <Pagination slides={banners} scrollX={scrollX} />
+      <SliderBox
+        images={banners}
+        autoplay={true}
+        circleLoop={true}
+        inactiveDotColor={'#ddd'}
+        dotColor={'#000'}
+        imageLoadingColor={'black'}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 5,
+    // marginTop: 50,
+    // borderWidth: 2,
+    // borderColor: 'red'
   },
 });

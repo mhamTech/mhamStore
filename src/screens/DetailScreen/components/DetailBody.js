@@ -102,6 +102,7 @@ DetailBody.propTypes = {
 
 const styles = StyleSheet.create({
   footer: {
+    top: 25,
     width,
     backgroundColor: "#fff",
     paddingHorizontal: 20,

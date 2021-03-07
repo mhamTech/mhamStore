@@ -20,6 +20,8 @@ import { CartItem } from "./CartItem";
 import Messages from "../../../messages/user";
 //PropTypes check
 import PropTypes from "prop-types";
+// i18n
+import { t } from "i18n-js";
 
 export const CartBody = ({
   navigation,
@@ -28,41 +30,21 @@ export const CartBody = ({
   loadCarts,
   isRefreshing,
 }) => {
-  console.log('CartBody - carts', carts)
   const dispatch = useDispatch();
   const onRemove = (itemId) => {
-    // console.log(carts._id)
-    // return
-    Alert.alert("Remove", "Are you sure you remove products from the cart?",
+    Alert.alert(t("cart.remove"), t("cart.sureMessage"),
       [
         {
-          text: "Cancel",
+          text: t("cart.cancel"),
           style: "cancel",
         },
         {
-          text: "Confirm",
-          onPress: dispatch(removeFromCart(carts._id, itemId))
+          text: t("cart.confirm"),
+          onPress: async () => await dispatch(removeFromCart(carts._id, itemId))
         },
       ]
     );
   };
-
-  //test
-  // const test = useSelector((state) => state.CartNoAuthReducer.items);
-  // const cartItemTest = useSelector((state) => {
-  //   const transformedCartItem = [];
-  //   for (const key in state.CartNoAuthReducer.items) {
-  //     transformedCartItem.push({
-  //       productId: key,
-  //       productTitle: state.CartNoAuthReducer.items[key].productTitle,
-  //       productPrice: state.CartNoAuthReducer.items[key].productPrice,
-  //       quantity: state.CartNoAuthReducer.items[key].quantity,
-  //       productImg: state.CartNoAuthReducer.items[key].image,
-  //     });
-  //     // console.log(state.CartNoAuthReducer.items[key].img)
-  //   }
-  //   return transformedCartItem;
-  // });
 
   return (
     <View style={styles.footer}>
@@ -71,14 +53,14 @@ export const CartBody = ({
           <CustomText>{Messages["user.login.require"]}</CustomText>
           <View style={styles.nextButton}>
             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <CustomText style={{ color: "#fff" }}>Continue</CustomText>
+              <CustomText style={{ color: "#fff" }}>{t('profile.login')}</CustomText>
             </TouchableOpacity>
           </View>
         </View>
       ) : (carts.items.length === 0 ? (
         <View style={styles.center}>
           <CustomText style={{ fontSize: 16 }}>
-            No products in the shopping cart
+            {t("cart.noProduct")}
           </CustomText>
         </View>
       ) : (
@@ -93,9 +75,16 @@ export const CartBody = ({
                 <CartItem
                   item={item}
                   //removeFromCart(carts._id, item.item._id))
-                  onRemove={() => dispatch(onRemove(item.item._id))}
-                  onAdd={()    => dispatch(addToCart(item.item, user.token))}
-                  onDes={()    => dispatch(decCartQuantity(carts._id, item.item._id))}
+                  onRemove={() => {
+                    onRemove(item.item._id);
+                    // dispatch(removeFromCart(carts._id, item.item._id))
+                  }}
+                  onAdd={() => {
+                    dispatch(addToCart(item.item, user.token));
+                  }}
+                  onDes={() => {
+                    dispatch(decCartQuantity(carts._id, item.item._id));
+                  }}
                 />
               );
             }}
@@ -104,114 +93,6 @@ export const CartBody = ({
       ))}
     </View>
   );
-  // React.useEffect(() => {
-  //   // console.log(cartItemTest);
-  //   // console.log(test);
-  // });
-
-  // console.log("CartBody.js cartLength", Cartlength);
-
-  //end of test
-  // return (
-  //   <View style={styles.footer}>
-  //     {/* {Object.keys(user).length === 0 ? ( */}
-
-  //     {Cartlength === 0 ? (
-  //       <View style={styles.center}>
-  //         <CustomText style={{ fontSize: 16 }}>
-  //           No products in the shopping cart
-  //         </CustomText>
-  //       </View>
-  //     ) : Object.keys(user).length === 0 ? (
-  //       <View style={{ marginBottom: 0 }}>
-  //         <FlatList
-  //           data={cartItemTest}
-  //           keyExtractor={(item) => item.productId}
-  //           renderItem={({ item }) => (
-  //             <CartItemNoAuth
-  //               onRemove={() => {
-  //                 dispatch(cartActions.removeFromCart(item.productId));
-  //                 // console.log(item.productId);
-  //               }}
-  //               onDelete={() => {
-  //                 // console.log('hi')
-  //                 dispatch(cartActions.deleteFromCart(item.productId));
-  //               }}
-  //               onAdd={() => {
-  //                 dispatch(cartActions.addToCart(item));
-  //               }}
-  //               item={item}
-  //             />
-  //           )}
-  //         />
-  //         <View style={styles.center}>
-  //           <View style={styles.nextButton}>
-  //             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-  //               <CustomText style={{ color: "#fff" }}>Order now</CustomText>
-  //             </TouchableOpacity>
-  //           </View>
-  //         </View>
-  //       </View>
-  //     ) : (
-  //       <View style={{ marginBottom: 80 }}>
-  //         <FlatList
-  //           data={cartItemTest}
-  //           keyExtractor={(item) => item.productId}
-  //           renderItem={({ item }) => (
-  //             <CartItemNoAuth
-  //               onRemove={() => {
-  //                 dispatch(cartActions.removeFromCart(item.productId));
-  //                 // console.log(item.productId);
-  //               }}
-  //               onDelete={() => {
-  //                 // console.log('hi')
-  //                 dispatch(cartActions.deleteFromCart(item.productId));
-  //               }}
-  //               onAdd={() => {
-  //                 dispatch(cartActions.addToCart(item));
-  //               }}
-  //               item={item}
-  //             />
-  //           )}
-  //         />
-  //       </View>
-  //     )}
-  //     {/* ) :
-  //     //  carts.items.length === 0 ? (
-  //     //   <View style={styles.center}>
-  //     //     <CustomText style={{ fontSize: 16 }}>
-  //     //       No products in the shopping cart
-  //     //     </CustomText>
-  //     //   </View>
-  //     ) : (
-  //       <View style={{ marginBottom: 80 }}>
-  //         <FlatList
-  //           data={carts.items}
-  //           onRefresh={loadCarts}
-  //           refreshing={isRefreshing}
-  //           keyExtractor={(item) => item.item._id}
-  //           renderItem={({ item }) => {
-  //             return (
-  //               <CartItem
-  //                 item={item}
-  //                 onRemove={() => {
-  //                   // onRemove(item.item._id);
-  //                   dispatch(removeFromCart(carts._id, item.item._id));
-  //                 }}
-  //                 onAdd={() => {
-  //                   dispatch(addToCart(item.item, user.token));
-  //                 }}
-  //                 onDes={() => {
-  //                   dispatch(decCartQuantity(carts._id, item.item._id));
-  //                 }}
-  //               />
-  //             );
-  //           }}
-  //         />
-  //       </View> */}
-  //     {/* )} */}
-  //   </View>
-  // );
 };
 
 CartBody.propTypes = {
@@ -223,7 +104,7 @@ CartBody.propTypes = {
 };
 const styles = StyleSheet.create({
   footer: {
-    flex: 1,
+    // flex: 1,
   },
   nextButton: {
     borderWidth: 1,
@@ -235,19 +116,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   center: {
-    height: "50%",
+    height: "100%",
     width: "100%",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
 });
-
-// old code for
-// <View style={styles.center}>
-//   <CustomText>{Messages["user.login.require"]}</CustomText>
-//   <View style={styles.nextButton}>
-//     <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-//       <CustomText style={{ color: "#fff" }}>Continue</CustomText>
-//     </TouchableOpacity>
-//   </View>
-// </View>

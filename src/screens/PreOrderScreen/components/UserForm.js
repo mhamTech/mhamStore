@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { Field, reduxForm } from "redux-form";
+import { useSelector } from "react-redux";
 import renderField from "./RenderField";
 //Colors
 import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
 import PropTypes from "prop-types";
+import { t } from "i18n-js";
 
 //Validation
 const validate = (values) => {
+  // console.log('UserForm - validate - values:', values);
   const errors = {};
   if (!values.name) {
     errors.name = " Name cannot be blank";
@@ -20,8 +23,8 @@ const validate = (values) => {
   }
   if (!values.phone) {
     errors.phone = "Phone number cannot be blank";
-  } else if (values.phone.length !== 10) {
-    errors.phone = "Phone number must be 10 characters";
+  } else if (values.phone.length < 10) {
+    errors.phone = "Phone number must be 10 characters at least";
   } else {
     errors.phone = "";
   }
@@ -36,36 +39,40 @@ const validate = (values) => {
   return errors;
 };
 
-const User = ({ getReceiver, checkValidation }) => {
+const User = ({ getReceiver, checkValidation, initialValues }) => {
   const [receiverName, setReceiverName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
 
+  // // console.log('initialValues', initialValues)
+
   useEffect(() => {
-    getReceiver(receiverName, phone, address);
-  }, [receiverName, phone, address]);
+    getReceiver(initialValues.name || receiverName, initialValues.phone || phone, initialValues.address || address);
+  }, [initialValues.name || receiverName, initialValues.phone || phone, initialValues.address || address]);
 
   return (
     <View style={styles.container}>
-      <CustomText style={styles.title}>Shipment Details</CustomText>
+      <CustomText style={styles.title}>{t("user.shipmentDetails")}</CustomText>
       <View style={styles.inputContainer}>
         <View style={styles.inputBox}>
           <Field
             name="name"
             maxLength={35}
-            label="Full Name"
+            label={t("user.fullname")}
             keyboardType="default"
             component={renderField}
-            onChangeText={(value) => setReceiverName(value)}
+            onBeforeInput={() => setReceiverName(initialValues.name)}
+            onChangeText={(value) => setReceiverName(value) }
             checkValidation={checkValidation}
           />
 
           <Field
             name="phone"
-            maxLength={10}
-            label="Phone"
+            maxLength={12}
+            label={t("user.phone")}
             component={renderField}
-            onChangeText={(value) => setPhone(value)}
+            onBeforeInput={() => setPhone(initialValues.phone)}
+            onChangeText={(value) => setPhone(value) }
             keyboardType="numeric"
             returnKeyType="done"
             checkValidation={checkValidation}
@@ -74,9 +81,10 @@ const User = ({ getReceiver, checkValidation }) => {
           <Field
             name="address"
             maxLength={35}
-            label="address"
+            label={t("user.address")}
             component={renderField}
-            onChangeText={(value) => setAddress(value)}
+            onBeforeInput={() => setAddress(initialValues.address)}
+            onChangeText={(value) => setAddress(value) }
             keyboardType="default"
             checkValidation={checkValidation}
           />

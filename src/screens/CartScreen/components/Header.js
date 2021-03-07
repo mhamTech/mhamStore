@@ -8,6 +8,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../utils/Colors";
 //PropTypes check
 import PropTypes from "prop-types";
+// i18n
+import { t } from "i18n-js";
 
 const { height } = Dimensions.get("window");
 
@@ -23,7 +25,7 @@ export const Header = ({ navigation, user, carts }) => {
         <Ionicons name="ios-arrow-back" size={30} color={Colors.lighter_gold} />
       </TouchableOpacity>
       <CustomText style={styles.titleHeader}>
-        Cart
+        {t("tab.cart") + " "} 
         {Object.keys(user).length === 0
           ? ""
           : carts.items.length === 0

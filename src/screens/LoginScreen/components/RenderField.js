@@ -23,7 +23,7 @@ export default renderField = ({
         <TextInput
           placeholder={label}
           autoCapitalize='none'
-          mode='outlined'
+          mode='flat'
           clearButtonMode={passIcon ? "never" : "always"}
           selectionColor={Colors.leave_gold}
           theme={{ colors: { primary: Colors.leave_gold } }}

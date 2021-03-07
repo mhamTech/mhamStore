@@ -1,21 +1,24 @@
 import React from "react";
 import { View, Image, StyleSheet, Dimensions } from "react-native";
 import { Checkbox } from "react-native-paper";
-import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Entypo, MaterialIcons } from "@expo/vector-icons";
 //Text
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 //PropTypes check
 import PropTypes from "prop-types";
+import { t } from "i18n-js";
+
+// const [payByCard, setPayByCard] = useState(false);
 
 const { width } = Dimensions.get("window");
 
-export const PaymentBody = ({ navigation, payByCard, setPayByCard, token }) => {
+export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone }) => {
   return (
     <View style={styles.container}>
-      <CustomText style={styles.title}>Select Payment Method</CustomText>
+      <CustomText style={{...styles.title}}>{t("payment.methods")}</CustomText>
       <View style={styles.optionContainer}>
-        <View style={styles.option}>
+        {/* <View style={styles.option}>
           <Checkbox
             status={!payByCard ? "checked" : "unchecked"}
             color={Colors.lighter_gold}
@@ -30,6 +33,26 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token }) => {
             style={{ marginLeft: 10 }}
           />
           <CustomText style={styles.optionText}>Cash payment</CustomText>
+        </View> */}
+        <View style={styles.option}>
+          <Checkbox
+            status={!payByCard ? "checked" : "unchecked"}
+            color={Colors.lighter_gold}
+            onPress={() => {
+              setPayByCard(false);
+            }}
+          />
+          <MaterialIcons
+            name="call"
+            size={40}
+            color={Colors.lighter_gold}
+            style={{ marginLeft: 10 }}
+          />
+          <View style={{ flexDirection: 'column'}}>
+            <CustomText style={styles.optionText}>Customer Call</CustomText>
+            <CustomText style={{...styles.optionText, fontSize: 9.5}}>Our team will call you for discussing on:</CustomText>
+            <CustomText style={{...styles.optionText, fontSize: 8, color: 'blue'}}>{phone}</CustomText>
+          </View>
         </View>
         <View style={styles.option}>
           <Checkbox

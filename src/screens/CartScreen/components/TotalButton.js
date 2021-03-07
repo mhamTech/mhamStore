@@ -7,6 +7,7 @@ import Colors from "../../../utils/Colors";
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
 import PropTypes from "prop-types";
+import { t } from "i18n-js";
 
 export class TotalButton extends React.PureComponent {
   render() {
@@ -15,7 +16,7 @@ export class TotalButton extends React.PureComponent {
       navigation,
       cartItems,
       cartId,
-      newTotal,
+      // newTotal,
     } = this.props;
     return (
       <View style={styles.total}>
@@ -28,7 +29,7 @@ export class TotalButton extends React.PureComponent {
           <CustomText
             style={{ fontSize: 14, fontWeight: "500", color: Colors.text }}
           >
-            Total
+            {t("cart.total")}
           </CustomText>
           <NumberFormat price={total.toString()} style={{ fontSize: 14 }} />
         </View>
@@ -45,7 +46,7 @@ export class TotalButton extends React.PureComponent {
         >
           <View style={styles.btn}>
             <CustomText style={{ color: "#fff", fontSize: 16 }}>
-              Proceed to order
+              {t("cart.proceed")}
             </CustomText>
           </View>
         </TouchableOpacity>

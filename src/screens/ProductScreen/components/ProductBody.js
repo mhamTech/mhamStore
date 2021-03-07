@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useSelector } from "react-redux";
 import {
   View,
   StyleSheet,
@@ -20,13 +21,30 @@ ITEM_HEIGHT = 100;
 const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 
 export const ProductBody = ({navigation, productsFilter, searchFilterFunction}) => {
+  var categories = useSelector((state) => state.category);
+  const products = useSelector((state) => state.store.products);
+
+  /**
+   * categories: [
+    0: {_id: "60190695391ec56230ed798c", name: "Mobiles", bg: "#DCDCDC", __v: 1}
+    1: {_id: "601906a1391ec56230ed798d", name: "Watches", bg: "#DCDCDC", __v: 1}
+    2: {_id: "601908e9391ec56230ed798e", name: "Bags", bg: "#DCDCDC"}
+    3: {_id: "602512d08b9d4e0a002111f0", name: "Clothes", bg: "#DCDCDC"}
+    ]
+   */
   const DATA = [];
   const mobiles = productsFilter.filter((mobile) => mobile.type === "mobile");
   const watches = productsFilter.filter((watch) => watch.type === "watch");
-  // const bags = productsFilter.filter((bag) => bag.type === "bag");
+  const bags = productsFilter.filter((bag) => bag.type === "bag");
   DATA.push({ title: "Mobiles", data: mobiles });
   DATA.push({ title: "Watches", data: watches });
-  // DATA.push({ title: "bags", data: bags });
+  DATA.push({ title: "Bags", data: bags });
+
+  const DATA2 = [];
+  categories.categories.filter(category => DATA2.push({ title: category.name, data: '' }));
+  // categories.categories.filter(category => console.log(category));
+  // console.log('DATA2', DATA2)
+
   const scrollY = new Value(0.01);
   const sectionListRef = useRef(null);
 

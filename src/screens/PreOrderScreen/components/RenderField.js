@@ -23,7 +23,7 @@ export default renderField = ({
       <View>
         <TextInput
           label={label}
-          mode='outlined'
+          mode='flat'
           theme={{ colors: { primary: Colors.leave_gold } }}
           selectionColor={Colors.leave_gold}
           style={{

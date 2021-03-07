@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import Colors from "../../../utils/Colors";
 import { Button } from "react-native-paper";
 //PropTypes check
@@ -19,12 +19,15 @@ const UploadButton = ({
         onPress={UploadProfile}
         disabled={uploadButton}
         style={{
-          height: 50,
+          borderTopRightRadius: 20,
+          borderBottomRightRadius: 20,
+          height: 40,
+          width: '50%',
           justifyContent: "center",
           backgroundColor: Colors.leave_gold,
         }}
       >
-        Update Profile Picture
+        <Text style={{ fontSize: 10, color: '#fff' }}>Update Profile Picture</Text>
       </Button>
       {!uploadButton ? (
         <Button
@@ -34,13 +37,16 @@ const UploadButton = ({
           }}
           disabled={uploadButton}
           style={{
-            height: 50,
-            marginTop: 10,
+            marginTop: 5,
+            borderTopRightRadius: 20,
+            borderBottomRightRadius: 20,
+            height: 40,
+            width: '50%',
             justifyContent: "center",
             backgroundColor: Colors.leave_gold,
           }}
         >
-          Cancel
+          <Text style={{ fontSize: 10, color: '#fff' }}>Cancel</Text>
         </Button>
       ) : (
         <></>
@@ -59,6 +65,7 @@ UploadButton.propTypes = {
 const styles = StyleSheet.create({
   button: {
     marginTop: 30,
+    backgroundColor: 'white'
   },
 });
 

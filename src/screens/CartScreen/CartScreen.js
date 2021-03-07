@@ -14,7 +14,6 @@ import { set } from "react-native-reanimated";
 const { height } = Dimensions.get("window");
 
 export const CartScreen = (props) => {
-  // console.log('CartScreen', props)
   const [isRefreshing, setIsRefreshing] = useState(false);
   const user = useSelector((state) => state.auth.user);
   const carts = useSelector((state) => state.cart.cartItems);
@@ -22,9 +21,13 @@ export const CartScreen = (props) => {
   //old cart
   const cartItems = carts.items;
   const cartId = carts._id;
+  // console.log('cartItems', cartItems)
+  // console.log('cartId', cartId)
   const dispatch = useDispatch();
+
   let total = 0;
   carts.items.map((item) => (total += +item.item.price * +item.quantity));
+  
   const loadCarts = useCallback(async () => {
     setIsRefreshing(true);
     try {
@@ -38,17 +41,6 @@ export const CartScreen = (props) => {
   useEffect(() => {
     loadCarts();
   }, [user.userid]);
-
-  //new cart
-  const newCartItems = useSelector((state) => state.CartNoAuthReducer.items);
-
-  // console.log("CartScreen.js newCartItems", newCartItems);
-
-  //new total
-  let newTotal = 0;
-  // for (const key in newCartItems) {
-  //   newTotal += newCartItems[key].productPrice * +newCartItems[key].quantity;
-  // }
 
   return (
     <View style={styles.container}>

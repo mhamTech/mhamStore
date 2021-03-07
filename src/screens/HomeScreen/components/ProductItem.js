@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 8,
     aspectRatio: 16 / 9,
+    resizeMode: 'contain'
   },
   center: {
     flex: 1,

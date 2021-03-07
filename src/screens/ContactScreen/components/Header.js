@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Text,
 } from "react-native";
 //Color
 import Colors from "../../../utils/Colors";
@@ -12,6 +13,7 @@ import Colors from "../../../utils/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 //PropTypes check
 import PropTypes from "prop-types";
+import CustomText from "../../../components/UI/CustomText";
 
 const { height } = Dimensions.get("window");
 
@@ -24,13 +26,10 @@ export const Header = ({ navigation }) => {
             navigation.toggleDrawer();
           }}
         >
-          <MaterialCommunityIcons name='menu' size={40} color={Colors.lighter_gold} />
+          <MaterialCommunityIcons name='menu' size={25} color={Colors.lighter_gold} />
         </TouchableOpacity>
       </View>
-      <Image
-        style={styles.image}
-        source={require("../../../assets/Images/logo1.png")}
-      />
+      <CustomText style={styles.title}>contact us</CustomText>
     </View>
   );
 };
@@ -42,15 +41,23 @@ Header.propTypes = {
 const styles = StyleSheet.create({
   headerContainer: {
     position: "absolute",
-    top: height < 668 ? 30 : 50,
+    // top: height < 668 ? 30 : 50,
     left: 15,
     zIndex: 10,
   },
   header: {
-    alignItems: "center",
-    height: 200,
-    backgroundColor: Colors.lighter_gold,
+    alignItems: "flex-start",
+    height: 70,
+    // backgroundColor: Colors.lighter_gold,
     justifyContent: "center",
+    flexDirection: 'row',
+    marginTop: 35,
+  },
+  title: {
+    fontSize: 25,
+    textAlign: "center",
+    fontWeight: "500",
+    textTransform: "uppercase",
   },
   image: {
     marginTop: 15,

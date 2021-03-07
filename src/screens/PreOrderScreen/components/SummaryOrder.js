@@ -9,37 +9,27 @@ import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 //PropTypes check
 import PropTypes from "prop-types";
+import i18n, { t } from "i18n-js";
 
 export class SummaryOrder extends React.PureComponent {
   render() {
-    const { cartItems, total  ,newCartItems} = this.props;
-
-    let newOrderList = []; //item.productId //item.quantity
-    for (const key in newCartItems) {
-      newOrderList.push({
-        item: key,
-        filename: newCartItems[key].productTitle,
-        quantity: newCartItems[key].quantity,
-        thumb: newCartItems[key].image,
-        price: newCartItems[key].productPrice,
-      });
-    }
+    const { cartItems, total } = this.props;
 
     return (
       <View style={styles.container}>
         <CustomText style={{ ...styles.title, marginVertical: 5 }}>
-          Order summary
+        {t("cart.orderSummary")}
         </CustomText>
-        <View style={{ backgroundColor: "#fff", paddingHorizontal: 10 }}>
-          {newOrderList.map((item) => {
+        {/* <View style={{ backgroundColor: "#fff", paddingHorizontal: 10 }}>
+          {cartItems.map((item) => {
             return (
               <View key={item.item}>
                 <PreOrderItem item={item} />
               </View>
             );
           })}
-        </View>
-        {/* <View style={{ backgroundColor: "#fff", paddingHorizontal: 10 }}>
+        </View> */}
+        <View style={{ backgroundColor: "#fff", paddingHorizontal: 10 }}>
           {cartItems.map((item) => {
             return (
               <View key={item.item.createdAt}>
@@ -47,7 +37,7 @@ export class SummaryOrder extends React.PureComponent {
               </View>
             );
           })}
-        </View> */}
+        </View>
         <View style={styles.total}>
           <CustomText
             style={{
@@ -56,9 +46,12 @@ export class SummaryOrder extends React.PureComponent {
               fontWeight: "500",
             }}
           >
-            Total
+            {t("cart.total")}
           </CustomText>
           <NumberFormat price={total.toString()} />
+        </View>
+        <View style={{ width: '100%', alignItems: 'center'}}>
+          {/* <CustomText style={{ marginHorizontal: 10, color: Colors.text, }}>Expect a call in next 3 buisness days</CustomText> */}
         </View>
       </View>
     );

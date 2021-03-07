@@ -6,6 +6,7 @@ import {
   Image,
   ActionSheetIOS,
   Platform,
+  Dimensions
 } from "react-native";
 //Color
 import { FontAwesome } from "@expo/vector-icons";
@@ -16,6 +17,8 @@ import { useActionSheet } from "@expo/react-native-action-sheet";
 //PropTypes check
 import PropTypes from "prop-types";
 import { set } from "react-native-reanimated";
+
+const { width, height } = Dimensions.get("window");
 
 export const ProfilePic = ({
   user,
@@ -34,8 +37,8 @@ export const ProfilePic = ({
     showActionSheetWithOptions(
       {
         options,
-        // destructiveButtonIndex: 2,
-        // cancelButtonIndex: 0,
+        destructiveButtonIndex: 2,
+        // cancelButtonIndex: 2,
       },
       async (buttonIndex) => {
         let result;

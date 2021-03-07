@@ -26,7 +26,6 @@ const findIndex = (cartList, id) => {
 };
 export const cartReducer = (state = initialState, action) => {
   const cartList = state.cartItems.items;
-  // console.log('cartList', cartList);
   switch (action.type) {
     case CART_LOADING:
       return {
@@ -71,7 +70,6 @@ export const cartReducer = (state = initialState, action) => {
         const { itemId } = action;
         const indexItem = findIndex(cartList, itemId);
         cartList.splice(indexItem, 1);
-        console.log('cartList', cartList)
         return {
           ...state,
           cartItems: { ...state.cartItems },
