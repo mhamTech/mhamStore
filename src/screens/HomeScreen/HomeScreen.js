@@ -26,14 +26,9 @@ import Skeleton from "../../components/Loaders/SkeletonLoading";
 import Skeleton2 from "../../components/Loaders/SkeletonLoading2";
 import Snackbar from "../../components/Notification/Snackbar";
 //FloatButton
-import { Portal, Provider } from "react-native-paper";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Provider } from "react-native-paper";
 import RecentlySlide from "./components/RecentlySlide";
-// i18n
-import { t } from "i18n-js";
-import i18n from "../../I18n"
 
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 const { width, height } = Dimensions.get("window");
 
 export const HomeScreen = ({ navigation }) => {
@@ -47,11 +42,6 @@ export const HomeScreen = ({ navigation }) => {
   const slides = useSelector((state) => state.recentlyReducer);
   const notification = useSelector((state) => state.auth.notification);
   const [ recently, setRecently ] = useState(true)
-  const scrollX = useRef(new Animated.Value(0.01)).current;
-  
-  // const [refreshing, setRefreshing] = useState(false);
-
-  // i18n.locale = 'en'
 
   const renderItem = ({item, index}) => {
     if(item.show === '0') return <View/>
@@ -93,24 +83,24 @@ export const HomeScreen = ({ navigation }) => {
             navigation={navigation}
             products={products}
           />
-          <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} style={{ width: '100%', height: '100%'}}>
+          <ScrollView 
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            style={{ width: '100%', height: '100%', marginTop: 52 }}>
             <Carousel />
-            <View style={{ backgroundColor: 'black', marginHorizontal: 20, marginVertical: 10, borderRadius: 2, padding: 5, height: 30, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.slidesContainer}>
               <CustomText style={{ color: 'white', fontSize: 12, fontWeight: 'bold' }}>SHOP THE MOST SMART ITEMS WITH US</CustomText>
             </View>
             {recently &&
               <>
-                <CustomText style={styles.catText}>{t('homeScreen.recently')}</CustomText>
+                <CustomText style={styles.catText}>Recently</CustomText>
                 <ScrollView
-                  style={{ width }}
                   horizontal
                   snapToInterval={width}
                   decelerationRate='fast'
                   showsHorizontalScrollIndicator={false}
                   bounces={false}
-                  scrollEventThrottle={1}
-                  // onScroll={Animated.event([{nativeEvent: { contentOffset: { x: scrollX } }}],{useNativeDriver: false})}>
-                  >
+                  scrollEventThrottle={1}>
                   {slides.recently.map((slide, index) => {
                     return (
                       <View key={index}>
@@ -120,15 +110,6 @@ export const HomeScreen = ({ navigation }) => {
                   } )}
                 </ScrollView>
 
-                {/* <FlatList
-                  key={item => item.name}
-                  data={slides.recently}
-                  // data={emptyData}
-                  showsHorizontalScrollIndicator={false}
-                  horizontal={true}
-                  renderItem={({ item, index }) => <RecentlySlide key={index} name={item.name} bg={item.bg} image={item.image} price={item.price} /> }
-                /> */}
-
                 <FlatList
                   keyExtractor={(item, index) => index.toString()}
                   key={(item, index) => index.toString()}
@@ -137,77 +118,8 @@ export const HomeScreen = ({ navigation }) => {
                   showsHorizontalScrollIndicator={false}
                   renderItem={(item, index) => renderItem(item, index)}
                 />
-
-                {/* <Animated.ScrollView
-                  horizontal
-                  snapToInterval={width}
-                  decelerationRate='fast'
-                  showsHorizontalScrollIndicator={false}
-                  bounces={false}
-                  scrollEventThrottle={1}
-                  onScroll={Animated.event([{nativeEvent: { contentOffset: { x: scrollX } }}],{useNativeDriver: false})}>
-                  {slides.recently.map((slide, index) => {
-                    return (
-                      <View key={index}>
-                        <RecentlySlide name={slide.name} bg={slide.bg} image={slide.image} price={slide.price} />
-                      </View>
-                    )
-                  } )}
-                </Animated.ScrollView> */}
               </>
             }
-
-            {/* <AnimatedFlatList
-              // contentContainerStyle={styles.list}
-              showsVerticalScrollIndicator={false}
-              scrollEventThrottle={1}
-              ListHeaderComponent={() => (
-                <View style={{
-                  top: Platform.OS === "android"
-                    ? StatusBar.currentHeight
-                    : height > 736
-                    ? 40
-                    : 20,
-                    // borderWidth: 1,
-                    // marginBottom: 30,
-                }}>
-                    <Carousel />
-                    <View style={{ backgroundColor: 'black', marginHorizontal: 20, marginVertical: 10, borderRadius: 2, padding: 5, height: 30, justifyContent: 'center', alignItems: 'center' }}>
-                        <CustomText style={{ color: 'white', fontSize: 12, fontWeight: 'bold' }}>SHOP THE MOST SMART ITEMS</CustomText>
-                    </View>
-                  {recently &&
-                    <>
-                      <CustomText style={styles.catText}>{t('homeScreen.recently')}</CustomText>
-                      <Animated.ScrollView
-                        horizontal
-                        snapToInterval={width}
-                        decelerationRate='fast'
-                        showsHorizontalScrollIndicator={false}
-                        bounces={false}
-                        scrollEventThrottle={1}
-                        onScroll={Animated.event([{nativeEvent: { contentOffset: { x: scrollX } }}],{useNativeDriver: false})}>
-                        {slides.recently.map((slide, index) => {
-                          return (
-                            <View key={index}>
-                              <RecentlySlide name={slide.name} bg={slide.bg} image={slide.image} price={slide.price} />
-                            </View>
-                          )
-                        } )}
-                      </Animated.ScrollView>
-                    </>
-                  }
-                  <CustomText style={{...styles.catText, paddingBottom: 5 }}>{t('homeScreen.categories')}</CustomText>
-                </View>
-              )}
-              onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: true })}
-              columnWrapperStyle={{ flexWrap: 'wrap', flex: 1, marginTop: -20, paddingBottom: 40 }}
-              horizontal={false}
-              data={categories.categories}
-              numColumns={2}
-              keyExtractor={item => item._id}
-              renderItem={(item, index) => renderItem(item, index)}
-            /> */}
-
           </ScrollView>
         </>
       )}
@@ -229,6 +141,16 @@ export const HomeScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  slidesContainer: {
+    backgroundColor: 'black',
+    marginHorizontal: 20,
+    marginVertical: 10,
+    borderRadius: 2,
+    padding: 5,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   catText: {
     fontSize: 13,
     marginStart: 14,

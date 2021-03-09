@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFavorite, addFavorite } from "../../../reducers";
 import Messages from "../../../messages/user";
 import Colors from "../../../utils/Colors";
-import * as cartActions from "../../../reducerTest/CartNoAuthAction";
 
 //PropTypes check
 import PropTypes from "prop-types";
@@ -29,7 +28,6 @@ export const ActionButton = ({
   item,
   color,
   setShowSnackbar,
-  FavoriteProducts,
   setModalVisible,
   setMessage,
 }) => {
@@ -63,53 +61,16 @@ export const ActionButton = ({
       style={styles.actionContainer}
     >
       <View style={styles.action}>
-        {/* favorite button */}
-        {/* <TouchableOpacity
-          onPress={toggleFavorite}
-          style={[styles.favorite, { borderColor: color }]}
-        >
-          {FavoriteProducts ? (
-            <LottieView
-              source={require("../../../components/IconAnimation/heart.json")}
-              autoPlay={FavoriteProducts}
-              loop={false}
-            />
-          ) : (
-            <Ionicons name="ios-heart-empty" size={27} color={color} />
-          )}
-        </TouchableOpacity> */}
-        {/* <TouchableOpacity
-          style={[styles.addCart, { backgroundColor: color }]}
-          onPress={addToCartAct}
-        >
-          {cartLoading ? (
-            <ActivityIndicator size="small" color="#fff" />
-          ) : (
-            <CustomText style={styles.actionText}>Add to cart</CustomText>
-          )}
-        </TouchableOpacity> */}
         <TouchableOpacity
           style={[styles.addCart, { backgroundColor: color }]}
-          onPress={addToCartAct}
-        >
+          onPress={addToCartAct}>
           {cartLoading ? (
             <ActivityIndicator size="small" color="#fff" />
           ) : (
-            <CustomText style={styles.actionText}>+ Add to cart</CustomText>
+            <CustomText style={styles.actionText}>Order this item</CustomText>
           )}
         </TouchableOpacity>
       </View>
-      {/* test */}
-      {/* <TouchableOpacity
-        style={[styles.addCart, { backgroundColor: color }]}
-        onPress={test}
-      >
-        {cartLoading ? (
-          <ActivityIndicator size="small" color="#fff" />
-        ) : (
-          <CustomText style={styles.actionText}>Add to cart</CustomText>
-        )}
-      </TouchableOpacity> */}
     </Animatable.View>
   );
 };
@@ -125,13 +86,14 @@ ActionButton.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  actionContainer: {
+  },
   action: {
     flexDirection: "row",
     height: 60,
     justifyContent: "flex-end",
     alignItems: "center",
-    // paddingHorizontal: 20,
-    // backgroundColor: null,
+    backgroundColor: null,
   },
   addCart: {
     width: "50%",
@@ -147,7 +109,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 2,
-    // paddingTop: 5,
     borderRadius: 5,
     height: 50,
   },
@@ -157,7 +118,3 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
-
-//old code
-// setMessage(Messages['user.login.require']); //without login
-// setShowSnackbar(true);

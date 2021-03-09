@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { Field, reduxForm } from "redux-form";
-import { useSelector } from "react-redux";
 import renderField from "./RenderField";
 //Colors
 import Colors from "../../../utils/Colors";
@@ -12,7 +11,6 @@ import { t } from "i18n-js";
 
 //Validation
 const validate = (values) => {
-  // console.log('UserForm - validate - values:', values);
   const errors = {};
   if (!values.name) {
     errors.name = " Name cannot be blank";
@@ -28,14 +26,6 @@ const validate = (values) => {
   } else {
     errors.phone = "";
   }
-  if (!values.address) {
-    errors.address = "Address cannot be empty";
-  } else if (values.address.length < 6) {
-    errors.address = "The address must be 6 characters or more";
-  } else {
-    errors.address = "";
-  }
-
   return errors;
 };
 
@@ -47,8 +37,8 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
   // // console.log('initialValues', initialValues)
 
   useEffect(() => {
-    getReceiver(initialValues.name || receiverName, initialValues.phone || phone, initialValues.address || address);
-  }, [initialValues.name || receiverName, initialValues.phone || phone, initialValues.address || address]);
+    getReceiver(initialValues.name || receiverName, initialValues.phone || phone);
+  }, [initialValues.name || receiverName, initialValues.phone || phone]);
 
   return (
     <View style={styles.container}>
@@ -65,7 +55,6 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
             onChangeText={(value) => setReceiverName(value) }
             checkValidation={checkValidation}
           />
-
           <Field
             name="phone"
             maxLength={12}
@@ -78,7 +67,7 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
             checkValidation={checkValidation}
           />
 
-          <Field
+          {/* <Field
             name="address"
             maxLength={35}
             label={t("user.address")}
@@ -87,7 +76,7 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
             onChangeText={(value) => setAddress(value) }
             keyboardType="default"
             checkValidation={checkValidation}
-          />
+          /> */}
         </View>
       </View>
     </View>

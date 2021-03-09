@@ -93,7 +93,8 @@ export const Login = (email, password) => {
       }
       const resData = await response.json();
       saveDataToStorage("user", resData);
-      dispatch(setLogoutTimer(60 * 60 * 1000 * 24 * 30)); // 1 month
+      dispatch(setLogoutTimer(1000 * 60 * 60 * 24 * 30)); // 1 month
+      // dispatch(setLogoutTimer(60000)); // 1 month
       dispatch({
         type: LOGIN,
         user: resData,

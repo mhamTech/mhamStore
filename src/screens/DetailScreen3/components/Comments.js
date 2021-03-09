@@ -93,14 +93,14 @@ export const Comments = () => {
 
 const styles = StyleSheet.create({
   commentContainer: {
-    top: 25,
+    // top: 25,
     marginBottom: 40,
     height: 50,
     flexDirection: "row",
     alignItems: "center",
     borderTopColor: Colors.light_grey,
     paddingHorizontal: 20,
-    backgroundColor: '#E5E5E5',
+    backgroundColor: '#eee',
     borderRadius: 10,
     // marginBottom: 10,
   },

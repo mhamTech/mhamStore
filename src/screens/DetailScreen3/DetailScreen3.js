@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Dimensions, Animated, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, Animated, Platform } from 'react-native';
 //Color
 import Colors from '../../utils/Colors';
 //Redux
@@ -13,29 +13,20 @@ import {
   ModalComp,
   Comments,
 } from './components';
-import { colorCheck } from '../../utils/Tools';
 
 export const DetailScreen3 = (props) => {
+
   const scrollY = new Animated.Value(0.01);
   const user = useSelector((state) => state.auth.user);
   const { item } = props.route.params;
   const [message, setMessage] = useState('');
   const [showSnackbar, setShowSnackbar] = useState(false);
-  // const [color, setColor] = useState(Colors.lighter_gold);
-  //color
-  const type = item.color;
+  
   const [modalVisible, setModalVisible] = useState(false);
   //Favorite
   const FavoriteProducts = useSelector((state) =>
     state.fav.favoriteList.some((product) => product._id === item._id),
   );
-  useEffect(() => {
-    // const checkColor = async () => {
-    //   const getColor = await colorCheck(type);
-    //   setColor(getColor);
-    // };
-    // checkColor();
-  }, [item]);
 
   const color = Colors.light_gold
 
@@ -66,6 +57,7 @@ export const DetailScreen3 = (props) => {
         setMessage={setMessage}
         user={user}
         color={color}
+        navigation={props.navigation}
       />
       <ModalComp
         item={item}
@@ -83,6 +75,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E5E5E5',
     paddingBottom: Platform.OS === 'ios' ? 20 : 0,
-    height: '100%'
+    height: '100%',
   },
 });

@@ -72,15 +72,15 @@ export class CartItem extends React.PureComponent {
           </CustomText>
           <NumberFormat price={sum.toString()} />
           <View style={styles.box}>
-            <TouchableOpacity onPress={checkDesQuantity} style={styles.boxMin}>
+            {/* <TouchableOpacity onPress={checkDesQuantity} style={styles.boxMin}>
               <MaterialCommunityIcons name="minus" size={16} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View>
-              <CustomText style={styles.boxText}>{item.quantity}</CustomText>
+              <CustomText style={styles.boxText}>Quantity: {item.quantity}</CustomText>
             </View>
-            <TouchableOpacity onPress={AddItemHandler} style={styles.boxMin}>
+            {/* <TouchableOpacity onPress={AddItemHandler} style={styles.boxMin}>
               <MaterialCommunityIcons name="plus" size={16} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       </View>
@@ -128,11 +128,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    height: Platform.OS === "ios" ? 30 : 25,
-    backgroundColor: Colors.light_grey,
-    width: 90,
-    borderRadius: 5,
-    paddingHorizontal: 10,
+    // height: Platform.OS === "ios" ? 30 : 25,
+    // backgroundColor: Colors.light_grey,
+    // borderRadius: 5,
+    // paddingHorizontal: 10,
     marginTop: 5,
   },
   boxMin: {

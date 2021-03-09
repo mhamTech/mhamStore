@@ -4,31 +4,25 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
-  Keyboard,
   SectionList,
   Text,
   Platform,
-  Image,
-  StatusBar,
-  Dimensions
+  Dimensions,
+  FlatList
 } from "react-native";
 import Animated, { Value } from "react-native-reanimated";
-import { Ionicons, Feather } from "@expo/vector-icons";
 //Color
 import Colors from "../../../utils/Colors";
 import HorizontalItem from "./HorizontalItem";
-import CustomText from "../../../components/UI/CustomText";
 import { Header } from "./Header";
 import { Filter } from "./Filter";
 //PropTypes check
 import PropTypes from "prop-types";
-import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import LottieView from "lottie-react-native";
 // i18n
 import { t } from "i18n-js"
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
-const AnimatedSectionList = Animated.createAnimatedComponent(SectionList);
 const { width, height } = Dimensions.get("window");
 
 // export const CategoryBody = ({navigation, productsFilter, searchFilterFunction, CategoryScreen}) => {
@@ -49,7 +43,6 @@ export const CategoryBody = (props) => {
         />
       </TouchableWithoutFeedback>
       </View>
-      {/* <View style={{ width: '100%', borderColor: '#a6a6a6', borderWidth: 1,}} /> */}
       {!DATA.length ?
       // TODO: add lottie to android
       Platform.OS === 'ios' ?
@@ -66,11 +59,6 @@ export const CategoryBody = (props) => {
         </View>
         :
         <>
-          {/* <Filter
-            DATA={DATA}
-            image={image}
-            scrollY={scrollY}
-          /> */}
           <AnimatedFlatList
             contentContainerStyle={{ borderWidth: 0, }}
             showsVerticalScrollIndicator={false}

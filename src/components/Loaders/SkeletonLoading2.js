@@ -41,6 +41,14 @@ const Skeleton2 = () => {
       </View>
       <Placeholder style={{
           ...styles.placeholder,
+          marginHorizontal: 20,
+          marginVertical: 10,
+          borderRadius: 2,
+          height: 30
+        }}
+      />
+      <Placeholder style={{
+          ...styles.placeholder,
           width: 60,
           height: 20,
           margin: 10,
@@ -62,8 +70,8 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
                 ...styles.placeholder,
-                height: 152,
-                width: 80,
+                width: 90,
+                height: 130,
                 borderRadius: 4
             }}
           />
@@ -72,8 +80,8 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
               ...styles.placeholder,
-              height: 152,
-              width: 80,
+              width: 90,
+              height: 130,
               borderRadius: 4
             }}
           />
@@ -82,8 +90,8 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
               ...styles.placeholder,
-              height: 152,
-              width: 80,
+              width: 90,
+              height: 130,
               borderRadius: 4
             }}
           />
@@ -92,8 +100,8 @@ const Skeleton2 = () => {
         <Placeholder
           style={{
               ...styles.placeholder,
-              height: 152,
-              width: 80,
+              width: 90,
+              height: 130,
               borderRadius: 4
           }}
         />
@@ -102,8 +110,8 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
                 ...styles.placeholder,
-                height: 152,
-                width: 80,
+                width: 90,
+              height: 130,
                 borderRadius: 4
             }}
           />

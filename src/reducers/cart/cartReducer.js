@@ -7,6 +7,7 @@ import {
   RESET_CART,
   CART_LOADING,
   CART_FAILURE,
+  CART_MULTIPLE,
 } from "./cartActions";
 import { LOGOUT } from "../auth/authActions";
 
@@ -18,7 +19,7 @@ const initialState = {
   isLoading: false,
 };
 
-const findIndex = (cartList, id) => {
+export const findIndex = (cartList, id) => {
   const index = cartList.findIndex((cart) => {
     return cart.item._id === id;
   });
@@ -43,20 +44,33 @@ export const cartReducer = (state = initialState, action) => {
         cartItems: action.carts,
         isLoading: false,
       };
+    case CART_MULTIPLE:
+      // alert('multiple');
+      return {
+        ...state,
+        isLoading: false,
+      };
     case ADD_CART:
       const id = action.cartItem._id;
       if (cartList.length !== 0) {
+        // in case of not empty cart
+        // checking if the ordered item has
+        // founded in the cart
+        // TODO: cancel order the item multiple
+        // times
+        // console.log('cartReducer - cartList', cartList);
         const index = findIndex(cartList, id);
         if (index >= 0) {
-          cartList[index] = new Cart(
-            action.cartItem,
-            +cartList[index].quantity + 1
-          );
+          // cartList[index] = new Cart(
+          //   action.cartItem,
+          //   +cartList[index].quantity + 1
+          // );
         } else {
           const newItem = new Cart(action.cartItem, 1);
           cartList.push(newItem);
         }
       } else {
+        // in case of an empty cart
         const newItem = new Cart(action.cartItem, 1);
         cartList.push(newItem);
       }

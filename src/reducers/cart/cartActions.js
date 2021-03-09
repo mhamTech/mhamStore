@@ -1,7 +1,9 @@
 import { API_URL } from "../../utils/Config";
 import { timeoutPromise } from "../../utils/Tools";
+import { findIndex } from "./cartReducer";
 export const CART_LOADING = "CART_LOADING";
 export const CART_FAILURE = "CART_FAILURE";
+export const CART_MULTIPLE = "CART_MULTIPLE";
 export const FETCH_CART = "FETCH_CART";
 export const ADD_CART = "ADD_CART";
 export const RESET_CART = "RESET_CART";
@@ -63,7 +65,6 @@ export const addToCart = (item) => {
     });
     const user = getState().auth.user;
     try {
-      // console.log('token', user.token)
       const response = await timeoutPromise(
         fetch(`${API_URL}/cart/post`, {
           headers: {
@@ -83,16 +84,23 @@ export const addToCart = (item) => {
           }),
         })
       );
-      if (!response.ok) {
+      if (response.status === 300) {
+        dispatch({
+          type: CART_MULTIPLE
+        })
+      }
+      else if (!response.ok) {
         dispatch({
           type: CART_FAILURE,
         });
         throw new Error("Something went wrong!");
       }
-      dispatch({
-        type: ADD_CART,
-        cartItem: item,
-      });
+      else {
+        dispatch({
+          type: ADD_CART,
+          cartItem: item,
+        });
+      }
     } catch (err) {
       throw err;
     }

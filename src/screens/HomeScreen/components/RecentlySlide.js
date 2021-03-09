@@ -1,30 +1,20 @@
 import React from "react";
-import { View, Dimensions, StyleSheet, Image } from "react-native";
+import { View, Dimensions, StyleSheet, Image, TouchableOpacity } from "react-native";
 const { width } = Dimensions.get("window");
 
 const RecentlySlide = ({ name, bg, image, price }) => {
   return (
-    <View style={{...styles.container}}>
+    <TouchableOpacity style={{...styles.container}}>
       <View style={styles.background}>
-          {/* <Image source={{ uri: image }} style={{ width: '100%', height: '100%', borderRadius: 5 }} /> */}
+          <Image source={{ uri: image }} style={{ width: '100%', height: '100%', borderRadius: 5 }} />
       </View>
-    </View>
-
-    // <TouchableOpacity style={{ borderWidth: 1, height: 222, width: 142}} onPress={() => ToastAndroid.show('clicked', ToastAndroid.SHORT)}>
-    // <View style={styles.container}>
-    //     <View style={{...styles.item, backgroundColor: bg}}>
-    //         {/* <Image source={{uri: image}} style={{width: '100%', height: '100%', marginBottom: 8, borderRadius: 4}} /> */}
-    //     </View>
-    //     <CustomText style={styles.text}>{name}</CustomText>
-    //     <CustomText style={{...styles.text, fontWeight: "bold", fontSize: 10}}>{price} SAR</CustomText>
-    // </View>
-    // </TouchableOpacity>
+    </TouchableOpacity>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    width: 150,
-    height: 220,
+    width: 90,
+    height: 130,
     borderRadius: 5,
     padding: 5,
     marginStart: 10,

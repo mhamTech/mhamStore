@@ -21,12 +21,10 @@ export const PreOrderScreen = (props) => {
     cartId,
   } = props.route.params; //comes from cart screen
   const [error, setError] = useState("");
-  //Can Toi uu lai
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   // const [province, setProvince] = useState("");
-  const [town, setTown] = useState("");
   useEffect(() => {
     return () => {
       unmounted.current = true;
@@ -42,11 +40,6 @@ export const PreOrderScreen = (props) => {
     }
     return;
   }, [isFocused]);
-
-  // const getInfo = (province, town) => {
-  //   setProvince(province);
-  //   setTown(town);
-  // };
   
   const getReceiver = (name, phone, address) => {
     setName(name);
@@ -64,7 +57,7 @@ export const PreOrderScreen = (props) => {
   const fullAddress = `${address}`;
   const toPayment = async () => {
     try {
-      if (error == undefined ) {//&& province.length !== 0 && town.length !== 0) {
+      if (error == undefined ) {
         props.navigation.navigate("Payment", {
           screen: "PaymentScreen",
           params: {
@@ -84,31 +77,17 @@ export const PreOrderScreen = (props) => {
     } catch (err) {
       throw err;
     }
-    // props.navigation.navigate("Payment", {
-    //   screen: "PaymentScreen",
-    //   params: {
-    //     fullAddress,
-    //     orderItems,
-    //     name,
-    //     phone,
-    //     total,
-    //     cartId,
-    //     carts,
-    //   },
-    // });
   };
   useEffect(() => {
     if (carts.items.length === 0) {
-      // props.navigation.goBack();
+      props.navigation.goBack();
     }
   }, [carts.items]);
   const user = useSelector((state) => state.auth.user);
   const initialValues = {
     name: user.name,
     phone: user.phone,
-    address: user.address,
   }
-  // console.log('user', user)
 
   return (
     <View style={styles.container}>
@@ -123,8 +102,7 @@ export const PreOrderScreen = (props) => {
               checkValidation={checkValidation}
               initialValues={initialValues}
             />
-            {/* <Address getInfo={getInfo} /> */}
-              <SummaryOrder cartItems={cartItems} total={total} />
+            <SummaryOrder cartItems={cartItems} total={total} />
           </ScrollView>
           <TotalButton toPayment={toPayment} />
         </>

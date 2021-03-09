@@ -44,7 +44,7 @@ export class ModalComp extends React.PureComponent {
         transparent={true}
         visible={modalVisible}
       >
-        <View style={styles.modalContainer}></View>
+        <View style={styles.modalContainer}/>
         <View style={styles.modal}>
           <TouchableOpacity
             animation="zoomIn"
@@ -67,7 +67,7 @@ export class ModalComp extends React.PureComponent {
               size={20}
             />
             <CustomText style={{ ...styles.success, color }}>
-              The product has been added to cart
+              The product has been added to your orders list
             </CustomText>
           </View>
           <View style={styles.modelInfo}>
@@ -87,9 +87,9 @@ export class ModalComp extends React.PureComponent {
                 <CustomText style={{ ...styles.title, fontSize: 15 }}>
                   {item.filename}
                 </CustomText>
-                <CustomText style={{ fontSize: 12, color: Colors.grey }}>
+                {/* <CustomText style={{ fontSize: 12, color: Colors.grey }}>
                   Provided by Mham{" "}
-                </CustomText>
+                </CustomText> */}
               </View>
               <CustomText
                 style={{ marginTop: 5, fontSize: 14, color: Colors.text }}
@@ -115,7 +115,7 @@ export class ModalComp extends React.PureComponent {
               onPress={moveToCart}
             >
               <CustomText style={styles.actionText}>
-                View Shopping Cart
+                View my orders
               </CustomText>
             </TouchableOpacity>
           </View>

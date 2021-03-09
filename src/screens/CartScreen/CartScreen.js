@@ -18,13 +18,10 @@ export const CartScreen = (props) => {
   const user = useSelector((state) => state.auth.user);
   const carts = useSelector((state) => state.cart.cartItems);
   const loading = useSelector((state) => state.cart.isLoading);
-  //old cart
   const cartItems = carts.items;
   const cartId = carts._id;
-  // console.log('cartItems', cartItems)
-  // console.log('cartId', cartId)
   const dispatch = useDispatch();
-
+  // TODO: remove total
   let total = 0;
   carts.items.map((item) => (total += +item.item.price * +item.quantity));
   

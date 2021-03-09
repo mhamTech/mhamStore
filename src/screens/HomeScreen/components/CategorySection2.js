@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   View,
   StyleSheet,
@@ -28,9 +28,9 @@ export const CategorySection2 = ({ data, name, bg, navigation, image }) => {
       >
       <View style={styles.container}>
         <View style={styles.category}>
-          {/* <Image
+          <Image
             source={{ uri: image }}
-            style={{...styles.image }}/> */}
+            style={{...styles.image }}/>
         </View>
           <CustomText style={styles.title}>{name}</CustomText>
       </View>

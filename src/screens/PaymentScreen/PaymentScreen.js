@@ -11,11 +11,8 @@ import CustomText from "../../components/UI/CustomText";
 import { Header, PaymentBody } from "./components";
 import { SummaryOrder } from "../PreOrderScreen/components";
 
-import * as cartActions from "../../reducerTest/CartNoAuthAction";
-
 export const PaymentScreen = (props) => {
   const [loading, setLoading] = useState(true);
-  // const carts = useSelector((state) => state.cart.cartItems);
   const cartLoading = useSelector((state) => state.cart.isLoading);
   const orderLoading = useSelector((state) => state.order.isLoading);
   let token = props.route.params.token;
@@ -67,7 +64,6 @@ export const PaymentScreen = (props) => {
         )
       );
       await dispatch(resetCart(cartId));
-      // await dispatch(cartActions.cartRest(cartId));
       props.navigation.navigate("FinishOrder");
     } catch (err) {
       alert(err);
@@ -93,7 +89,6 @@ export const PaymentScreen = (props) => {
               cartItems={cartItems}
               total={total}
             />
-            {/* <SummaryOrder cartItems={carts.items} total={total} /> */}
           </ScrollView>
           <View style={styles.total}>
               <TouchableOpacity onPress={addOrderAct}>
