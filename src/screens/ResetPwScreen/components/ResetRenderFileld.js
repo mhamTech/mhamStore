@@ -33,7 +33,7 @@ export default renderField = ({
           <MaterialCommunityIcons
             name={icon}
             size={22}
-            color={Colors.lighter_gold}
+            color={Colors.black}
           />
           <TextInput
             style={{
@@ -55,7 +55,7 @@ export default renderField = ({
               <MaterialCommunityIcons
                 name={!showPass ? "eye-off-outline" : "eye-outline"}
                 size={22}
-                color={Colors.lighter_gold}
+                color={Colors.black}
               />
             </TouchableWithoutFeedback>
           ) : passIcon === "confirm" ? (
@@ -65,7 +65,7 @@ export default renderField = ({
               <MaterialCommunityIcons
                 name={!showConfirmPass ? "eye-off-outline" : "eye-outline"}
                 size={22}
-                color={Colors.lighter_gold}
+                color={Colors.black}
               />
             </TouchableWithoutFeedback>
           ) : (

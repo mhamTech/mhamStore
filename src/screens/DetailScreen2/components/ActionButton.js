@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFavorite, addFavorite } from "../../../reducers";
 import Messages from "../../../messages/user";
 import Colors from "../../../utils/Colors";
-import * as cartActions from "../../../reducerTest/CartNoAuthAction";
 
 //PropTypes check
 import PropTypes from "prop-types";

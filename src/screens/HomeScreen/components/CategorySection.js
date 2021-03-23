@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: Colors.light_gold,
+    color: Colors.black,
     fontWeight: "500",
   },
   list: {
@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
   },
   seeMoreText: {
     fontSize: 14,
-    color: Colors.lighter_gold,
+    color: Colors.black,
   },
 });

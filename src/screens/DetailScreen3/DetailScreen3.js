@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Animated, Platform } from 'react-native';
 //Color
 import Colors from '../../utils/Colors';
@@ -13,6 +13,7 @@ import {
   ModalComp,
   Comments,
 } from './components';
+import { API_URL } from '../../utils/Config';
 
 export const DetailScreen3 = (props) => {
 
@@ -21,14 +22,24 @@ export const DetailScreen3 = (props) => {
   const { item } = props.route.params;
   const [message, setMessage] = useState('');
   const [showSnackbar, setShowSnackbar] = useState(false);
-  
   const [modalVisible, setModalVisible] = useState(false);
-  //Favorite
-  const FavoriteProducts = useSelector((state) =>
-    state.fav.favoriteList.some((product) => product._id === item._id),
-  );
 
-  const color = Colors.light_gold
+  useEffect(() => {
+    // storing the item in recently for the user signed in
+    if(Object.keys(user).length !== 0) {
+      fetch(`${API_URL}/product/recently`, {
+        method: 'POST',
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          itemId: item._id,
+          userId: user.userid
+        })
+      })
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -46,22 +57,20 @@ export const DetailScreen3 = (props) => {
           { useNativeDriver: false },
         )}
       >
-        <DetailBody item={item} color={color} />
+        <DetailBody item={item} />
         <Comments />
       </Animated.ScrollView>
       <ActionButton
         item={item}
-        FavoriteProducts={FavoriteProducts}
+        // FavoriteProducts={FavoriteProducts}
         setShowSnackbar={setShowSnackbar}
         setModalVisible={setModalVisible}
         setMessage={setMessage}
         user={user}
-        color={color}
         navigation={props.navigation}
       />
       <ModalComp
         item={item}
-        color={color}
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
         navigation={props.navigation}
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E5E5E5',
-    paddingBottom: Platform.OS === 'ios' ? 20 : 0,
+    paddingBottom: Platform.OS === 'ios' ? 0 : 0,
     height: '100%',
   },
 });

@@ -5,7 +5,9 @@ import {
   StyleSheet,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView
+  ScrollView,
+  Text,
+  Dimensions
 } from "react-native";
 //Color
 import Colors from "../../../utils/Colors";
@@ -18,49 +20,40 @@ import CustomText from "../../../components/UI/CustomText";
 import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
 import PropTypes from "prop-types";
+const { width } = Dimensions.get('screen');
 
 const HorizontalItem = ({ item, navigation }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   return (
-    <View style={styles.container}>
+    // <View style={styles.container}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Detail3", { item: item.item })}>
       <View style={styles.itemContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Detail3", { item: item.item })}
-            style={{ width: "40%", borderRadius: 5, borderWidth: 0, backgroundColor: '#f2f2f2', marginHorizontal: 15, paddingVertical: 5, }}
-          >
-            <Image
-              style={{
-                height: 90,
-                width: "100%",
-                resizeMode: "contain",
-              }}
-              source={{ uri: item.item.thumb }}
-              onLoadStart={() => {
-                setIsLoading(true);
-              }}
-              onLoadEnd={() => setIsLoading(false)}
-            />
-            {isLoading && (
-              <ActivityIndicator
-                size="small"
-                color={Colors.grey}
-                style={{ position: "absolute", left: 0, right: 0, top: 40 }}
+          <View
+            style={styles.imageContainer}>
+            {/* {isLoading ? <ActivityIndicator size="small" color={Colors.grey}/> : */}
+              <Image
+                style={{ height: 90, width: "100%", resizeMode: "contain" }}
+                source={{ uri: item.item.thumb }}
+                // onLoadStart={() => setIsLoading(true)}
+                // onLoadEnd={() => setIsLoading(false)}
+                // onLoad={() => setIsLoading(false)}
               />
-            )}
-          </TouchableOpacity>
+          </View>
           <View style={styles.info}>
             <CustomText style={styles.title}>{item.item.filename}</CustomText>
             <CustomText style={styles.subText}></CustomText>
             <View style={styles.rateContainer}>
               <View style={styles.rate}>
-                <AntDesign name="star" color="#fed922" size={15} />
-                <CustomText style={styles.score}>4.5</CustomText>
+                {/* <AntDesign name="star" color="#fed922" size={15} /> */}
+                <Text numberOfLines={3} style={styles.score}>{item.item.description}</Text>
               </View>
               <NumberFormat price={item.item.price} />
             </View>
           </View>
       </View>
-    </View>
+    {/* </View> */}
+    </TouchableOpacity>
   );
 };
 
@@ -70,35 +63,39 @@ HorizontalItem.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // paddingVertical: 15,
-    flex: 1,
-  },
   itemContainer: {
-    height: 100,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    backgroundColor: '#f2f2f2',
     flexDirection: "row",
-    backgroundColor: "#fff",
+    height: 120,
+    marginHorizontal: 5,
     marginBottom: 5,
-    // borderRadius: 20,
     alignItems: "center",
-    // marginHorizontal: 25,
-    
-    //shadows
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   width: 7,
-    //   height: 7,
-    // },
-    // shadowOpacity: 0.30,
-    // shadowRadius: 8,
+    borderRadius: 8,
 
-    // elevation: 8,
+    // shadows
+    // ios
+    shadowColor: "#000",
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: 0.30,
+    shadowRadius: 8,
+    // android
+    elevation: 5
+  },
+  imageContainer: {
+    width: "40%",
+    borderRadius: 5,
+    paddingVertical: 5,
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   info: {
+    borderRadius: 5,
     height: "100%",
-    flexDirection: "column",
     justifyContent: "flex-start",
-    paddingVertical: 10,
+    justifyContent: 'space-evenly',
     width: "60%",
   },
   title: {
@@ -109,7 +106,7 @@ const styles = StyleSheet.create({
     color: Colors.grey,
     marginVertical: 10,
   },
-  rateContainer: {
+  rateContainer: {    
     flexDirection: "row",
     justifyContent: "space-between",
     width: "70%",

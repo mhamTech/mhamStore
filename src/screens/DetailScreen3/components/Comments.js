@@ -37,7 +37,7 @@ export const Comments = () => {
         <CustomText style={styles.commentCount}>{comments.length}</CustomText>
       </View>
       <Portal>
-        <Modalize ref={modalizeRef} snapPoint={height - 200}>
+        <Modalize ref={modalizeRef} snapPoint={height - 400}>
           <View style={styles.contentContainer}>
             {Object.keys(user).length === 0 ? (
               <></>
@@ -81,6 +81,7 @@ export const Comments = () => {
                 </View>
               </View>
             )}
+            {/* TODO: get comments from API */}
             {comments.map((comment) => (
               <UserComment key={comment.id} comment={comment} />
             ))}
@@ -93,16 +94,14 @@ export const Comments = () => {
 
 const styles = StyleSheet.create({
   commentContainer: {
-    // top: 25,
-    marginBottom: 40,
+    marginBottom: 10,
     height: 50,
     flexDirection: "row",
     alignItems: "center",
     borderTopColor: Colors.light_grey,
     paddingHorizontal: 20,
-    backgroundColor: '#eee',
-    borderRadius: 10,
-    // marginBottom: 10,
+    backgroundColor: '#fff',
+    borderRadius: 20,
   },
   title: {
     fontSize: 16,

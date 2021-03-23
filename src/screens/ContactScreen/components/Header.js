@@ -26,7 +26,7 @@ export const Header = ({ navigation }) => {
             navigation.toggleDrawer();
           }}
         >
-          <MaterialCommunityIcons name='menu' size={25} color={Colors.lighter_gold} />
+          <MaterialCommunityIcons name='menu' size={25} color={Colors.water.blue} />
         </TouchableOpacity>
       </View>
       <CustomText style={styles.title}>contact us</CustomText>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "flex-start",
     height: 70,
-    // backgroundColor: Colors.lighter_gold,
+    // backgroundColor: Colors.black,
     justifyContent: "center",
     flexDirection: 'row',
     marginTop: 35,
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "500",
     textTransform: "uppercase",
+    color: Colors.water.blue
   },
   image: {
     marginTop: 15,

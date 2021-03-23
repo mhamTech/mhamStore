@@ -53,5 +53,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "600",
     textTransform: "uppercase",
+    fontSize: 12
   },
 });

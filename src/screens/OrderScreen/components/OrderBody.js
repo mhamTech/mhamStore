@@ -7,6 +7,7 @@ import Messages from "../../../messages/user";
 import OrderItem from "./OrderItem";
 //PropTypes check
 import PropTypes from "prop-types";
+import { t } from "i18n-js";
 
 export class OrderBody extends React.PureComponent {
   render() {
@@ -15,20 +16,18 @@ export class OrderBody extends React.PureComponent {
       <View style={styles.footer}>
         {Object.keys(user).length === 0 ? (
           <View style={styles.center}>
-            <CustomText style={{ fontSize: 16 }}>
-              {Messages["user.login.require"]}
-            </CustomText>
-            <View style={styles.button}>
+            <CustomText style={{ color: Colors.water.blue }}>{Messages["user.login.require"]}</CustomText>
               <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+              <View style={styles.button}>
                 <CustomText style={{ fontSize: 16, color: "#fff" }}>
-                  Continue
+                {t('profile.login')}
                 </CustomText>
+              </View>
               </TouchableOpacity>
-            </View>
           </View>
         ) : orders.length === 0 ? (
           <View style={styles.center}>
-            <CustomText style={{ fontSize: 16 }}>
+            <CustomText style={{ fontSize: 16, color: Colors.water.blue }}>
               You have no orders!
             </CustomText>
           </View>
@@ -67,11 +66,11 @@ const styles = StyleSheet.create({
   center: { flex: 1, alignItems: "center", justifyContent: "center" },
   button: {
     borderWidth: 1,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: Colors.lighter_gold,
+    paddingHorizontal: 155,
+    paddingVertical: 15,
+    backgroundColor: Colors.water.blue,
     borderRadius: 5,
-    borderColor: Colors.lighter_gold,
+    borderColor: Colors.water.white,
     marginTop: 10,
   },
 });

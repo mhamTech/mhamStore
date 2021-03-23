@@ -21,7 +21,7 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone 
         {/* <View style={styles.option}>
           <Checkbox
             status={!payByCard ? "checked" : "unchecked"}
-            color={Colors.lighter_gold}
+            color={Colors.black}
             onPress={() => {
               setPayByCard(false);
             }}
@@ -29,7 +29,7 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone 
           <MaterialCommunityIcons
             name="cash"
             size={40}
-            color={Colors.lighter_gold}
+            color={Colors.black}
             style={{ marginLeft: 10 }}
           />
           <CustomText style={styles.optionText}>Cash payment</CustomText>
@@ -37,7 +37,7 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone 
         <View style={styles.option}>
           <Checkbox
             status={!payByCard ? "checked" : "unchecked"}
-            color={Colors.lighter_gold}
+            color={Colors.black}
             onPress={() => {
               setPayByCard(false);
             }}
@@ -45,7 +45,7 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone 
           <MaterialIcons
             name="call"
             size={40}
-            color={Colors.lighter_gold}
+            color={Colors.black}
             style={{ marginLeft: 10 }}
           />
           <View style={{ flexDirection: 'column'}}>
@@ -57,14 +57,14 @@ export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone 
         <View style={styles.option}>
           <Checkbox
             status={payByCard ? "checked" : "unchecked"}
-            color={Colors.lighter_gold}
+            color={Colors.black}
             onPress={() => navigation.navigate("AddCreditCardScreen")}
             // containerStyle={{ padding: 5 }}
           />
           <MaterialCommunityIcons
             name="credit-card-outline"
             size={35}
-            color={Colors.lighter_gold}
+            color={Colors.black}
             style={{ marginLeft: 10 }}
           />
           <View style={styles.cardContainer}>

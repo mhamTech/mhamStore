@@ -58,16 +58,16 @@ export const EditProfileScreen = (props) => {
             value={user.email}
             disabled
             mode="outlined"
-            theme={{ colors: { primary: Colors.leave_gold } }}
-            selectionColor={Colors.leave_gold}
+            theme={{ colors: { primary: Colors.black } }}
+            selectionColor={Colors.black}
             style={{ marginVertical: 10 }}
           />
           <TextInput
             label="Phone"
             value={phone}
             mode="outlined"
-            theme={{ colors: { primary: Colors.leave_gold } }}
-            selectionColor={Colors.leave_gold}
+            theme={{ colors: { primary: Colors.black } }}
+            selectionColor={Colors.black}
             onChangeText={(text) => setPhone(text)}
             style={{ marginVertical: 10 }}
             keyboardType="numeric"
@@ -80,8 +80,8 @@ export const EditProfileScreen = (props) => {
             label="Address"
             value={address}
             mode="outlined"
-            theme={{ colors: { primary: Colors.leave_gold } }}
-            selectionColor={Colors.leave_gold}
+            theme={{ colors: { primary: Colors.black } }}
+            selectionColor={Colors.black}
             onChangeText={(text) => setAddress(text)}
             style={{ marginVertical: 10 }}
             autoCapitalize="words"
@@ -100,7 +100,7 @@ export const EditProfileScreen = (props) => {
             style={{
               height: 50,
               justifyContent: "center",
-              backgroundColor: Colors.leave_gold,
+              backgroundColor: Colors.black,
               marginHorizontal: 10,
             }}
           >

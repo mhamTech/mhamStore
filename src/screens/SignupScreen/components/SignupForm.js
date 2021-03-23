@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, isValid, reduxForm } from "redux-form";
 import {
   StyleSheet,
   View,
+  Text,
   TouchableOpacity,
   Keyboard,
   TouchableWithoutFeedback,
@@ -15,14 +16,15 @@ import {
 //Colors
 import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
 //Redux
 import { useDispatch, useSelector } from "react-redux";
 //Action
-import { SignUp as SignUpAct } from "../../../reducers";
+import { SignUp as SignUpAccount } from "../../../reducers";
 //PropTypes check
 import PropTypes from "prop-types";
 import renderField from "./RenderField";
+import { showMessage } from 'react-native-flash-message';
 
 const { width, height } = Dimensions.get("window");
 
@@ -60,6 +62,7 @@ const Signup = (props) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.isLoading);
   const [showPass, setShowPass] = useState(false);
+  const [valid, setIsValid] = useState(null);
   const [showConfirmPass, setshowConfirmPass] = useState(false);
   const unmounted = useRef(false);
   useEffect(() => {
@@ -70,17 +73,15 @@ const Signup = (props) => {
 
   const submit = async (values) => {
     try {
-      await dispatch(SignUpAct(values.username, values.email, values.password));
+      await dispatch(SignUpAccount(values.username, values.email, values.password));
       reset();
       if (!unmounted.current) {
-        Alert.alert("Signup Successfully", "You can login now", [
-          {
-            text: "Okay",
-            onPress: () => {
-              props.navigation.goBack();
-            },
-          },
-        ]);
+        showMessage({
+          message: 'Registered successfully',
+          type: 'success',
+          duration: 1500
+        })
+        props.setLogin(true)
       }
     } catch (err) {
       alert(err);
@@ -92,16 +93,16 @@ const Signup = (props) => {
       // keyboardVerticalOffset={40} // adjust the value here if you need more padding
       // style={{ flex: 1 }}
     >
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => {
           props.navigation.goBack();
         }}
         style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
       >
-        <Ionicons name="ios-arrow-back" size={35} color={Colors.light_gold} />
-      </TouchableOpacity>
+        <Ionicons name="ios-arrow-back" size={35} color={Colors.black} />
+      </TouchableOpacity> */}
 
-      <View style={styles.header}></View>
+      {/* <View style={styles.header}></View> */}
       <ScrollView>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View
@@ -140,6 +141,7 @@ const Signup = (props) => {
                 icon="lock"
                 showPass={showPass}
                 setShowPass={setShowPass}
+                // onChange={(val) => alert(val)}
               />
               {/* <Field
                 name="confirmpassword"
@@ -162,14 +164,38 @@ const Signup = (props) => {
                 {loading ? (
                   <ActivityIndicator size="small" color="#fff" />
                 ) : (
-                  <CustomText style={styles.textSign}>Registration</CustomText>
+                  <CustomText style={styles.textSign}>Register</CustomText>
                 )}
               </View>
             </TouchableOpacity>
-            <View style={{ flex: 1 }} />
+            {/* <View style={{ flex: 1 }} /> */}
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
+
+      {/* Testing... */}
+      {/* <View style={{
+          width: '100%',
+          borderWidth: 0,
+          height: '20%',
+          // justifyContent: 'flex-end',
+          alignItems: 'center'
+        }}>
+          <View style={{ borderWidth: 0, paddingHorizontal: 10, width: '100%', justifyContent: 'space-between' }}>
+            <Text style={{ fontSize: 10 }}>Including 3 of the following:</Text>
+            <View style={{ flexDirection: 'row', marginTop: 1, justifyContent: 'space-between', width: '50%', }}>
+              <AntDesign name={'checkcircle'} color={isValid && isValid[0] ? 'green' : 'grey'} />
+              <Text style={{ fontSize: 8 }}>ABC</Text>
+              <AntDesign name={'checkcircle'} color={isValid && isValid[1] ? 'green' : 'grey'} />
+              <Text style={{ fontSize: 8 }}>abc</Text>
+              <AntDesign name={'checkcircle'} color={isValid && isValid[2] ? 'green' : 'grey'} />
+              <Text style={{ fontSize: 8 }}>123</Text>
+              <AntDesign name={'checkcircle'} color={isValid && isValid[3] ? 'green' : 'grey'} />
+              <Text style={{ fontSize: 8 }}>@#$</Text>
+            </View>
+          </View>
+      </View> */}
+
     </KeyboardAvoidingView>
   );
 };
@@ -194,11 +220,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 5,
     flexDirection: "row",
-    backgroundColor: Colors.lighter_gold,
+    backgroundColor: Colors.water.blue,
     marginTop: 10,
   },
   title: {
-    color: Colors.light_gold,
+    color: Colors.water.blue,
     fontSize: 40,
     letterSpacing: 5,
     fontFamily: "Roboto-Bold",
@@ -210,7 +236,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Medium",
   },
   textSignSmall: {
-    color: Colors.lighter_gold,
+    color: Colors.black,
     textAlign: "center",
   },
 });

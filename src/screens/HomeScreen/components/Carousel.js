@@ -5,6 +5,7 @@ import Slide from "./Slide";
 import Pagination from "./Pagination";
 
 import { SliderBox } from "react-native-image-slider-box";
+import Colors from "../../../utils/Colors";
 
 const { width } = Dimensions.get('window');
 
@@ -25,8 +26,8 @@ export const Carousel = () => {
         images={banners}
         autoplay={true}
         circleLoop={true}
-        inactiveDotColor={'#ddd'}
-        dotColor={'#000'}
+        inactiveDotColor={Colors.water.white}
+        dotColor={Colors.water.blue}
         imageLoadingColor={'black'}
       />
     </View>
@@ -35,7 +36,7 @@ export const Carousel = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: 50,
+    marginTop: 50,
     // borderWidth: 2,
     // borderColor: 'red'
   },

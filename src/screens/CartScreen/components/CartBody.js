@@ -5,6 +5,7 @@ import {
   StyleSheet,
   FlatList,
   Alert,
+  RefreshControl,
   Text,
 } from "react-native";
 //Redux
@@ -22,6 +23,7 @@ import Messages from "../../../messages/user";
 import PropTypes from "prop-types";
 // i18n
 import { t } from "i18n-js";
+import { ScrollView } from "react-native-gesture-handler";
 
 export const CartBody = ({
   navigation,
@@ -50,18 +52,20 @@ export const CartBody = ({
     <View style={styles.footer}>
       {Object.keys(user).length === 0 ? (
         <View style={styles.center}>
-          <CustomText>{Messages["user.login.require"]}</CustomText>
-          <View style={styles.nextButton}>
+          <CustomText style={{ color: Colors.water.blue }}>{Messages["user.login.require"]}</CustomText>
             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <CustomText style={{ color: "#fff" }}>{t('profile.login')}</CustomText>
+              <View style={styles.nextButton}>
+                <CustomText style={{ color: "#fff", fontSize: 18, }}>{t('profile.login')}</CustomText>
+              </View>
             </TouchableOpacity>
-          </View>
         </View>
       ) : (carts.items.length === 0 ? (
         <View style={styles.center}>
+        <ScrollView contentContainerStyle={styles.center} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={loadCarts} />}>
           <CustomText style={{ fontSize: 16 }}>
             {t("cart.noProduct")}
           </CustomText>
+        </ScrollView>
         </View>
       ) : (
         <View style={{ marginBottom: 80 }}>
@@ -108,11 +112,11 @@ const styles = StyleSheet.create({
   },
   nextButton: {
     borderWidth: 1,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: Colors.lighter_gold,
+    paddingHorizontal: 155,
+    paddingVertical: 15,
+    backgroundColor: Colors.water.blue,
     borderRadius: 5,
-    borderColor: Colors.lighter_gold,
+    borderColor: Colors.water.white,
     marginTop: 10,
   },
   center: {

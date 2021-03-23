@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   name: {
     marginTop: 3,
-    color: Colors.lighter_gold,
+    color: Colors.black,
     textAlign: "center",
     fontWeight: "500",
   },
@@ -142,10 +142,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: Colors.lighter_gold,
+    borderColor: Colors.black,
   },
   detailBtn: {
-    color: Colors.lighter_gold,
+    color: Colors.black,
     marginRight: 5,
   },
 });

@@ -20,8 +20,6 @@ import PropTypes from "prop-types";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 
-import * as cartActions from "../../../reducerTest/CartNoAuthAction";
-
 export const CartItemNoAuth = ({ item, onRemove, onAdd, onDelete }) => {
   //, onAdd, onDes, onRemove
   const dispatch = useDispatch();

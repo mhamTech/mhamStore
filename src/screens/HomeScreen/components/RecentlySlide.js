@@ -1,54 +1,52 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { View, Dimensions, StyleSheet, Image, TouchableOpacity } from "react-native";
+import Colors from "../../../utils/Colors";
+import { View, Dimensions, StyleSheet, Image, } from "react-native";
+import CustomText from "../../../components/UI/CustomText";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 const { width } = Dimensions.get("window");
 
-const RecentlySlide = ({ name, bg, image, price }) => {
+export const RecentlySlide = ({ item, navigation }) => {
   return (
-    <TouchableOpacity style={{...styles.container}}>
-      <View style={styles.background}>
-          <Image source={{ uri: image }} style={{ width: '100%', height: '100%', borderRadius: 5 }} />
-      </View>
-    </TouchableOpacity>
+    <TouchableWithoutFeedback onPress={() => navigation.navigate('Detail3', {item})} style={styles.container}>
+      <LinearGradient
+        colors={Colors.water2}
+        start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+        style={styles.linear}
+      >
+        <Image source={{ uri: item.thumb }} style={styles.image} />
+      </LinearGradient>
+      <CustomText style={styles.text}>{item.price} SAR</CustomText>
+    </TouchableWithoutFeedback>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    width: 90,
-    height: 130,
-    borderRadius: 5,
-    padding: 5,
-    marginStart: 10,
-    marginEnd: 10,
+    padding: 2,
+    alignItems: 'center'
   },
-  background: {
-    borderWidth: 0.3,
-    borderColor: '#737373',
-
+  linear: {
+    padding: 2,
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // shadows
+    shadowColor: "#000",
+    shadowOffset: { width: 7, height: 7 },
+    shadowOpacity: 0.30,
+    shadowRadius: 8,
+    elevation: 8
+  },
+  image: {
     width: '100%',
     height: '100%',
-    borderRadius: 5,
-    backgroundColor: '#FFF'
+    borderRadius: 50,
+    resizeMode: 'contain',
   },
-  // container: {
-  //   // height: 230,
-  //   // width: 150,
-  //   marginHorizontal: 10,
-  //   paddingVertical: 8,
-  //   paddingHorizontal: 8,
-  //   marginBottom: 20,
-  // },
-  // item: {
-  //   height: 220,
-  //   width: 140,
-  //   borderRadius: 4,
-  //   alignItems: 'center',
-  // },
-  // text: {
-  //   fontSize: 14,
-  //   color: Colors.light_gold,
-  //   fontWeight: "500",
-  //   marginHorizontal: 4,
-  // }
+  text: {
+    color: 'red',
+    fontSize: 10
+  },
 });
-
-export default RecentlySlide;

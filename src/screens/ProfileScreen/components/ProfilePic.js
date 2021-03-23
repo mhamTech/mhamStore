@@ -140,12 +140,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.leave_gold,
+    backgroundColor: Colors.black,
   },
   userName: {
     fontSize: 20,
     marginTop: 10,
-    color: Colors.leave_gold,
+    color: Colors.black,
     textAlign: "center",
   },
 });

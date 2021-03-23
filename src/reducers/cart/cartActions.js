@@ -1,6 +1,5 @@
 import { API_URL } from "../../utils/Config";
 import { timeoutPromise } from "../../utils/Tools";
-import { findIndex } from "./cartReducer";
 export const CART_LOADING = "CART_LOADING";
 export const CART_FAILURE = "CART_FAILURE";
 export const CART_MULTIPLE = "CART_MULTIPLE";
@@ -93,7 +92,7 @@ export const addToCart = (item) => {
         dispatch({
           type: CART_FAILURE,
         });
-        throw new Error("Something went wrong!");
+        throw new Error("Something went wrong!" + await response.json().toString());
       }
       else {
         dispatch({

@@ -22,7 +22,7 @@ export const Header = ({ navigation, user, carts }) => {
           navigation.goBack();
         }}
       >
-        <Ionicons name="ios-arrow-back" size={30} color={Colors.lighter_gold} />
+        <Ionicons name="ios-arrow-back" size={30} color={Colors.water.blue} />
       </TouchableOpacity>
       <CustomText style={styles.titleHeader}>
         {t("tab.cart") + " "} 
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   titleHeader: {
     textAlign: "center",
-    color: Colors.lighter_gold,
+    color: Colors.water.blue,
     fontSize: 20,
     paddingBottom: 5,
     fontFamily: "Roboto-Medium",

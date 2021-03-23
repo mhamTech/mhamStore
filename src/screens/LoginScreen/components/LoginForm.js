@@ -10,14 +10,12 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
-  Image,
   Alert,
   Dimensions,
 } from "react-native";
 //Colors
 import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
-import { Ionicons } from "@expo/vector-icons";
 //Redux
 import { useDispatch, useSelector } from "react-redux";
 //Action
@@ -54,6 +52,7 @@ const Login = (props) => {
   const [showPass, setShowPass] = useState(false);
   const auth = useSelector((state) => state.auth);
   const unmounted = useRef(false);
+
   const scanFingerprintOrFaceId = async () => {
     const resData = await SecureStore.getItemAsync(secretKey);
     if (resData === null) {
@@ -87,6 +86,7 @@ const Login = (props) => {
       ]
     );
   };
+  
   useEffect(() => {
     return () => {
       unmounted.current = true;
@@ -105,14 +105,14 @@ const Login = (props) => {
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "position" : "height"}
     >
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => {
           props.navigation.goBack();
         }}
         style={{ position: "absolute", top: 50, left: 20 }}
       >
-        <Ionicons name="ios-arrow-back" size={35} color={Colors.light_gold} />
-      </TouchableOpacity>
+        <Ionicons name="ios-arrow-back" size={35} color={Colors.black} />
+      </TouchableOpacity> */}
 
       <View style={styles.header}>
         <View>
@@ -121,13 +121,7 @@ const Login = (props) => {
       </View>
       <ScrollView>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View
-            style={{
-              flexDirection: "column",
-              marginHorizontal: 10,
-              zIndex: -1,
-            }}
-          >
+          <View>
             <View>
               <Field
                 name="email"
@@ -166,7 +160,7 @@ const Login = (props) => {
             </View>
             <TouchableOpacity
               onPress={handleSubmit(submit)}
-              style={{ marginVertical: 10, alignItems: "center" }}
+              style={{ alignItems: "center" }}
             >
               <View style={styles.signIn}>
                 {auth.isLoading ? (
@@ -213,12 +207,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   header: {
-    marginTop: height * 0.2,
-    marginBottom: 10,
-    marginHorizontal: 20,
+    // marginTop: height * 0.2,
+    // marginBottom: 10,
+    // marginHorizontal: 20,
   },
   title: {
-    color: Colors.light_gold,
+    color: Colors.water.blue,
     fontSize: 40,
     letterSpacing: 5,
     fontFamily: "Roboto-Bold",
@@ -234,7 +228,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 5,
     flexDirection: "row",
-    backgroundColor: Colors.lighter_gold,
+    paddingHorizontal: 30,
+    backgroundColor: Colors.water.blue,
   },
   textSign: {
     fontSize: 15,
@@ -242,7 +237,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Medium",
   },
   textSignSmall: {
-    color: Colors.lighter_gold,
+    color: Colors.water.blue,
     textAlign: "center",
   },
   center: {
@@ -263,7 +258,7 @@ const styles = StyleSheet.create({
     width: 70,
   },
   loginOpt: {
-    color: Colors.lighter_gold,
+    color: Colors.black,
     fontFamily: "Roboto-Medium",
     marginBottom: 10,
   },

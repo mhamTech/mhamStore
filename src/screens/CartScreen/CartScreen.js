@@ -9,7 +9,6 @@ import Colors from "../../utils/Colors";
 import { Header, CartBody, TotalButton } from "./components";
 //Loader
 import Loader from "../../components/Loaders/Loader";
-import { set } from "react-native-reanimated";
 
 const { height } = Dimensions.get("window");
 
@@ -42,7 +41,6 @@ export const CartScreen = (props) => {
   return (
     <View style={styles.container}>
       <Header
-        // newCartItems={newCartItems}
         user={user}
         carts={carts}
         navigation={props.navigation}
@@ -54,7 +52,6 @@ export const CartScreen = (props) => {
         loadCarts={loadCarts}
         isRefreshing={isRefreshing}
         navigation={props.navigation}
-        // Cartlength={Object.keys(newCartItems).length}
       />
       {Object.keys(user).length === 0 ? (
         <></>
@@ -64,10 +61,8 @@ export const CartScreen = (props) => {
         <TotalButton
           total={total}
           cartItems={cartItems}
-          // newCartItems={newCartItems}
           cartId={cartId}
           navigation={props.navigation}
-          // newTotal={newTotal}
         />
       )}
     </View>

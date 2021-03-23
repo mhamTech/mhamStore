@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     height: DOT_SIZE * 0.5,
     zIndex: 101,
     borderRadius: DOT_SIZE * 0.25,
-    backgroundColor: Colors.lighter_gold,
+    backgroundColor: Colors.black,
   },
 });
 

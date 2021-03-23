@@ -25,7 +25,6 @@ export class ModalComp extends React.PureComponent {
   render() {
     const {
       item,
-      color,
       modalVisible,
       setModalVisible,
       navigation,
@@ -53,8 +52,8 @@ export class ModalComp extends React.PureComponent {
           >
             <MaterialCommunityIcons
               name="window-close"
-              size={24}
-              color={color}
+              size={20}
+              color={Colors.water.blue}
             />
           </TouchableOpacity>
 
@@ -63,10 +62,10 @@ export class ModalComp extends React.PureComponent {
           >
             <MaterialCommunityIcons
               name="check-circle-outline"
-              color={color}
+              color={Colors.water.blue}
               size={20}
             />
-            <CustomText style={{ ...styles.success, color }}>
+            <CustomText style={{ ...styles.success, color: Colors.water.blue }}>
               The product has been added to your orders list
             </CustomText>
           </View>
@@ -84,19 +83,19 @@ export class ModalComp extends React.PureComponent {
             </View>
             <View style={styles.quantity}>
               <View>
-                <CustomText style={{ ...styles.title, fontSize: 15 }}>
+                <CustomText style={{ ...styles.title, fontSize: 15, color: Colors.water.blue }}>
                   {item.filename}
                 </CustomText>
                 {/* <CustomText style={{ fontSize: 12, color: Colors.grey }}>
                   Provided by Mham{" "}
                 </CustomText> */}
               </View>
-              <CustomText
-                style={{ marginTop: 5, fontSize: 14, color: Colors.text }}
-              >
-                Total:
-              </CustomText>
-              <NumberFormat price={item.price} />
+              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
+                <Text style={{ marginHorizontal: 5, fontSize: 14, color: Colors.text }}>
+                  Total:
+                </Text>
+                <NumberFormat price={item.price} />
+              </View>
             </View>
           </View>
           <View
@@ -109,13 +108,13 @@ export class ModalComp extends React.PureComponent {
               style={[
                 styles.addCart,
                 {
-                  backgroundColor: color,
+                  backgroundColor: Colors.blue,
                 },
               ]}
               onPress={moveToCart}
             >
               <CustomText style={styles.actionText}>
-                View my orders
+                View my order
               </CustomText>
             </TouchableOpacity>
           </View>
@@ -130,12 +129,11 @@ ModalComp.propTypes = {
   navigation: PropTypes.object.isRequired,
   modalVisible: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
-  color: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
   actionText: {
-    fontSize: 15,
+    fontSize: 18,
     textAlign: "center",
     color: "#fff",
   },

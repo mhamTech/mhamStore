@@ -5,24 +5,36 @@ export const RECENTLY_LOADING = 'RECENTLY_LOADING';
 export const RECENTLY_FAILURE = 'RECENTLY_FAILURE';
 
 export const fetchRecentlyCategories = () => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         dispatch({
             type: RECENTLY_LOADING,
         });
+        const user = getState().auth.user;
+        if(!user.userid) return;
         try {
             const response = await timeoutPromise(
-                fetch(`${API_URL}/category/recently`)
+                // fetch(`${API_URL}/category/recently`, {
+                fetch(`${API_URL}/product/recently`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                        "userid": user.userid
+                    }
+                })
             );
             if(!response.ok) {
                 dispatch({
                     type: RECENTLY_FAILURE
                 });
-                throw new Error("Something went wrong!, can't get the recently categories");
+                console.log(`response - fetchRecently`, await response.json())
+                throw new Error(await response.json());
             }
             const resData = await response.json();
+            // console.log('resData', resData)
             dispatch({
                 type: FETCH_RECENTLY,
-                recently: resData.slides,
+                recently: resData.content,
             });
         } catch (err) {
             throw(err);

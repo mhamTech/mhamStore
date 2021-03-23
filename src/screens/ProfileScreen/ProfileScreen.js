@@ -53,12 +53,12 @@ export const ProfileScreen = (props) => {
     <Header navigation={props.navigation} />
     {Object.keys(user).length === 0 ? (
       <View style={styles.center}>
-        <CustomText>{Messages["user.login.require"]}</CustomText>
-        <View style={styles.nextButton}>
+        <CustomText style={{ color: Colors.water.blue }}>{Messages["user.login.require"]}</CustomText>
           <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
-            <CustomText style={{ color: "#fff" }}>{t('profile.login')}</CustomText>
+            <View style={styles.nextButton}>
+              <CustomText style={{ color: Colors.white, fontSize: 18 }}>{t('profile.login')}</CustomText>
+            </View>
           </TouchableOpacity>
-        </View>
       </View>
     ) : (
     <ActionSheetProvider>
@@ -98,15 +98,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   nextButton: {
     borderWidth: 1,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: Colors.lighter_gold,
+    paddingHorizontal: 155,
+    paddingVertical: 15,
+    backgroundColor: Colors.water.blue,
     borderRadius: 5,
-    borderColor: Colors.lighter_gold,
+    borderColor: Colors.water.white,
     marginTop: 10,
   },
   container: {

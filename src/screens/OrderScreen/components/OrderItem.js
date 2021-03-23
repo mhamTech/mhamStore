@@ -46,7 +46,7 @@ export const OrderItem = ({ order }) => {
             {moment(order.updatedAt).format("Do, MMMM  YYYY, hh:mm a ")}
           </CustomText>
         </View>
-        <View style={styles.detailButtom}>
+        <View style={styles.detailButton}>
           <TouchableOpacity onPress={() => setShowDetails((prev) => !prev)}>
             <CustomText style={{ fontSize: 15, color: "#fff" }}>
               {showDetails ? "Hide Order Details" : "Order Details"}
@@ -115,16 +115,20 @@ OrderItem.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: Colors.grey,
+    // borderWidth: 1,
+    borderColor: Colors.water.light_blue,
     backgroundColor: Colors.white,
     borderRadius: 5,
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+    marginHorizontal: 5,
   },
-  detailButtom: {
-    backgroundColor: Colors.lighter_gold,
+  text: {
+    color: Colors.water.blue,
+  },
+  detailButton: {
+    backgroundColor: Colors.water.blue,
     alignItems: "center",
     paddingVertical: 10,
     borderRadius: 5,
@@ -135,7 +139,9 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   detail: {
-    color: Colors.lighter_gold,
+    color: Colors.water.blue,
+    textDecorationLine: 'underline',
+    marginHorizontal: 10
   },
   steps: {
     width: "100%",

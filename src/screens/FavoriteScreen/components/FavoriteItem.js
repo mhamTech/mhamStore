@@ -23,7 +23,7 @@ import CustomText from "../../../components/UI/CustomText";
 //PropTypes check
 import PropTypes from "prop-types";
 //Adding to cart 
-import * as cartActions from "../../../reducerTest/CartNoAuthAction";
+// import * as cartActions from "../../../reducerTest/CartNoAuthAction";
 
 
 export const renderRightAction = (text, color, action, x, progress) => {
@@ -54,7 +54,7 @@ export const FavoriteItem = ({ navigation, item }) => {
   const dispatch = useDispatch();
   const addToCartAct = async () => {
     try {
-      await dispatch(cartActions.addToCart(item));
+      // await dispatch(cartActions.addToCart(item));
       if (!unmounted.current) {
         Alert.alert("success", "The product has been added to cart", [
           {

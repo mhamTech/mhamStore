@@ -24,8 +24,8 @@ export default renderField = ({
         <TextInput
           label={label}
           mode='flat'
-          theme={{ colors: { primary: Colors.leave_gold } }}
-          selectionColor={Colors.leave_gold}
+          theme={{ colors: { primary: Colors.black } }}
+          selectionColor={Colors.black}
           style={{
             marginVertical: 10,
             backgroundColor: Colors.white,

@@ -13,7 +13,7 @@ export const Header = ({ navigation }) => {
         <Ionicons
           name="ios-arrow-back"
           size={30}
-          color={Colors.lighter_gold}
+          color={Colors.black}
         />
       </TouchableOpacity>
     </View>

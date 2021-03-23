@@ -165,7 +165,7 @@ export class Header extends React.Component {
                 <Ionicons
                   name="ios-menu"
                   size={30}
-                  color={Colors.lighter_gold}
+                  color={Colors.water.blue}
                 />
               </TouchableOpacity>
               {/* <View>
@@ -201,7 +201,7 @@ export class Header extends React.Component {
                     <Ionicons
                       name="ios-arrow-back"
                       size={25}
-                      color={Colors.light_gold}
+                      color={Colors.water.blue}
                     />
                   </TouchableOpacity>
                 </Animated.View>
@@ -255,14 +255,13 @@ export class Header extends React.Component {
                   <FlatList
                     data={this.state.productsFilter}
                     keyExtractor={(item) => item._id}
-                    renderItem={({ item }) => {
-                      return (
+                    renderItem={({ item }) => (
                         <SearchItem
                           item={item}
                           navigation={this.props.navigation}
                         />
-                      );
-                    }}
+                      )
+                    }
                   />
                 )}
               </View>
@@ -304,7 +303,7 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
     borderRadius: 35,
-    backgroundColor: Colors.lighter_gold,
+    backgroundColor: Colors.water.blue,
     borderWidth: 1,
     borderColor: Colors.white,
     flexDirection: "row",

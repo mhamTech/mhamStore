@@ -11,13 +11,13 @@ export default SearchItem = ({ item, navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Detail", { item })}
+        onPress={() => navigation.navigate("Detail3", { item })}
         style={{ flexDirection: "row", alignItems: "center" }}
       >
         <Ionicons
           name='ios-search'
           size={22}
-          color={Colors.grey}
+          color={Colors.water.light_blue}
           style={{ marginRight: 20 }}
         />
         <Image style={styles.image} source={{ uri: item.thumb }} />
@@ -46,5 +46,8 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     borderRadius: 10,
     marginRight: 30,
+  },
+  name: {
+    color: Colors.water.blue
   },
 });

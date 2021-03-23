@@ -6,6 +6,7 @@ import { navigationRef } from './RootNavigation';
 import { DrawerNavigator, IntroStackScreen } from './StoneNavigator';
 import { useDispatch } from 'react-redux';
 import { Logout } from '../reducers';
+import FlashMessage from 'react-native-flash-message';
 //Modalize
 import { Host } from 'react-native-portalize';
 //Deep Link
@@ -75,6 +76,7 @@ export const AppNavigator = () => {
         {/* {(isFirstOpen || value !== null) && <DrawerNavigator />}
         {!isFirstOpen && value === null && <IntroStackScreen />} */}
       </Host>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 };

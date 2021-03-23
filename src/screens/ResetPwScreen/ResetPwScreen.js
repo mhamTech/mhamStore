@@ -74,7 +74,7 @@ const resetForm = (props) => {
         <Feather
           name="arrow-left-circle"
           size={30}
-          color={Colors.lighter_gold}
+          color={Colors.black}
         />
       </TouchableOpacity>
       <View style={styles.content}>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    color: Colors.lighter_gold,
+    color: Colors.black,
     fontSize: 30,
     marginBottom: 10,
   },
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: "row",
     marginBottom: 10,
-    backgroundColor: Colors.lighter_gold,
+    backgroundColor: Colors.black,
   },
   textSign: {
     fontSize: 15,

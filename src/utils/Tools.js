@@ -97,22 +97,22 @@ export const _pickImage = async (action) => {
   }
 };
 
-export const colorCheck = (colorCode) => {
-  switch (colorCode) {
-    case "yellow":
-      return Colors.yellow;
-    case "green":
-      return Colors.green;
-    case "purple":
-      return Colors.purple;
-    case "blue":
-      return Colors.water;
-    case "pink":
-      return Colors.straw;
-    default:
-      return Colors.lighter_gold;
-  }
-};
+// export const colorCheck = (colorCode) => {
+//   switch (colorCode) {
+//     case "yellow":
+//       return Colors.yellow;
+//     case "green":
+//       return Colors.green;
+//     case "purple":
+//       return Colors.purple;
+//     case "blue":
+//       return Colors.water;
+//     case "pink":
+//       return Colors.straw;
+//     default:
+//       return Colors.black;
+//   }
+// };
 
 //Get token from Stripe Server
 

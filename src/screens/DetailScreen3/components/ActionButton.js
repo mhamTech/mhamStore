@@ -26,7 +26,6 @@ import PropTypes from "prop-types";
 export const ActionButton = ({
   user,
   item,
-  color,
   setShowSnackbar,
   setModalVisible,
   setMessage,
@@ -58,18 +57,24 @@ export const ActionButton = ({
     <Animatable.View
       delay={1500}
       animation="fadeInUp"
-      style={styles.actionContainer}
+      style={styles.container}
     >
-      <View style={styles.action}>
-        <TouchableOpacity
-          style={[styles.addCart, { backgroundColor: color }]}
-          onPress={addToCartAct}>
-          {cartLoading ? (
-            <ActivityIndicator size="small" color="#fff" />
-          ) : (
-            <CustomText style={styles.actionText}>Order this item</CustomText>
-          )}
-        </TouchableOpacity>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+        <CustomText style={{fontSize: 10, marginHorizontal: 12}}>SHIPS from Saudi Arabia</CustomText>
+        <CustomText style={{fontSize: 10, marginHorizontal: 12}}>Sold by <CustomText style={{ fontWeight: 'bold', color: Colors.gray }}>Mham</CustomText> </CustomText>
+      </View>
+      <View style={{ flexDirection: 'row' }}>
+        <View style={styles.action}>
+          <TouchableOpacity
+            style={styles.addCart}
+            onPress={addToCartAct}>
+            {cartLoading ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <CustomText style={styles.actionText}>Order this product</CustomText>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
     </Animatable.View>
   );
@@ -78,42 +83,45 @@ export const ActionButton = ({
 ActionButton.propTypes = {
   item: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  color: PropTypes.string.isRequired,
   setShowSnackbar: PropTypes.func.isRequired,
-  FavoriteProducts: PropTypes.bool.isRequired,
   setModalVisible: PropTypes.func.isRequired,
   setMessage: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
-  actionContainer: {
+  container: {
+    borderTopWidth: 0.3,
+    borderRightWidth: 0.3,
+    borderLeftWidth: 0.3,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+
+    paddingBottom: 5,
+    paddingTop: 5,
+    backgroundColor: '#fff',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
   },
   action: {
     flexDirection: "row",
-    height: 60,
-    justifyContent: "flex-end",
+    marginTop: 5,
+    height: 50,
+    backgroundColor: Colors.blue,
+    marginHorizontal: 10,
+    borderRadius: 8,
     alignItems: "center",
-    backgroundColor: null,
   },
   addCart: {
-    width: "50%",
+    width: "100%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
-    height: 60,
-  },
-  favorite: {
-    width: "18%",
-    justifyContent: "center",
-    alignItems: "center",
-    borderWidth: 2,
-    borderRadius: 5,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
     height: 50,
   },
   actionText: {
-    fontSize: 15,
+    fontSize: 18,
     textAlign: "center",
     color: "#fff",
   },

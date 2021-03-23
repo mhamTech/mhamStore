@@ -8,11 +8,12 @@ import {
 } from "react-native";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
+import { LinearGradient } from "expo-linear-gradient";
 
 //PropTypes check
 import PropTypes from "prop-types";
 
-export const CategorySection2 = ({ data, name, bg, navigation, image }) => {
+export const CategorySection2 = ({ data, name, navigation, image }) => {
   const DATA = data.filter((item) => name.toLowerCase().includes(item.type));
 
   return (
@@ -27,12 +28,19 @@ export const CategorySection2 = ({ data, name, bg, navigation, image }) => {
       })} }
       >
       <View style={styles.container}>
-        <View style={styles.category}>
-          <Image
-            source={{ uri: image }}
-            style={{...styles.image }}/>
-        </View>
-          <CustomText style={styles.title}>{name}</CustomText>
+        <LinearGradient
+          // gradient border
+          colors={Colors.water2}
+          start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+          style={{ marginHorizontal: 20, borderRadius: 5, padding: 2, marginTop: 5 }}
+        >
+          <View style={styles.category}>
+            <Image
+              source={{ uri: image }}
+              style={{...styles.image }}/>
+          </View>
+        </LinearGradient>
+        <CustomText style={styles.title}>{name}</CustomText>
       </View>
     </TouchableOpacity>
   );
@@ -46,10 +54,10 @@ CategorySection2.propTypes = {
 const { width, height } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
+    marginHorizontal: 2,
     borderRadius: 4,
-    marginTop: 15,
-    marginBottom: 5,
+    marginTop: 2,
+    marginBottom: 2,
   },
   category: {
     borderWidth: 0.3,
@@ -78,7 +86,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    color: Colors.light_gold,
+    color: Colors.water.blue,
     fontWeight: "500",
     width: '100%',
     paddingHorizontal: 8,

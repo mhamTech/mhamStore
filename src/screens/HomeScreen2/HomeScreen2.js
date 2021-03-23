@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     marginStart: 8,
     marginEnd: 8,
     marginVertical: 8,
-    color: Colors.light_gold,
+    color: Colors.black,
     fontWeight: "500",
   },
   list: {

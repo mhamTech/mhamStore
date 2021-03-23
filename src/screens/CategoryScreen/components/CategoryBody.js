@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   View,
@@ -27,6 +27,7 @@ const { width, height } = Dimensions.get("window");
 
 // export const CategoryBody = ({navigation, productsFilter, searchFilterFunction, CategoryScreen}) => {
 export const CategoryBody = (props) => {
+  const [grid, setGrid] = useState(false)
   const DATA = props.DATA;
   const image = props.image;
 
@@ -58,9 +59,28 @@ export const CategoryBody = (props) => {
           <Text>{t("categoryBody.noProducts")}</Text>
         </View>
         :
-        <>
+        /**
+         * {selected.length == 2 ?
+            <FlatList
+              key={'_'}
+              keyExtractor={item => "_" + item.id}
+              renderItem={this.renderLastItem}
+              data={subGroups}
+              numColumns={1} /> 
+              :
+            <FlatList
+              key={'#'}
+              keyExtractor={item => "#" + item.id}
+              renderItem={this.renderItem}
+              data={subGroups}
+              numColumns={2} />
+            }
+         */
+          grid ? 
           <AnimatedFlatList
-            contentContainerStyle={{ borderWidth: 0, }}
+            key={'_'}
+            keyExtractor={(item, index) => "_" + index}
+            numColumns={2}
             showsVerticalScrollIndicator={false}
             scrollEventThrottle={1}
             ListHeaderComponent={
@@ -68,19 +88,42 @@ export const CategoryBody = (props) => {
                 DATA={DATA}
                 image={image}
                 scrollY={scrollY}
+                grid={grid}
+                setGrid={setGrid}
               />
             }
-            onScroll={Animated.event(
-              [{nativeEvent: { contentOffset: { y: scrollY } }}],{ useNativeDriver: true })}
-            keyExtractor={item => item._id}
+            onScroll={Animated.event([{nativeEvent: { contentOffset: { y: scrollY } }}], { useNativeDriver: true })}
             data={DATA}
             renderItem={item => (
-              <View style={{ marginTop: 5, height: height / 6, justifyContent: 'center', width: width / 1.005, paddingEnd: 30 }}>
+              <View style={{ marginTop: 15, justifyContent: 'center' }}>
                 <HorizontalItem key={item._id} item={item} navigation={props.navigation} />
               </View>
             )}
           />
-        </>
+          :
+          <AnimatedFlatList
+            key={'#'}
+            keyExtractor={(item, index) => "#" + index}
+            showsVerticalScrollIndicator={false}
+            scrollEventThrottle={1}
+            ListHeaderComponent={
+              <Filter
+                DATA={DATA}
+                image={image}
+                scrollY={scrollY}
+                grid={grid}
+                setGrid={setGrid}
+              />
+            }
+            onScroll={Animated.event([{nativeEvent: { contentOffset: { y: scrollY } }}],{ useNativeDriver: true })}
+            data={DATA}
+            renderItem={item => (
+              <View style={{ marginTop: 15, justifyContent: 'center' }}>
+                <HorizontalItem key={item._id} item={item} navigation={props.navigation} />
+              </View>
+            )}
+          />
+        // </View>
       }
     </View>
   );
@@ -109,6 +152,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "500",
-    color: Colors.lighter_gold,
+    color: Colors.black,
   },
 });

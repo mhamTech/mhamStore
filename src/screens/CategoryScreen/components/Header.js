@@ -52,7 +52,7 @@ export const Header = (props) => {
             onPress={() => props.navigation.goBack() }
             style={styles.icon}
           >
-            <Ionicons name="ios-arrow-back" size={25} color={'#000'} />
+            <Ionicons name="ios-arrow-back" size={25} color={Colors.water.blue} />
           </TouchableOpacity>
         </View>
       <Animated.View
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: Platform.OS === "android" ? 0 : 10,
     fontSize: 30,
-    color: '#000',
+    color: Colors.water.blue,
   },
   // shareItem: {
   //   position: "absolute",

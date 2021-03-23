@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import CustomText from "../../../components/UI/CustomText";
+import Colors from '../../../utils/Colors';
 
 export const QuickDetails = () => {
     return (
@@ -32,8 +33,14 @@ export const QuickDetails = () => {
 
 const styles = StyleSheet.create({
     container: {
-        // padding: 10,
-        height: 120
+        height: 120,
+        backgroundColor: '#D8F1FE',
+        borderRadius: 5,
+        borderWidth: 0.4,
+        // borderColor: '#3975F7',
+        borderColor: Colors.water.blue,
+        paddingVertical: 20,
+        paddingHorizontal: 20
     },
     column: {
         flexDirection: 'column',

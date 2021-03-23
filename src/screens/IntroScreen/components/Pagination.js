@@ -39,7 +39,7 @@ export const Pagination = ({ scrollX, slides }) => {
               <View
                 style={[
                   styles.paginationDot,
-                  { backgroundColor: Colors.lighter_gold },
+                  { backgroundColor: Colors.black },
                 ]}
               />
             </View>
@@ -81,6 +81,6 @@ const styles = StyleSheet.create({
     height: DOT_SIZE,
     borderRadius: DOT_SIZE / 2,
     borderWidth: 2,
-    borderColor: Colors.lighter_gold,
+    borderColor: Colors.black,
   },
 });

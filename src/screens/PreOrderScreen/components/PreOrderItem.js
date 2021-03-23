@@ -34,7 +34,7 @@ class PreOrderItem extends React.PureComponent {
             suffix={" SAR"}
             renderText={(formattedValue) => (
               <View style={styles.priceContainer}>
-                <CustomText style={{ fontSize: 10, }}>
+                <CustomText style={{ fontSize: 10, color: Colors.water.blue }}>
                   Quantity: {item.quantity}
                 </CustomText>
                 <CustomText style={styles.price}>{formattedValue}</CustomText>
@@ -54,9 +54,6 @@ PreOrderItem.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.light_grey,
-    backgroundColor: "#fff",
     flexDirection: "row",
     paddingVertical: 10,
     borderRadius: 5,
@@ -74,6 +71,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 14,
     fontWeight: "400",
+    color: Colors.water.blue
   },
   priceContainer: {
     flexDirection: "row",

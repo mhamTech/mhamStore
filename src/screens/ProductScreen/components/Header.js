@@ -63,14 +63,14 @@ export const Header = ({ navigation, searchFilterFunction, scrollY }) => {
         </View>
 
         {/* Share button */}
-        <View style={styles.shareItem}>
+        {/* <View style={styles.shareItem}>
           <ShareItem
             imageURL="https://www.facebook.com/daquyankhangthinhvuong/"
             title="Share our facebook page"
             message="Our Facebook Link"
             color="black"
           />
-        </View>
+        </View> */}
 
       </View>
       
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     width: "100%",
     position: "absolute",
     height: HEADER_HEIGHT,
-    backgroundColor: Colors.lighter_gold,
+    backgroundColor: Colors.black,
   },
   title: {
     marginTop: Platform.OS === "android" ? 0 : 5,

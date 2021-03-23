@@ -78,13 +78,13 @@ export const Header = ({ navigation, scrollY, item }) => {
             {item.filename}
           </CustomText>
         </Animated.View>
-        <View style={{...styles.shareIcon}}>
+        {/* <View style={{...styles.shareIcon}}>
           <ShareItem
             imageURL={item.url}
             title={item.filename}
             message={item.filename}
           />
-        </View>
+        </View> */}
       </View>
       <Animated.View
         style={{
@@ -92,7 +92,7 @@ export const Header = ({ navigation, scrollY, item }) => {
           top: 0,
           left: 0,
           right: 0,
-          backgroundColor: Colors.lighter_gold,
+          backgroundColor: Colors.black,
           overflow: "hidden",
           opacity: headerOpacity,
           height: HEADER_MAX_HEIGHT,
@@ -112,7 +112,7 @@ export const Header = ({ navigation, scrollY, item }) => {
         }}
         onLoadEnd={() => setIsLoading(false)}
       />
-      {isLoading && <ActivityIndicator size="large" color={Colors.dark} />}
+      {isLoading && <ActivityIndicator size="large" color={Colors.black} />}
     </Animatable.View>
   );
 };

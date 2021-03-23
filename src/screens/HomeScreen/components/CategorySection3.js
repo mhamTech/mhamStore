@@ -103,6 +103,6 @@ const styles = StyleSheet.create({
     },
     seeMoreText: {
       fontSize: 14,
-      color: Colors.lighter_gold,
+      color: Colors.black,
     },
 });

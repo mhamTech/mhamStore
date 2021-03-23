@@ -25,15 +25,16 @@ export default renderField = ({
       <TextInput
         placeholder={label}
         autoCapitalize={autoCapitalize ? "words" : "none"}
+        placeholderTextColor={Colors.water.light_blue}
         clearButtonMode={passIcon ? "never" : "always"}
         mode="flat"
-        selectionColor={Colors.leave_gold}
-        theme={{ colors: { primary: Colors.leave_gold } }}
+        selectionColor={Colors.water.blue}
+        theme={{ colors: { primary: Colors.water.blue } }}
         left={
           <TextInput.Icon
             name={icon}
             size={24}
-            color={Colors.lighter_gold}
+            color={Colors.water.blue}
             style={{ paddingRight: 10 }}
           />
         }
@@ -55,7 +56,7 @@ export default renderField = ({
           }}
           name={showPass ? "eye" : "eye-off"}
           size={24}
-          color={Colors.lighter_gold}
+          color={Colors.water.blue}
           style={{
             position: "absolute",
             top: "40%",
@@ -70,7 +71,7 @@ export default renderField = ({
           }}
           name={showConfirmPass ? "eye" : "eye-off"}
           size={24}
-          color={Colors.lighter_gold}
+          color={Colors.black}
           style={{
             position: "absolute",
             top: "40%",

@@ -21,7 +21,7 @@ export const DetailScreen2 = (props) => {
   const { item } = props.route.params;
   const [message, setMessage] = useState('');
   const [showSnackbar, setShowSnackbar] = useState(false);
-  // const [color, setColor] = useState(Colors.lighter_gold);
+  // const [color, setColor] = useState(Colors.black);
   //color
   const [modalVisible, setModalVisible] = useState(false);
   //Favorite
@@ -36,7 +36,7 @@ export const DetailScreen2 = (props) => {
     // checkColor();
   }, [item]);
 
-  const color = Colors.light_gold
+  const color = Colors.black
 
   return (
     <View style={styles.container}>

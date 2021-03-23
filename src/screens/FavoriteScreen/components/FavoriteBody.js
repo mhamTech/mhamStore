@@ -26,9 +26,9 @@ export const FavoriteBody = ({
               borderWidth: 1,
               paddingHorizontal: 15,
               paddingVertical: 10,
-              backgroundColor: Colors.lighter_gold,
+              backgroundColor: Colors.black,
               borderRadius: 5,
-              borderColor: Colors.lighter_gold,
+              borderColor: Colors.black,
               marginTop: 10,
             }}
           >

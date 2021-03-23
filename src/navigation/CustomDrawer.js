@@ -65,18 +65,16 @@ export default (props) => {
     if(!response.ok){ 
       setError(true)
     }
-    // console.log(response.status, response.ok); // 404 false 
   })
   .catch(error => {
-    // console.log('API failure' + error);
+    console.log(error)
   });
-  }, []);  
- 
+  }, []);
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         {Object.keys(user).length === 0 ? (
-          <View style={{ alignItems: "center", marginVertical: 20 }}>
+          <View style={styles.profileContainer}>
             <Image
               style={styles.logo}
               source={require("../assets/Images/logo1.png")}
@@ -86,50 +84,38 @@ export default (props) => {
           <>
             <View style={styles.profileContainer}>
               <TouchableOpacity
+                style={{ justifyContent: 'center', alignItems: 'center' }}
                 onPress={() => props.navigation.navigate("Profile")}
               >
-                {/* <Image
-                  style={styles.profilePic}
-                  source={
-                    user.profilePicture === 0
-                      ? require("../assets/Images/defaultprofile.png")
-                      : { uri: user.profilePicture }
-                  }
-                /> */}
                 <Image
                   style={styles.profilePic}
                   source={ 
                     error
-                      ? require("../assets/Images/defaultprofile.png")
-                      : { uri: user.profilePicture }
+                      ? require("../assets/Images/defaultprofile.jpeg")
+                      : require("../assets/Images/defaultprofile.jpeg")
+                      // : { uri: user.profilePicture }
                   }
                 />
-              </TouchableOpacity>
               <View style={{ justifyContent: "center" }}>
                 <Text
                   style={{
-                    color: Colors.light_green,
-                    fontSize: 18,
+                    marginTop: 10,
+                    color: Colors.water.blue,
+                    fontSize: 22,
                     paddingHorizontal: 10,
                     paddingVertical: 0,
                   }}
                 >
                   {user.name}
                 </Text>
-                <Text
-                  style={{
-                    color: Colors.grey,
-                    fontSize: 15,
-                    paddingHorizontal: 10,
-                  }}
-                ></Text>
               </View>
+              </TouchableOpacity>
             </View>
           </>
         )}
         <View>
           <DrawerItemList state={newState} {...rest} />
-          <Drawer.Section style={styles.drawerSection}></Drawer.Section>
+          <Drawer.Section style={styles.drawerSection}/>
           <View style={styles.social}>
             {/* <OpenURL url={fbURL}>
               <Image
@@ -163,12 +149,12 @@ export default (props) => {
                 name="logout"
                 size={25}
                 style={{ marginRight: 30 }}
-                color={Colors.dark}
+                color={Colors.red}
               />
               <CustomText
                 style={{
                   fontSize: 14,
-                  color: Colors.dark,
+                  color: Colors.red,
                   fontWeight: "500",
                   fontFamily: "Roboto-Medium",
                 }}
@@ -198,19 +184,24 @@ export default (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   profileContainer: {
-    flexDirection: "row",
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
     alignItems: "center",
-    marginHorizontal: 20,
-    marginVertical: 20,
+    paddingVertical: 50,
+    marginTop: -10,
+    flexDirection: 'column',
+    backgroundColor: 'white'
   },
   profilePic: {
     resizeMode: Platform.OS === "android" ? "cover" : "contain",
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 0.3,
+    borderColor: '#000'
   },
   logo: {
     resizeMode: "contain",

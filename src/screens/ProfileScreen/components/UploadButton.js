@@ -14,7 +14,7 @@ const UploadButton = ({
   return (
     <View style={styles.button}>
       <Button
-        icon='camera'
+        // icon='camera'
         mode='contained'
         onPress={UploadProfile}
         disabled={uploadButton}
@@ -24,9 +24,10 @@ const UploadButton = ({
           height: 40,
           width: '50%',
           justifyContent: "center",
-          backgroundColor: Colors.leave_gold,
-        }}
-      >
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: Colors.black,
+        }}>
         <Text style={{ fontSize: 10, color: '#fff' }}>Update Profile Picture</Text>
       </Button>
       {!uploadButton ? (
@@ -43,7 +44,7 @@ const UploadButton = ({
             height: 40,
             width: '50%',
             justifyContent: "center",
-            backgroundColor: Colors.leave_gold,
+            backgroundColor: Colors.black,
           }}
         >
           <Text style={{ fontSize: 10, color: '#fff' }}>Cancel</Text>
