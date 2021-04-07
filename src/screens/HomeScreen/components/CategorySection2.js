@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
   Image,
 } from "react-native";
 import CustomText from "../../../components/UI/CustomText";
@@ -51,13 +50,9 @@ CategorySection2.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
-const { width, height } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 2,
     borderRadius: 4,
-    marginTop: 2,
-    marginBottom: 2,
   },
   category: {
     borderWidth: 0.3,

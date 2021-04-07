@@ -168,7 +168,7 @@ export class Header extends React.Component {
                   color={Colors.water.blue}
                 />
               </TouchableOpacity>
-              {/* <View>
+              <View>
                 <Image
                   source={require("../../../assets/Images/logoNoText.png")}
                   style={{
@@ -176,7 +176,7 @@ export class Header extends React.Component {
                     resizeMode: "contain",
                   }}
                 />
-              </View> */}
+              </View>
               <TouchableOpacity
                 activeOpacity={1}
                 underlayColor={"#ccd0d5"}
@@ -229,10 +229,10 @@ export class Header extends React.Component {
           <View style={styles.content_safe_area}>
             {this.state.keyword === "" ? (
               <View style={styles.image_placeholder_container}>
-                {/* <Image
+                <Image
                   source={require("../../../assets/Images/logo1.png")}
                   style={styles.image_placeholder}
-                /> */}
+                />
                 <Text style={styles.image_placeholder_text}>
                   Enter keywords
                   {"\n"}

@@ -91,9 +91,9 @@ export default (props) => {
                   style={styles.profilePic}
                   source={ 
                     error
-                      ? require("../assets/Images/defaultprofile.jpeg")
-                      : require("../assets/Images/defaultprofile.jpeg")
-                      // : { uri: user.profilePicture }
+                      ? require("../assets/Images/defaultprofile.jpg")
+                      // : require("../assets/Images/defaultprofile.jpg")
+                      : { uri: user.profilePicture }
                   }
                 />
               <View style={{ justifyContent: "center" }}>

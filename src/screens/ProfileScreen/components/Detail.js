@@ -13,7 +13,7 @@ const Detail = ({ icon, content }) => {
       : MaterialCommunityIcons;
   return (
     <View style={styles.infoContainer}>
-      <Icon name={icon} size={28} color={Colors.grey} />
+      <Icon name={icon} size={28} color={Colors.water.light_blue} />
       <CustomText style={styles.detailText}>{content}</CustomText>
     </View>
   );

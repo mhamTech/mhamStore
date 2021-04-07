@@ -62,7 +62,7 @@ export const CartBody = ({
       ) : (carts.items.length === 0 ? (
         <View style={styles.center}>
         <ScrollView contentContainerStyle={styles.center} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={loadCarts} />}>
-          <CustomText style={{ fontSize: 16 }}>
+          <CustomText style={{ fontSize: 16, color: Colors.water.blue }}>
             {t("cart.noProduct")}
           </CustomText>
         </ScrollView>

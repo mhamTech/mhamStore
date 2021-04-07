@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
   buttom: {
     width: "100%",
     height: 50,
-    backgroundColor: Colors.red,
+    backgroundColor: Colors.blue,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
-    marginBottom: 5,
+    marginBottom: -10,
   },
 });

@@ -62,16 +62,16 @@ export const Header = ({ navigation, scrollY, item }) => {
           style={styles.image}/>
           :
         <Animated.View style={styles.image}>
-            <SliderBox
-              images={item.images}
-              autoplay={false}
-              circleLoop={true}
-              inactiveDotColor={'#ddd'}
-              dotColor={'#000'}
-              resizeMode={'contain'}
-              imageLoadingColor={'white'}
-            />
-            {/* {isLoading ? <ActivityIndicator size="large" color={Colors.black} />: <></>} */}
+          <SliderBox
+            images={item.images}
+            autoplay={false}
+            circleLoop={true}
+            inactiveDotColor={'#ddd'}
+            dotColor={'#000'}
+            resizeMode={'contain'}
+            imageLoadingColor={'white'}
+          />
+          {/* {isLoading ? <ActivityIndicator size="large" color={Colors.black} />: <></>} */}
         </Animated.View>
       }
     </Animatable.View>

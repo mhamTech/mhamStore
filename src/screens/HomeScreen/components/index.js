@@ -3,7 +3,6 @@ export * from "./CategorySection";
 export * from "./CategorySection2";
 export * from "./FloatButton";
 export * from "./Header";
-export * from "./ProductItem";
-export * from "./Categories";
 export * from "./RecentlySlide";
 export * from "./FlatListHeaderComponent";
+export * from "./FlatListFooterComponent";

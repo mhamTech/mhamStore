@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   container: {},
   title: {
     fontSize: 15,
-    color: Colors.text,
+    color: Colors.water.blue,
     fontWeight: "500",
     marginVertical: 10,
     marginHorizontal: 10,

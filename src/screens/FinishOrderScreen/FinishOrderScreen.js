@@ -33,7 +33,7 @@ export const FinishOrderScreen = (props) => {
       <View style={styles.buttom}>
         <TouchableOpacity onPress={() => props.navigation.navigate("Home")}>
           <CustomText style={{ ...styles.title, color: Colors.light_grey }}>
-            go back to the main page
+            Go back to the main page
           </CustomText>
         </TouchableOpacity>
       </View>
@@ -57,12 +57,12 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontSize: 16,
-    color: Colors.text,
+    color: Colors.water.blue,
   },
   buttom: {
-    marginTop: 20,
-    backgroundColor: Colors.black,
-    width: 200,
+    marginTop: 100,
+    backgroundColor: Colors.blue,
+    width: 300,
     paddingVertical: 10,
     borderRadius: 5,
   },

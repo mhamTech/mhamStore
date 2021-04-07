@@ -42,7 +42,7 @@ export class SummaryOrder extends React.PureComponent {
           <CustomText
             style={{
               fontSize: 15,
-              color: Colors.text,
+              color: Colors.water.blue,
               fontWeight: "500",
             }}
           >
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    color: Colors.text,
+    color: Colors.water.blue,
     fontWeight: "500",
     marginVertical: 20,
     marginHorizontal: 10,

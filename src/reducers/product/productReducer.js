@@ -2,6 +2,7 @@ import {
   FETCH_PRODUCTS,
   PRODUCT_LOADING,
   PRODUCT_FAILURE,
+  RECENTLY_SUCCESS,
 } from "./productActions";
 import { FIRST_OPEN } from "./checkFirstTimeActions";
 
@@ -33,6 +34,11 @@ export const productReducer = (state = initialState, action) => {
         ...state,
         isFirstOpen: true,
       };
+    };
+    case RECENTLY_SUCCESS: {
+      return {
+        ...state,
+      }
     }
     default:
       return state;

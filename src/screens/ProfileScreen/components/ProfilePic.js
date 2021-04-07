@@ -69,31 +69,20 @@ export const ProfilePic = ({
         if (!response.ok) {
           setError(true);
         }
-        // console.log(response.status, response.ok); // 404 false
       })
       .catch((error) => {
-        // console.log("API failure" + error);
+        console.log('error in fetching user information - ProfileScreen => ProfilePic', error)
       });
   }, []);
 
   return (
     <View>
       <View style={{ height: 50, alignItems: "center" }}>
-        {/* <Image
-          style={styles.profilePic}
-          source={
-            imageUri.length === 0
-              ? user.profilePicture.length === 0
-                ? require("../../../assets/Images/defaultprofile.png")
-                : { uri: user.profilePicture }
-              : { uri: imageUri }
-          }
-        /> */}
         <Image
           style={styles.profilePic}
           source={
             error
-              ? require("../../../assets/Images/defaultprofile.png")
+              ? require("../../../assets/Images/defaultprofile.jpg")
               : { uri: user.profilePicture }
           }
         /> 
@@ -140,12 +129,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.water.blue,
   },
   userName: {
     fontSize: 20,
     marginTop: 10,
-    color: Colors.black,
+    color: Colors.water.blue,
     textAlign: "center",
   },
 });

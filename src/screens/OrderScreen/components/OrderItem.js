@@ -46,13 +46,13 @@ export const OrderItem = ({ order }) => {
             {moment(order.updatedAt).format("Do, MMMM  YYYY, hh:mm a ")}
           </CustomText>
         </View>
-        <View style={styles.detailButton}>
-          <TouchableOpacity onPress={() => setShowDetails((prev) => !prev)}>
+        <TouchableOpacity onPress={() => setShowDetails((prev) => !prev)}>
+          <View style={styles.detailButton}>
             <CustomText style={{ fontSize: 15, color: "#fff" }}>
-              {showDetails ? "Hide Order Details" : "Order Details"}
+              {showDetails ? "Hide Order Details" : "Show Order Details"}
             </CustomText>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
         {showDetails ? (
           <View>
             <View style={styles.textContainer}>
@@ -115,9 +115,9 @@ OrderItem.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // borderWidth: 1,
+    borderWidth: 0.3,
     borderColor: Colors.water.light_blue,
-    backgroundColor: Colors.white,
+    backgroundColor: "#fff",
     borderRadius: 5,
     paddingVertical: 5,
     paddingHorizontal: 10,

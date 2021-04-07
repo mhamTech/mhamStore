@@ -5,6 +5,7 @@ import UploadButton from "./UploadButton";
 import Detail from "./Detail";
 //PropTypes check
 import PropTypes from "prop-types";
+import Colors from "../../../utils/Colors";
 
 export const ProfileBody = ({
   user,
@@ -53,6 +54,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "600",
     textTransform: "uppercase",
-    fontSize: 12
+    fontSize: 12,
+    color: Colors.water.blue
   },
 });

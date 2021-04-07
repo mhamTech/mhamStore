@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Animated, Platform } from 'react-native';
-//Color
-import Colors from '../../utils/Colors';
+import { View, StyleSheet, Animated } from 'react-native';
 //Redux
 import { useSelector } from 'react-redux';
 //Components
@@ -11,7 +9,6 @@ import {
   DetailBody,
   ActionButton,
   ModalComp,
-  Comments,
 } from './components';
 import { API_URL } from '../../utils/Config';
 
@@ -58,11 +55,10 @@ export const DetailScreen3 = (props) => {
         )}
       >
         <DetailBody item={item} />
-        <Comments />
+        {/* <Comments /> */}
       </Animated.ScrollView>
       <ActionButton
         item={item}
-        // FavoriteProducts={FavoriteProducts}
         setShowSnackbar={setShowSnackbar}
         setModalVisible={setModalVisible}
         setMessage={setMessage}
@@ -83,7 +79,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E5E5E5',
-    paddingBottom: Platform.OS === 'ios' ? 0 : 0,
     height: '100%',
   },
 });

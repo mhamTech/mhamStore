@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
   },
   linear: {
     padding: 2,
-    height: 100,
-    width: 100,
-    borderRadius: 50,
+    height: 70,
+    width: 70,
+    borderRadius: 35,
     alignItems: 'center',
     justifyContent: 'center',
     // shadows
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 50,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
   },
   text: {
     color: 'red',

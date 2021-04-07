@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { createStackNavigator, CardStyleInterpolators, TransitionPresets,} from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
@@ -31,8 +30,8 @@ import { DetailScreen3 } from "../screens/DetailScreen3";
 
 import { DetailScreen } from "../screens/DetailScreen";
 import { FavoriteScreen } from "../screens/FavoriteScreen";
-import { ProductScreen } from "../screens/ProductScreen";
 import { CategoryScreen } from "../screens/CategoryScreen";
+import { CategoriesScreen } from "../screens/CategoriesScreen";
 // Order Screens
 import { OrderScreen } from "../screens/OrderScreen";
 import { PreOrderScreen } from "../screens/PreOrderScreen";
@@ -131,20 +130,6 @@ export const CartStackScreen = () => (
   </CartStack.Navigator>
 );
 
-const ProductStack = createStackNavigator();
-export const ProductStackScreen = () => (
-  <ProductStack.Navigator
-    screenOptions={{
-      headerShown: false,
-      cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
-    }}
-  >
-    <ProductStack.Screen name="ProductScreen" component={ProductScreen} />
-    <ProductStack.Screen name="DetailScreen" component={DetailScreen} />
-    <ProductStack.Screen name="CartScreen" component={CartStackScreen} />
-  </ProductStack.Navigator>
-);
-
 const ProfileStack = createStackNavigator();
 export const ProfileStackScreen = () => (
   <ProfileStack.Navigator
@@ -169,8 +154,8 @@ export const CategoryStackScreen = () => (
       cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
     }}
   >
-    <ProductStack.Screen name="ProductScreen" component={ProductScreen} />
     <CategoryStack.Screen name="CategoryScreen" component={CategoryScreen} />
+    <CategoryStack.Screen name="Categories" component={CategoriesScreen} />
   </CategoryStack.Navigator>
 );
 
@@ -183,14 +168,15 @@ export const HomeStackScreen = () => (
     }}
   >
     <HomeStack.Screen name="Home" component={HomeScreen} />
-    <HomeStack.Screen name="Detail" component={DetailScreen} />
-    <HomeStack.Screen name="Detail2" component={DetailScreen2} />
+    {/* <HomeStack.Screen name="Categories" component={HomeScreen} /> */}
     <HomeStack.Screen name="Detail3" component={DetailScreen3} />
     <HomeStack.Screen name="Cart" component={CartStackScreen} />
-    <HomeStack.Screen name="Product" component={ProductStackScreen} />
     <HomeStack.Screen name="Category" component={CategoryStackScreen} />
     <HomeStack.Screen name="FinishOrder" component={FinishOrderScreen} />
     <HomeStack.Screen name="ResetPw" component={ResetPwScreen} />
+    
+    <HomeStack.Screen name="Detail" component={DetailScreen} />
+    <HomeStack.Screen name="Detail2" component={DetailScreen2} />
   </HomeStack.Navigator>
 );
 

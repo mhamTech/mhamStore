@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Animated, Image, Dimensions, Text, TouchableOpacity } from "react-native";
+import React, { useEffect, useState, useCallback, useRef } from "react";
+import { View, StyleSheet, Button, Animated, Image, Dimensions, Text, TouchableOpacity } from "react-native";
 import { QuickDetails } from './QuickDetails';
 //Animatable
 import * as Animatable from "react-native-animatable";
@@ -12,17 +12,39 @@ import NumberFormat from "../../../components/UI/NumberFormat";
 //PropTypes check
 import PropTypes from "prop-types";
 // import { RadioButtons } from 'react-native-radio-buttons'
-import { Video } from 'expo-av';
+import { Audio, Video } from 'expo-av';
+import YoutubePlayer from "react-native-youtube-iframe";
 
 const { width, height } = Dimensions.get("window");
 
 export const DetailBody = ({ item }) => {
   const [autoPlay, setAutoPlay] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  // youtube
+  const [playing, setPlaying] = useState(false);
+  const onStateChange = useCallback((state) => {
+    if (state === "ended") {
+      setPlaying(false);
+      Alert.alert("video has finished playing!");
+    }
+  }, []);
+  const togglePlaying = useCallback(() => {
+    setPlaying((prev) => !prev);
+  }, []);
+  // const [ready, isReady] = useState(false);
+  // const [status, setStatus] = useState('');
+  // const [quality, setQuality] = useState('');
+  // const [error, setError] = useState('');
   
   const _handleVideoRef = component => {
     const playbackObject = component;
     console.log('playbackObject', playbackObject)
+  }
+
+  if(item.youtube_video) {
+    var videoURL = item.youtube_video.split('v=')[1];
+    var ampersandPosition = videoURL.indexOf('&');
+    if(ampersandPosition != -1) videoURL = videoURL.substring(0, ampersandPosition);
   }
 
   return (
@@ -31,8 +53,11 @@ export const DetailBody = ({ item }) => {
         animation="fadeInLeft"
         delay={2000}
         style={styles.footer_header}>
-        <CustomText selectable={true} style={{ ...styles.title }}>{item.filename}</CustomText>
-        <NumberFormat style={{ color: "#000", fontSize: 13, backgroundColor: null }}price={item.price}/>
+        <CustomText selectable={true} style={{ ...styles.title, }}>{item.filename}</CustomText>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '30%', alignItems: 'center' }}>
+          <NumberFormat style={{ color: "#000", fontSize: 13}}price={item.price}/>
+          <Text style={{ color: "#000", fontSize: 10, textDecorationLine: 'line-through' }}price={item.oldPrice}>{item.oldPrice}</Text>
+        </View>
       </Animatable.View>
       <Animatable.View
         animation="fadeInUpBig"
@@ -41,27 +66,30 @@ export const DetailBody = ({ item }) => {
       >
         
         <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginBottom: 20, borderColor: '#eee' }} />
-        <QuickDetails />
-        <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginTop: 20, marginBottom: 0, borderColor: '#eee' }} />
-        <View style={{ width: '100%', justifyContent: 'center', marginTop: 10}}>
-          <View style={{ width: '100%' }}>
-            <CustomText style={{ fontWeight: 'bold' }}>Video</CustomText>
-          </View>
-          <Video
-            // ref={_handleVideoRef}
-            source={{ uri: 'http://video01.alibaba.com/vod-icbu/a9b5b21ee64d2b47/GVbhvb6Gti20kS7r4sZ/oPbw4On7NpeUzFM7ACZ_252320545213_sd_hq.mp4' }}
-            rate={1.0}
-            volume={10.0}
-            isMuted={true}
-            useNativeControls
-            resizeMode="cover"
-            shouldPlay={autoPlay}
-            resizeMode='contain'
-            style={{ width: '100%', height: 200, borderRadius: 2, borderRadius: 4, backgroundColor: '#000', marginTop: 2 }}
-          />
-      </View>
 
-        <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginTop: 20, borderColor: '#eee' }} />
+        {item.quickDetails.length > 0 &&
+          <>
+            <QuickDetails details={item.quickDetails} />
+            <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginTop: 20, marginBottom: 0, borderColor: '#eee' }} />
+          </>
+        }
+
+        <View style={{ width: '100%', justifyContent: 'center', marginTop: 10}}>
+          {item.youtube_video &&
+            <>
+              <View style={{ width: '100%' }}>
+                <CustomText style={{ fontWeight: 'bold' }}>Video</CustomText>
+              </View>
+              <YoutubePlayer
+                height={200}
+                play={playing}
+                videoId={videoURL}
+                onChangeState={onStateChange}
+              />
+              <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginTop: 20, borderColor: '#eee' }} />
+            </>
+          }          
+      </View>
         <CustomText style={{ fontWeight: "bold", marginTop: 20, }}>description</CustomText>
         <CustomText style={{ color: Colors.black }} selectable={true}>{item.description}</CustomText>
 
@@ -88,12 +116,13 @@ const styles = StyleSheet.create({
     flexDirection: "column-reverse",
     justifyContent: "space-between",
     paddingHorizontal: 20,
-    width: '50%',
+    width,
   },
   title: {
     fontSize: 17,
     color: '#3975F7',
     width: '100%',
+    // borderWidth: 1,
   },
   detail: {
     fontSize: 15,
@@ -119,4 +148,12 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: "contain",
   },
+  video: {
+    width: '100%',
+    height: 200,
+    borderRadius: 2,
+    borderRadius: 4,
+    backgroundColor: '#000',
+    marginTop: 2
+  }
 });

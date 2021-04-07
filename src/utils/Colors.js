@@ -19,6 +19,4 @@ export default {
   water2: [
     '#015479', '#12788e', '#7ba6b6', '#d5dfe3'
   ]
-
-  // water: "#6f8bc8",
 };

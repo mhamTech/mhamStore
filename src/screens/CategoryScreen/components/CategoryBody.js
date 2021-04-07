@@ -4,10 +4,8 @@ import {
   View,
   StyleSheet,
   TouchableWithoutFeedback,
-  SectionList,
   Text,
   Platform,
-  Dimensions,
   FlatList
 } from "react-native";
 import Animated, { Value } from "react-native-reanimated";
@@ -21,11 +19,10 @@ import PropTypes from "prop-types";
 import LottieView from "lottie-react-native";
 // i18n
 import { t } from "i18n-js"
+import { GridItem } from "./GridItem";
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
-const { width, height } = Dimensions.get("window");
 
-// export const CategoryBody = ({navigation, productsFilter, searchFilterFunction, CategoryScreen}) => {
 export const CategoryBody = (props) => {
   const [grid, setGrid] = useState(false)
   const DATA = props.DATA;
@@ -48,7 +45,7 @@ export const CategoryBody = (props) => {
       // TODO: add lottie to android
       Platform.OS === 'ios' ?
       <View style={{ height: '100%', width: '100%', alignItems: 'center', marginTop: 120 }}>
-        <Text>{t("categoryBody.noProducts")}</Text>
+        <Text style={{ color: Colors.water.blue}}>{t("categoryBody.noProducts")}</Text>
         <LottieView
           source={require("../../../components/IconAnimation/empty.json")}
           autoPlay
@@ -56,31 +53,13 @@ export const CategoryBody = (props) => {
         />
         </View> :
         <View style={{ width: '100%', alignItems: 'center', marginTop: 25 }}>
-          <Text>{t("categoryBody.noProducts")}</Text>
+          <Text style={{ color: Colors.water.blue}}>{t("categoryBody.noProducts")}</Text>
         </View>
         :
-        /**
-         * {selected.length == 2 ?
-            <FlatList
-              key={'_'}
-              keyExtractor={item => "_" + item.id}
-              renderItem={this.renderLastItem}
-              data={subGroups}
-              numColumns={1} /> 
-              :
-            <FlatList
-              key={'#'}
-              keyExtractor={item => "#" + item.id}
-              renderItem={this.renderItem}
-              data={subGroups}
-              numColumns={2} />
-            }
-         */
-          grid ? 
+          !grid ? 
           <AnimatedFlatList
             key={'_'}
             keyExtractor={(item, index) => "_" + index}
-            numColumns={2}
             showsVerticalScrollIndicator={false}
             scrollEventThrottle={1}
             ListHeaderComponent={
@@ -98,7 +77,8 @@ export const CategoryBody = (props) => {
               <View style={{ marginTop: 15, justifyContent: 'center' }}>
                 <HorizontalItem key={item._id} item={item} navigation={props.navigation} />
               </View>
-            )}
+              )
+            }
           />
           :
           <AnimatedFlatList
@@ -106,6 +86,7 @@ export const CategoryBody = (props) => {
             keyExtractor={(item, index) => "#" + index}
             showsVerticalScrollIndicator={false}
             scrollEventThrottle={1}
+            numColumns={2}
             ListHeaderComponent={
               <Filter
                 DATA={DATA}
@@ -118,8 +99,8 @@ export const CategoryBody = (props) => {
             onScroll={Animated.event([{nativeEvent: { contentOffset: { y: scrollY } }}],{ useNativeDriver: true })}
             data={DATA}
             renderItem={item => (
-              <View style={{ marginTop: 15, justifyContent: 'center' }}>
-                <HorizontalItem key={item._id} item={item} navigation={props.navigation} />
+              <View style={{ width: '50%', marginTop: 15, justifyContent: 'center' }}>
+                <GridItem key={item._id} item={item} navigation={props.navigation} />
               </View>
             )}
           />

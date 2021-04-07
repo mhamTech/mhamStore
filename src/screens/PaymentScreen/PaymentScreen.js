@@ -91,11 +91,11 @@ export const PaymentScreen = (props) => {
             />
           </ScrollView>
           <View style={styles.total}>
-              <TouchableOpacity onPress={addOrderAct}>
-            <View style={styles.orderButton}>
+            <TouchableOpacity onPress={addOrderAct}>
+              <View style={styles.orderButton}>
                 <CustomText style={{ color: "#fff", fontSize: 16 }}>Proceed to order</CustomText>
-            </View>
-              </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
           </View>
         </>
       )}

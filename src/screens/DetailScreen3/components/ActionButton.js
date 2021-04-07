@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     height: 50,
     backgroundColor: Colors.blue,
+    // backgroundColor: '#3E45AA',
     marginHorizontal: 10,
     borderRadius: 8,
     alignItems: "center",

@@ -10,7 +10,6 @@ import {
   Image
 } from "react-native";
 import { fetchCategories } from "../../../reducers";
-import { ProductItem } from "./ProductItem";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 import { BlurView } from "expo-blur";

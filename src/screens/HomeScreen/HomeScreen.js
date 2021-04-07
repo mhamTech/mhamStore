@@ -2,22 +2,26 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   FlatList,
+  Alert,
+  Text,
+  RefreshControl
 } from "react-native";
 //Redux
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCategories, fetchProducts, fetchRecentlyCategories } from "../../reducers";
+import { fetchCategories, fetchProducts, fetchRecentlyCategories, clearRecently as clear } from "../../reducers";
 //Animation
 import Animated from "react-native-reanimated";
 //Components
 import {
   Header,
-  CategorySection2,
-  FlatListHeaderComponent
+  FlatListHeaderComponent,
+  FlatListFooterComponent
 } from "./components";
 import Skeleton2 from "../../components/Loaders/SkeletonLoading2";
 import Snackbar from "../../components/Notification/Snackbar";
 import { showMessage } from 'react-native-flash-message';
 import { Provider } from "react-native-paper";
+import Colors from "../../utils/Colors";
 
 export const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -30,6 +34,32 @@ export const HomeScreen = ({ navigation }) => {
   const slides = useSelector((state) => state.recentlyReducer);
   const notification = useSelector((state) => state.auth.notification);
   const [ recently, setRecently ] = useState(null);
+  const [imageLoading, isImageLoading] = useState(false);
+
+  const clearRecently = () => {
+    Alert.alert("Clear recently", "Are you sure",
+    [
+      {
+        text: "OK",
+        onPress: () => {
+          try {
+            dispatch(clear());
+            fetching();
+          } catch (error) {
+            showMessage({
+              message: 'Something went happen while deleting recently try again later',
+              type: 'warning',
+              duration: 1500
+            })
+          }
+        }
+      },
+      {
+        text: "Cancel",
+        style: "cancel"
+      }
+    ])
+  }
 
   const fetching = async () => {
     try {
@@ -60,46 +90,47 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <Provider>
-      {isLoading ? <Skeleton2 /> : (
+      {/* {isLoading ? <Skeleton2 /> : ( */}
         <>
           <Header
             scrollPoint={scrollY}
             navigation={navigation}
             products={products}
           />
-          {/* categories list */}
           <FlatList
             keyExtractor={(item, index) => '_' + index}
-            onRefresh={fetching}
-            refreshing={isLoading}
-            ListHeaderComponent={ 
+            refreshControl={
+              <RefreshControl
+                onRefresh={fetching}
+                refreshing={isLoading}
+                colors={Colors.water2}
+                progressViewOffset={50}
+              />
+            }
+            ListHeaderComponent={
               <FlatListHeaderComponent
+                clearRecently={clearRecently}
                 recently={recently}
                 navigation={navigation}
                 slides={slides}
+                categories={categories.categories} // for footer component
+                products={products}
               />
             }
             horizontal={false}
             data={categories.categories}
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
-            renderItem={({ item, index }) => {
-              if(item.show === '0') return <View/>
-              else
-                return (
-                  <CategorySection2
-                    key={index}
-                    name={item.name}
-                    bg={item.bg}
-                    image={item.image}
-                    data={products}
-                    navigation={navigation}
-                  />
-                );
-            }}
+            ListFooterComponent={
+              <FlatListFooterComponent
+                products={products}
+                navigation={navigation}
+                imageLoading={imageLoading}
+                isImageLoading={isImageLoading}
+              />}
           />
         </>
-      )}
+      {/* )} */}
       {Object.keys(notification).length === 0 ? (
         <View />
       ) : (

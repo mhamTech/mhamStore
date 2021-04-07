@@ -6,7 +6,7 @@ import {
   FlatList,
 } from "react-native";
 import { fetchCategories } from "../../../reducers";
-import { ProductItem } from "./ProductItem";
+// import { ProductItem } from "./ProductItem";
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 import { BlurView } from "expo-blur";
@@ -41,17 +41,18 @@ export const CategorySection = ({ data, name, bg, navigation }) => {
             scrollEnabled
             renderItem={({ item }) => {
               return (
-                <ProductItem
-                  key={item._id}
-                  item={item}
-                  navigation={navigation}
-                />
+                // <ProductItem
+                //   key={item._id}
+                //   item={item}
+                //   navigation={navigation}
+                // />
+                <View/>
               );
             }}
           />
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Product")}
+          // onPress={() => navigation.navigate("Product")}
           style={{ marginHorizontal: 10 }}>
           <BlurView tint="light" intensity={100} style={styles.seeMore}>
             <CustomText style={styles.seeMoreText}>See More</CustomText>

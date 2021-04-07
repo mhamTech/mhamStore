@@ -29,7 +29,7 @@ export const Header = ({ navigation }) => {
             <Ionicons
               name="ios-arrow-back"
               size={30}
-              color={Colors.black}
+              color={Colors.water.blue}
             />
           </TouchableOpacity>
         </View>
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     width: width,
     backgroundColor: "#fff",
     height: Platform.OS === "android" ? 100 : height > 667 ? 115 : 100,
+    marginTop: 15,
   },
   innerHeader: {
     height: "96%",
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    color: Colors.black,
+    color: Colors.water.blue,
     fontSize: 18,
     fontFamily: "Roboto-Medium",
   },

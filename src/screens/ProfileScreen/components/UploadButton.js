@@ -14,19 +14,16 @@ const UploadButton = ({
   return (
     <View style={styles.button}>
       <Button
-        // icon='camera'
         mode='contained'
         onPress={UploadProfile}
         disabled={uploadButton}
         style={{
-          borderTopRightRadius: 20,
-          borderBottomRightRadius: 20,
           height: 40,
           width: '50%',
           justifyContent: "center",
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.blue,
         }}>
         <Text style={{ fontSize: 10, color: '#fff' }}>Update Profile Picture</Text>
       </Button>
@@ -39,12 +36,10 @@ const UploadButton = ({
           disabled={uploadButton}
           style={{
             marginTop: 5,
-            borderTopRightRadius: 20,
-            borderBottomRightRadius: 20,
             height: 40,
             width: '50%',
             justifyContent: "center",
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.blue,
           }}
         >
           <Text style={{ fontSize: 10, color: '#fff' }}>Cancel</Text>

@@ -55,24 +55,15 @@ const Skeleton2 = () => {
           marginBottom: -20,
         }}
       />
+      {/* slides recently */}
       <View style={{ flexDirection: 'row' }}>
-        {/* <View style={styles.text}>
-          <Placeholder
-            style={{
-              ...styles.placeholder,
-              height: 152,
-              width: 80,
-              borderRadius: 4
-            }}
-          />
-        </View> */}
         <View style={styles.slide}>
           <Placeholder
             style={{
                 ...styles.placeholder,
-                width: 90,
-                height: 130,
-                borderRadius: 4
+                width: 100,
+                height: 100,
+                borderRadius: 50
             }}
           />
         </View>
@@ -80,9 +71,9 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
               ...styles.placeholder,
-              width: 90,
-              height: 130,
-              borderRadius: 4
+              width: 100,
+              height: 100,
+              borderRadius: 50
             }}
           />
         </View>
@@ -90,9 +81,9 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
               ...styles.placeholder,
-              width: 90,
-              height: 130,
-              borderRadius: 4
+              width: 100,
+              height: 100,
+              borderRadius: 50
             }}
           />
         </View>
@@ -100,9 +91,9 @@ const Skeleton2 = () => {
         <Placeholder
           style={{
               ...styles.placeholder,
-              width: 90,
-              height: 130,
-              borderRadius: 4
+              width: 100,
+              height: 100,
+              borderRadius: 50
           }}
         />
         </View>
@@ -110,49 +101,22 @@ const Skeleton2 = () => {
           <Placeholder
             style={{
                 ...styles.placeholder,
-                width: 90,
-              height: 130,
-                borderRadius: 4
+                width: 100,
+              height: 100,
+                borderRadius: 50
             }}
           />
         </View>
       </View>
-      <Placeholder
-        style={{
-          ...styles.placeholder,
-          width: 60,
-          height: 20,
-          margin: 10,
-          marginBottom: -10,
-        }}
-      />
       <View style={styles.content}>
-        {/* <View style={{ width: '49%' }}>
+        <View style={{ width: '100%', marginTop: 15 }}>
           <Placeholder
             style={{
               ...styles.placeholder,
-              width: '100%',
+              // width: '100%',
               height: 150,
             }}
           />
-        </View> */}
-        {/* <View style={{ width: '49%' }}>
-            <Placeholder
-                style={{
-                ...styles.placeholder,
-                width: '100%',
-                height: 150,
-                }}
-            />
-        </View> */}
-        <View style={{ width: '100%', marginTop: 15 }}>
-            <Placeholder
-              style={{
-                ...styles.placeholder,
-                width: '100%',
-                height: 150,
-              }}
-            />
         </View>
         <View style={{ width: '100%', marginTop: 15 }}>
           <Placeholder
@@ -163,24 +127,6 @@ const Skeleton2 = () => {
             }}
           />
         </View>
-        {/* <View style={{ width: '49%', marginTop: 15 }}>
-            <Placeholder
-                style={{
-                ...styles.placeholder,
-                width: '100%',
-                height: 150,
-                }}
-            />
-        </View> */}
-        {/* <View style={{ width: '49%', marginTop: 15 }}>
-            <Placeholder
-                style={{
-                ...styles.placeholder,
-                width: '100%',
-                height: 150,
-                }}
-            />
-        </View> */}
       </View>
     </PlaceholderContainer>
   );
