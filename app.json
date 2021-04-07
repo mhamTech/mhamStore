@@ -23,7 +23,7 @@
       "supportsTablet": true,
       "infoPlist": {
         "NSFaceIDUsageDescription": "We'll use Face ID or Touch ID to secure your login.",
-        "NSCameraUsageDescription": "This app uses the camera to upload user profile picture",
+        "NSCameraUsageDescription": "This app uses the camera to upload user profile picture"
       }
     },
     "android": {
