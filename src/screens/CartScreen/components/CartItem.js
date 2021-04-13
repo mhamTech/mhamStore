@@ -58,7 +58,7 @@ export class CartItem extends React.PureComponent {
         </View>
         <View style={styles.right}>
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 10, }}
           >
             <CustomText style={styles.title}>{item.item.filename}</CustomText>
             <View>

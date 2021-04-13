@@ -57,6 +57,7 @@ export const SignUp = (name, email, password) => {
         type: SIGN_UP,
       });
     } catch (err) {
+      dispatch({ type: AUTH_FAILURE });
       throw err;
     }
   };
@@ -100,6 +101,7 @@ export const Login = (email, password) => {
         user: resData,
       });
     } catch (err) {
+      dispatch({ type: AUTH_FAILURE });
       throw err;
     }
   };

@@ -25,7 +25,7 @@ export const Header = ({ navigation, user, carts }) => {
         <Ionicons name="ios-arrow-back" size={30} color={Colors.water.blue} />
       </TouchableOpacity>
       <CustomText style={styles.titleHeader}>
-        {t("tab.cart") + " "} 
+        Cart
         {Object.keys(user).length === 0
           ? ""
           : carts.items.length === 0

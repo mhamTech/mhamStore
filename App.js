@@ -30,8 +30,6 @@ import { StatusBar } from "expo-status-bar";
 //Notification
 // import LocalNotication from "./src/components/Notification/LocalNotification";
 
-// import i18n from "./src/I18n"
-
 const rootReducer = combineReducers({
   store: productReducer,
   cart: cartReducer,
@@ -83,19 +81,9 @@ const LoadAssets = async () => {
 
   return await Promise.all([fetchFonts]);
 };
-// I18nManager.forceRTL(true);
 
 export default function App() {
   const [assetLoaded, setAssetLoaded] = useState(false);
-  //prevent Rtl
-  // React.useEffect(() => {
-      // I18nManager.allowRTL(true);
-      // I18nManager.forceRTL(true);
-      // Updates.reload();
-  // }, []);
-
-  // I18nManager.forceRTL(true)
-
   if (!assetLoaded) {
     return (
       <AppLoading

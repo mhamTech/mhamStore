@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -9,6 +9,7 @@ import {
   Platform,
   Button,
   I18nManager,
+  Switch,
 } from "react-native";
 //Drawer
 import {
@@ -29,6 +30,7 @@ import { Logout as LogoutAction } from "../reducers";
 import { OpenURL } from "../utils/Tools";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { set } from "react-native-reanimated";
+import * as Updates from 'expo-updates';
 
 //change lang
 
@@ -37,6 +39,11 @@ const youtubeURL = "https://www.youtube.com/";
 
 //custom drawer content
 export default (props) => {
+  const [isEnabled, setIsEnabled] = useState(false);
+  // isEnabled ? Updates.reloadAsync(): null;
+
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   const [error, setError] = React.useState(false);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -114,10 +121,20 @@ export default (props) => {
           </>
         )}
         <View>
+          <View style={{ flexDirection: 'row', alignItems: 'center', width: '50%', justifyContent: 'space-around' }}>
+            <CustomText style={{ color: Colors.water.blue }}>EN</CustomText>
+            <Switch
+              trackColor={{ false: Colors.water.white, true: Colors.water.white }}
+              thumbColor={Colors.water.blue}
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
+            <CustomText style={{ color: Colors.water.blue }}>AR</CustomText>
+          </View>
           <DrawerItemList state={newState} {...rest} />
           <Drawer.Section style={styles.drawerSection}/>
-          <View style={styles.social}>
-            {/* <OpenURL url={fbURL}>
+          {/* <View style={styles.social}>
+            <OpenURL url={fbURL}>
               <Image
                 style={{ resizeMode: "contain", width: 80, height: 80 }}
                 // source={require("../assets/Images/social1.png")}
@@ -134,8 +151,8 @@ export default (props) => {
                 style={{ resizeMode: "contain", width: 80, height: 80 }}
                 // source={require("../assets/Images/social2.png")}
               />
-            </OpenURL> */}
-          </View>
+            </OpenURL>
+          </View> */}
         </View>
       </DrawerContentScrollView>
       {Object.keys(user).length === 0 ? (

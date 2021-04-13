@@ -65,7 +65,7 @@ export const LoginStackScreen = () => (
       cardOverlayEnabled: true,
       ...TransitionPresets.ModalPresentationIOS,
     }}
-    mode="modal"
+    mode="card"
   >
     <LoginStack.Screen name="LoginScreen" component={LoginScreen} />
     <LoginStack.Screen name="ForgetPwScreen" component={ForgetPwScreen} />
@@ -78,10 +78,7 @@ export const AuthStackScreen = () => (
     <AuthStack.Screen name="AuthScreen" component={AuthScreen} />
     <AuthStack.Screen name="LoginScreen" component={LoginStackScreen} />
     <AuthStack.Screen name="SignupScreen" component={SignupScreen} />
-    <AuthStack.Screen
-      name="FinishResetScreen"
-      component={FinishResetPwScreen}
-    />
+    <AuthStack.Screen name="FinishResetScreen" component={FinishResetPwScreen} />
   </AuthStack.Navigator>
 );
 
@@ -215,21 +212,21 @@ export const TabScreen = () => {
         // component={FavoriteStackScreen}
         component={ProfileStackScreen}
         options={() => ({
-          tabBarLabel: t("tab.profile"),
+          tabBarLabel: "Profile"
         })}
       />
       <Tab.Screen
         name="HomeTab"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: t("tab.home"),
+          tabBarLabel: "Home",
         }}
       />
       <Tab.Screen
         name="Cart"
         component={CartStackScreen}
         options={() => ({
-          tabBarLabel: t("tab.cart"),
+          tabBarLabel: "Cart",
           tabBarBadge: carts.items.length === 0 ? null : carts.items.length,
         })}
       />
@@ -245,19 +242,19 @@ export const DrawerNavigator = () => {
     {
       name: "HomeTab",
       screen: TabScreen,
-      label: t('drawer.home'),
+      label: "Home",
       icon: "home-outline",
     },
     {
       name: "Order",
       screen: OrderScreen,
-      label: t('drawer.yourOrders'),
+      label: "My orders",
       icon: "receipt",
     },
     // {
     //   name: "Contact",
     //   screen: ContactScreen,
-    //   label: t("drawer.contact"),
+    //   label: Contact Us,
     //   icon: "contacts",
     // },
   ];
@@ -316,7 +313,7 @@ export const DrawerNavigator = () => {
                     fontFamily: "Roboto-Medium",
                   }}
                 >
-                  {t('drawer.login')}
+                  Login
                 </CustomText>
                 </>
               ),
@@ -370,7 +367,7 @@ export const DrawerNavigator = () => {
                     fontFamily: "Roboto-Medium",
                   }}
                 >
-                  {t("tab.profile")}
+                  Profile
                 </CustomText>
               ),
               drawerIcon: ({ focused }) => (

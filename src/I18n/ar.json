@@ -1,7 +1,8 @@
 {
   "homeScreen": {
     "recently": "المختارة مؤخرًا",
-    "categories": "الفئات"
+    "categories": "الفئات",
+    "clear": "حذف"
   },
   "categoryBody": {
     "noProducts": "لا يوجد اي اصناف"

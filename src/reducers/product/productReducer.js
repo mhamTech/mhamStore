@@ -35,11 +35,6 @@ export const productReducer = (state = initialState, action) => {
         isFirstOpen: true,
       };
     };
-    case RECENTLY_SUCCESS: {
-      return {
-        ...state,
-      }
-    }
     default:
       return state;
   }

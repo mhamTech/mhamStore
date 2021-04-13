@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, ScrollView } from 'react-native';
 import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import Colors from '../../../utils/Colors';
 // components
@@ -9,19 +9,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 export const FlatListFooterComponent = ({ imageLoading, isImageLoading, products, navigation }) => {
     return (
         <View style={styles.footerContainer}>
-            <FlatList
-                keyExtractor={(item, index) => '_' + index}
-                numColumns={2}
-                ListHeaderComponent={<Header
-                    imageLoading={imageLoading}
-                    isImageLoading={isImageLoading}
-                    products={products}
-                    navigation={navigation}
-                />}
-                ListFooterComponent={<Footer
-                    products={products}
-                    navigation={navigation}
-                />}
+            <Header
+                imageLoading={imageLoading}
+                isImageLoading={isImageLoading}
+                products={products}
+                navigation={navigation}
+            />
+            <Footer
+                products={products}
+                navigation={navigation}
             />
         </View>
     )
@@ -51,19 +47,16 @@ const styles = StyleSheet.create({
     shadowIOS: {
         shadowColor: "#000",
         shadowOffset: {
-        width: 7,
-        height: 7,
+            width: 7,
+            height: 7,
         },
         shadowOpacity: 0.30,
         shadowRadius: 8,
         elevation: 8,
     },
     item: {
-        elevation: 20,
         shadowColor: "#000",
-        shadowOffset: {
-            width: 7, height: 7
-        },
+        shadowOffset: { width: 7, height: 7},
         shadowOpacity: 0.30,
         shadowRadius: 8,
         marginHorizontal: 5,
@@ -77,6 +70,7 @@ const Header = ({ products, navigation, imageLoading, isImageLoading }) => {
         <View style={styles.shadowIOS}>
         <LinearGradient
             colors={['#d5dfe3', '#e0e8eb', '#f0f3f5', '#ffffff']}
+            // colors={Colors.water2}
             style={styles.headerStyle}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}>
@@ -115,30 +109,28 @@ const Footer = ({ products, navigation }) => {
     return (
         <View style={styles.shadowIOS}>
             <LinearGradient
-                colors={['#d5dfe3', '#e0e8eb', '#f0f3f5', '#ffffff']}
+                colors={Colors.water3}
                 style={styles.footerStyle}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}>
                 <FlatList
                     keyExtractor={(item, index) => '#' + index}
                     data={products}
-                    horizontal
+                    horizontal={true}
                     showsHorizontalScrollIndicator={false}
-                    renderItem={({ item, index }) => <Item key={index} item={item} navigation={navigation} />}
+                    renderItem={({ item, index }) => <FooterFooterItem key={index} item={item} navigation={navigation} />}
                 />
             </LinearGradient>
         </View>
     );
 };
 
-const Item = ({ item, navigation }) => {
-    return (
-        <View style={styles.item}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate("Detail3", {item: item} )}>
-                <Image source={{uri: item.url}} style={{ borderRadius: 10, width: 200, height: 200 }} />
-                <Text numberOfLines={0.5} style={{ marginTop: 5, color: Colors.water.blue, width: 200 }}>{item.filename}</Text>
-                <Text style={{ color: Colors.water.blue }}>{item.price}</Text>
-            </TouchableWithoutFeedback>
-        </View>
-    );
-};
+const FooterFooterItem = ({ item, navigation }) => (
+    <View style={styles.item}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("Detail3", {item: item} )}>
+            <Image source={{uri: item.url}} style={{ borderRadius: 10, width: 200, height: 200 }} />
+            <Text numberOfLines={0.5} style={{ marginTop: 5, color: Colors.water.blue, width: 200 }}>{item.filename}</Text>
+            <Text style={{ color: Colors.water.blue }}>{item.price}</Text>
+        </TouchableWithoutFeedback>
+    </View>
+);

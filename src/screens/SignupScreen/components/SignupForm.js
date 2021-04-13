@@ -113,7 +113,7 @@ const Signup = (props) => {
             }}
           >
             <View>
-              <CustomText style={styles.title}>REGISTER</CustomText>
+              {/* <CustomText style={styles.title}>REGISTER</CustomText> */}
             </View>
             <View>
               <Field

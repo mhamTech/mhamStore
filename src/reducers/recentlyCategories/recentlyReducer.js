@@ -2,6 +2,7 @@ import {
     FETCH_RECENTLY,
     RECENTLY_LOADING,
     RECENTLY_FAILURE,
+    RECENTLY_SUCCESS,
 } from "./recentlyActions";
 
 const initialState = {
@@ -27,6 +28,11 @@ export const recentlyReducer = (state = initialState, action) => {
                 recently: [...action.recently],
                 isLoading: false
             };
+        case RECENTLY_SUCCESS: {
+            return {
+                ...state,
+            }
+        }
         default:
             return state;
     }

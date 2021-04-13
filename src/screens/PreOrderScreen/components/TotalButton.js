@@ -12,9 +12,9 @@ export const TotalButton = ({ toPayment }) => {
     <View style={styles.total}>
       <TouchableOpacity onPress={toPayment}>
         <View style={styles.buttom}>
-          <CustomText style={{ color: "#fff", fontSize: 16 }}>
-            {t("cart.proceed")}
-          </CustomText>
+        <CustomText style={{ color: "#fff", fontSize: 16 }}>
+          Continue
+        </CustomText>
         </View>
       </TouchableOpacity>
     </View>

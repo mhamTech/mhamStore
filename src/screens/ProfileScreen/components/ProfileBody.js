@@ -7,13 +7,7 @@ import Detail from "./Detail";
 import PropTypes from "prop-types";
 import Colors from "../../../utils/Colors";
 
-export const ProfileBody = ({
-  user,
-  uploadButton,
-  setUploadButton,
-  setImageUri,
-  UploadProfile,
-}) => {
+export const ProfileBody = ({ user, uploadButton, setUploadButton, setImageUri, UploadProfile }) => {
   return (
     <View style={styles.footer}>
       <View style={styles.titleContainer}>

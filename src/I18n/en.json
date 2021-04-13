@@ -1,42 +1,43 @@
 {
-    "homeScreen": {
-      "recently": "Recently",
-      "categories": "Categories"
-    },
-    "categoryBody": {
-      "noProducts": "No products"
-    },
-    "drawer": {
-      "home": "Home",
-      "yourOrders": "My orders",
-      "contact": "Contact Us",
-      "login": "Login"
-    },
-    "tab": {
-      "home": "Home",
-      "profile": "Profile",
-      "cart": "Cart"
-    },
-    "profile": {
-      "login": "Login"
-    },
-    "cart": {
-      "remove": "Delete cart",
-      "sureMessage": "هل تريد حذف هذا العنصر بشكل كامل ؟",
-      "cancel": "Cancel",
-      "confirm": "Confirm",
-      "noProduct": "Empty Cart",
-      "total": "total",
-      "proceed": "Continue",
-      "orderSummary": "Order Summary"
-    },
-    "user": {
-      "shipmentDetails": "Shipment Details",
-      "fullname": "Full Name",
-      "phone": "Phone Number",
-      "address": "Address"
-    },
-    "payment": {
-      "methods": "Choose payment methods"
-    }
+  "homeScreen": {
+    "recently": "Recently",
+    "categories": "Categories",
+    "clear": "Clear"
+  },
+  "categoryBody": {
+    "noProducts": "No products"
+  },
+  "drawer": {
+    "home": "Home",
+    "yourOrders": "My orders",
+    "contact": "Contact Us",
+    "login": "Login"
+  },
+  "tab": {
+    "home": "Home",
+    "profile": "Profile",
+    "cart": "Cart"
+  },
+  "profile": {
+    "login": "Login"
+  },
+  "cart": {
+    "remove": "Delete cart",
+    "sureMessage": "هل تريد حذف هذا العنصر بشكل كامل ؟",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "noProduct": "Empty Cart",
+    "total": "total",
+    "proceed": "Continue",
+    "orderSummary": "Order Summary"
+  },
+  "user": {
+    "shipmentDetails": "Shipment Details",
+    "fullname": "Full Name",
+    "phone": "Phone Number",
+    "address": "Address"
+  },
+  "payment": {
+    "methods": "Choose payment methods"
   }
+}

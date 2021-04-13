@@ -81,7 +81,7 @@ export const ProfilePic = ({
         <Image
           style={styles.profilePic}
           source={
-            error
+            !user.profilePicture
               ? require("../../../assets/Images/defaultprofile.jpg")
               : { uri: user.profilePicture }
           }

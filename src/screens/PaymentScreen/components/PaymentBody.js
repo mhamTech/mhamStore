@@ -16,7 +16,7 @@ const { width } = Dimensions.get("window");
 export const PaymentBody = ({ navigation, payByCard, setPayByCard, token, phone }) => {
   return (
     <View style={styles.container}>
-      <CustomText style={{...styles.title}}>{t("payment.methods")}</CustomText>
+      <CustomText style={{...styles.title}}>Choose payment methods</CustomText>
       <View style={styles.optionContainer}>
         {/* <View style={styles.option}>
           <Checkbox

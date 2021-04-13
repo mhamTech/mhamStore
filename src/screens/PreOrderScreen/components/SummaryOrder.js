@@ -18,7 +18,7 @@ export class SummaryOrder extends React.PureComponent {
     return (
       <View style={styles.container}>
         <CustomText style={{ ...styles.title, marginVertical: 5 }}>
-        {t("cart.orderSummary")}
+          Order Summary
         </CustomText>
         {/* <View style={{ backgroundColor: "#fff", paddingHorizontal: 10 }}>
           {cartItems.map((item) => {
@@ -39,14 +39,8 @@ export class SummaryOrder extends React.PureComponent {
           })}
         </View>
         <View style={styles.total}>
-          <CustomText
-            style={{
-              fontSize: 15,
-              color: Colors.water.blue,
-              fontWeight: "500",
-            }}
-          >
-            {t("cart.total")}
+          <CustomText style={{ fontSize: 15, color: Colors.water.blue, fontWeight: "500", }}>
+            Total
           </CustomText>
           <NumberFormat price={total.toString()} />
         </View>

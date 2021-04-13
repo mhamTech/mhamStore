@@ -25,24 +25,18 @@ import PropTypes from "prop-types";
 import { t } from "i18n-js";
 import { ScrollView } from "react-native-gesture-handler";
 
-export const CartBody = ({
-  navigation,
-  user,
-  carts,
-  loadCarts,
-  isRefreshing,
-}) => {
+export const CartBody = ({ navigation, user, carts, loadCarts, isRefreshing }) => {
   const dispatch = useDispatch();
   const onRemove = (itemId) => {
-    Alert.alert(t("cart.remove"), t("cart.sureMessage"),
+    Alert.alert("Delete Product", "Are you sure you want to remove this item from cart ?",
       [
         {
-          text: t("cart.cancel"),
+          text: "Cancel",
           style: "cancel",
         },
         {
-          text: t("cart.confirm"),
-          onPress: async () => await dispatch(removeFromCart(carts._id, itemId))
+          text: "Confirm",
+          onPress: async () => await dispatch(removeFromCart(carts._id, itemId)),
         },
       ]
     );
@@ -55,16 +49,14 @@ export const CartBody = ({
           <CustomText style={{ color: Colors.water.blue }}>{Messages["user.login.require"]}</CustomText>
             <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
               <View style={styles.nextButton}>
-                <CustomText style={{ color: "#fff", fontSize: 18, }}>{t('profile.login')}</CustomText>
+                <CustomText style={{ color: "#fff", fontSize: 18, }}>Login</CustomText>
               </View>
             </TouchableOpacity>
         </View>
       ) : (carts.items.length === 0 ? (
         <View style={styles.center}>
         <ScrollView contentContainerStyle={styles.center} refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={loadCarts} />}>
-          <CustomText style={{ fontSize: 16, color: Colors.water.blue }}>
-            {t("cart.noProduct")}
-          </CustomText>
+          <CustomText style={{ fontSize: 16, color: Colors.water.blue }}>Empty Cart</CustomText>
         </ScrollView>
         </View>
       ) : (

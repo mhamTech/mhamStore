@@ -56,24 +56,20 @@ export const DetailBody = ({ item }) => {
         <CustomText selectable={true} style={{ ...styles.title, }}>{item.filename}</CustomText>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '30%', alignItems: 'center' }}>
           <NumberFormat style={{ color: "#000", fontSize: 13}}price={item.price}/>
-          <Text style={{ color: "#000", fontSize: 10, textDecorationLine: 'line-through' }}price={item.oldPrice}>{item.oldPrice}</Text>
+          <CustomText style={{ color: "#000", fontSize: 10, textDecorationLine: 'line-through' }}price={item.oldPrice}>{item.oldPrice}</CustomText>
         </View>
       </Animatable.View>
       <Animatable.View
         animation="fadeInUpBig"
         delay={1000}
-        style={styles.description}
-      >
-        
+        style={styles.description}>
         <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginBottom: 20, borderColor: '#eee' }} />
-
         {item.quickDetails.length > 0 &&
           <>
             <QuickDetails details={item.quickDetails} />
             <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginTop: 20, marginBottom: 0, borderColor: '#eee' }} />
           </>
         }
-
         <View style={{ width: '100%', justifyContent: 'center', marginTop: 10}}>
           {item.youtube_video &&
             <>
@@ -88,11 +84,10 @@ export const DetailBody = ({ item }) => {
               />
               <View style={{ marginHorizontal: 5, borderWidth: 0.5, marginTop: 20, borderColor: '#eee' }} />
             </>
-          }          
-      </View>
+          }
+        </View>
         <CustomText style={{ fontWeight: "bold", marginTop: 20, }}>description</CustomText>
         <CustomText style={{ color: Colors.black }} selectable={true}>{item.description}</CustomText>
-
       </Animatable.View>
     </View>
   );
@@ -104,13 +99,21 @@ DetailBody.propTypes = {
 
 const styles = StyleSheet.create({
   footer: {
+    top: 25,
     width,
-    backgroundColor: '#fff',
-    // paddingHorizontal: 20,
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
     paddingVertical: 20,
-    marginBottom: 5,
-    marginTop: 2,
-    borderRadius: 20,
+    marginBottom: 20,
+    marginTop: 250,
+    borderRadius: 10,
+    // width,
+    // backgroundColor: '#fff',
+    // // paddingHorizontal: 20,
+    // paddingVertical: 20,
+    // marginBottom: 5,
+    // marginTop: 2,
+    // borderRadius: 20,
   },
   footer_header: {
     flexDirection: "column-reverse",
@@ -139,6 +142,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   image: {
+    borderRadius: 30,
     position: "absolute",
     top: 10,
     marginTop: Platform.OS === 'ios' ? 20 : 0,

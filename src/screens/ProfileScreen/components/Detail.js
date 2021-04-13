@@ -27,7 +27,7 @@ Detail.propTypes = {
 const styles = StyleSheet.create({
   infoContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    marginHorizontal: 5,
     borderBottomWidth: 1,
     borderBottomColor: Colors.grey,
     height: 60,

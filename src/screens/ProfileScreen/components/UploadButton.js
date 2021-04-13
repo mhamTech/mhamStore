@@ -5,29 +5,25 @@ import { Button } from "react-native-paper";
 //PropTypes check
 import PropTypes from "prop-types";
 
-const UploadButton = ({
-  uploadButton,
-  setUploadButton,
-  setImageUri,
-  UploadProfile,
-}) => {
+const UploadButton = ({ uploadButton, setUploadButton, setImageUri, UploadProfile }) => {
   return (
     <View style={styles.button}>
-      <Button
-        mode='contained'
-        onPress={UploadProfile}
-        disabled={uploadButton}
-        style={{
-          height: 40,
-          width: '50%',
-          justifyContent: "center",
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: Colors.blue,
-        }}>
-        <Text style={{ fontSize: 10, color: '#fff' }}>Update Profile Picture</Text>
-      </Button>
       {!uploadButton ? (
+        <>
+        <Button
+          mode='contained'
+          onPress={UploadProfile}
+          disabled={uploadButton}
+          style={{
+            height: 40,
+            width: '50%',
+            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: Colors.blue,
+          }}>
+          <Text style={{ fontSize: 10, color: '#fff' }}>Update Profile Picture</Text>
+        </Button>
         <Button
           mode='contained'
           onPress={() => {
@@ -40,10 +36,10 @@ const UploadButton = ({
             width: '50%',
             justifyContent: "center",
             backgroundColor: Colors.blue,
-          }}
-        >
+          }}>
           <Text style={{ fontSize: 10, color: '#fff' }}>Cancel</Text>
         </Button>
+      </>
       ) : (
         <></>
       )}
@@ -61,6 +57,7 @@ UploadButton.propTypes = {
 const styles = StyleSheet.create({
   button: {
     marginTop: 30,
+    marginBottom: 10,
     backgroundColor: 'white'
   },
 });

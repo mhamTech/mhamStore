@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     backgroundColor: "#fff",
-    justifyContent: "flex-end",
+    justifyContent: "center",
+    alignItems: 'center',
     height: Platform.OS === "android" ? 70 : height < 668 ? 70 : 90,
     paddingVertical: 10,
     fontWeight: "500",

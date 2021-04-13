@@ -41,9 +41,9 @@ export const HomeScreen = ({ navigation }) => {
     [
       {
         text: "OK",
-        onPress: () => {
+        onPress: async () => {
           try {
-            dispatch(clear());
+            await dispatch(clear());
             fetching();
           } catch (error) {
             showMessage({
@@ -90,7 +90,7 @@ export const HomeScreen = ({ navigation }) => {
 
   return (
     <Provider>
-      {/* {isLoading ? <Skeleton2 /> : ( */}
+      {isLoading ? <Skeleton2 /> : (
         <>
           <Header
             scrollPoint={scrollY}
@@ -130,7 +130,7 @@ export const HomeScreen = ({ navigation }) => {
               />}
           />
         </>
-      {/* )} */}
+      )}
       {Object.keys(notification).length === 0 ? (
         <View />
       ) : (

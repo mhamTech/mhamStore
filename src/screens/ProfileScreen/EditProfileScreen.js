@@ -11,6 +11,7 @@ import { EditInfo } from "../../reducers";
 //Loader
 import Loader from "../../components/Loaders/Loader";
 import { add, set } from "react-native-reanimated";
+import CustomText from "../../components/UI/CustomText";
 
 export const EditProfileScreen = (props) => {
   const { user } = props.route.params;
@@ -100,11 +101,14 @@ export const EditProfileScreen = (props) => {
             style={{
               height: 50,
               justifyContent: "center",
-              backgroundColor: Colors.black,
+              backgroundColor: Colors.blue,
               marginHorizontal: 10,
+              marginBottom: 10,
             }}
           >
-            Update Your Information
+            <CustomText style={{ color: Colors.water.white }}>
+              Update Your Information
+            </CustomText>
           </Button>
         </View>
       </View>

@@ -63,7 +63,7 @@ const SignupForm = (props) => {
         <Feather
           name='arrow-left-circle'
           size={30}
-          color={Colors.black}
+          color={Colors.water.blue}
         />
       </TouchableOpacity>
       <View style={styles.content}>
@@ -81,7 +81,7 @@ const SignupForm = (props) => {
         >
           <View style={styles.signIn}>
             {loading ? (
-              <ActivityIndicator size='small' color='#fff' />
+              <ActivityIndicator size='small' color={Colors.water.white} />
             ) : (
               <CustomText style={styles.textSign}>NEXT</CustomText>
             )}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    color: Colors.black,
+    color: Colors.water.blue,
     fontSize: 30,
   },
   signIn: {
@@ -113,11 +113,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: "row",
     marginBottom: 10,
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.water.blue,
   },
   textSign: {
     fontSize: 15,
-    color: "#fff",
+    color: Colors.water.white,
     fontWeight: "500",
   },
 });

@@ -18,5 +18,9 @@ export default {
   },
   water2: [
     '#015479', '#12788e', '#7ba6b6', '#d5dfe3'
-  ]
+  ],
+  water3: [
+    '#7ba6b6', '#d5dfe3', '#ffffff'
+  ],
+  waterAlpha: 'rgba(1, 84, 121, 1)'
 };

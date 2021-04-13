@@ -23,8 +23,6 @@ export const IntroScreen = () => {
   const scrollX = useRef(new Animated.Value(0.01)).current;
   const scrollClick = useRef(null);
   const unmounted = useRef(false);
-  const test = useRef(false);
-  console.log('testing useRef', test);
   
   useEffect(() => {
     return () => {

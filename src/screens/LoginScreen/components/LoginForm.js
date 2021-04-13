@@ -13,6 +13,8 @@ import {
   Alert,
   Dimensions,
 } from "react-native";
+// navigate fun
+import { navigate } from "../../../navigation/RootNavigation"
 //Colors
 import Colors from "../../../utils/Colors";
 import CustomText from "../../../components/UI/CustomText";
@@ -53,39 +55,39 @@ const Login = (props) => {
   const auth = useSelector((state) => state.auth);
   const unmounted = useRef(false);
 
-  const scanFingerprintOrFaceId = async () => {
-    const resData = await SecureStore.getItemAsync(secretKey);
-    if (resData === null) {
-      return alert("You have to enable LOGIN by touch/face ID");
-    }
-    const result = await LocalAuthentication.authenticateAsync({
-      promptMessage: "Authenticating",
-    });
-    if (result.success) {
-      const data = await JSON.parse(resData);
-      dispatch(LoginAction(data.email, data.password));
-    }
-  };
+  // const scanFingerprintOrFaceId = async () => {
+  //   const resData = await SecureStore.getItemAsync(secretKey);
+  //   if (resData === null) {
+  //     return alert("You have to enable LOGIN by touch/face ID");
+  //   }
+  //   const result = await LocalAuthentication.authenticateAsync({
+  //     promptMessage: "Authenticating",
+  //   });
+  //   if (result.success) {
+  //     const data = await JSON.parse(resData);
+  //     dispatch(LoginAction(data.email, data.password));
+  //   }
+  // };
 
-  const showAndroidAlert = () => {
-    Alert.alert(
-      "Fingerprint Scan",
-      "Place your finger over the touch sensor and press scan.",
-      [
-        {
-          text: "Scan",
-          onPress: () => {
-            scanFingerprintOrFaceId();
-          },
-        },
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel"),
-          style: "cancel",
-        },
-      ]
-    );
-  };
+  // const showAndroidAlert = () => {
+  //   Alert.alert(
+  //     "Fingerprint Scan",
+  //     "Place your finger over the touch sensor and press scan.",
+  //     [
+  //       {
+  //         text: "Scan",
+  //         onPress: () => {
+  //           scanFingerprintOrFaceId();
+  //         },
+  //       },
+  //       {
+  //         text: "Cancel",
+  //         onPress: () => console.log("Cancel"),
+  //         style: "cancel",
+  //       },
+  //     ]
+  //   );
+  // };
   
   useEffect(() => {
     return () => {
@@ -114,9 +116,9 @@ const Login = (props) => {
         <Ionicons name="ios-arrow-back" size={35} color={Colors.black} />
       </TouchableOpacity> */}
 
-      <View style={styles.header}>
+      <View>
         <View>
-          <CustomText style={styles.title}>LOGIN</CustomText>
+          {/* <CustomText style={styles.title}>LOGIN</CustomText> */}
         </View>
       </View>
       <ScrollView>
@@ -143,11 +145,7 @@ const Login = (props) => {
               />
             </View>
             <View style={styles.group}>
-              <TouchableOpacity
-                onPress={() => {
-                  props.navigation.navigate("ForgetPwScreen");
-                }}
-              >
+              <TouchableOpacity onPress={() => navigate("LoginScreen", {screen: "ForgetPwScreen" })}>
                 <CustomText
                   style={{
                     ...styles.textSignSmall,
@@ -205,11 +203,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
     marginVertical: 10,
-  },
-  header: {
-    // marginTop: height * 0.2,
-    // marginBottom: 10,
-    // marginHorizontal: 20,
   },
   title: {
     color: Colors.water.blue,

@@ -17,12 +17,12 @@ import { t } from "i18n-js";
 
 const { width, height } = Dimensions.get("window");
 
-export const ProfileScreen = (props) => {
-  const user = useSelector((state) => state.auth.user);
-  const loading = useSelector((state) => state.auth.isLoading);
-  const [imageUri, setImageUri] = useState("");
-  const [filename, setFilename] = useState("");
-  const [type, setType] = useState("");
+export const ProfileScreen = (props)    => {
+  const user = useSelector((state)      => state.auth.user);
+  const loading = useSelector((state)   => state.auth.isLoading);
+  const [imageUri, setImageUri]         = useState("");
+  const [filename, setFilename]         = useState("");
+  const [type, setType]                 = useState("");
   const [uploadButton, setUploadButton] = useState(true);
 
   const dispatch = useDispatch();
@@ -49,47 +49,43 @@ export const ProfileScreen = (props) => {
   };
 
   return (
-    <>
-    <Header navigation={props.navigation} />
-    {Object.keys(user).length === 0 ? (
+    <ActionSheetProvider>
+      <View style={styles.container}>
+        <Header navigation={props.navigation} />
+        {Object.keys(user).length === 0 ? (
       <View style={styles.center}>
         <CustomText style={{ color: Colors.water.blue }}>{Messages["user.login.require"]}</CustomText>
           <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
             <View style={styles.nextButton}>
-              <CustomText style={{ color: Colors.white, fontSize: 18 }}>{t('profile.login')}</CustomText>
+              <CustomText style={{ color: Colors.white, fontSize: 18 }}>Login</CustomText>
             </View>
           </TouchableOpacity>
       </View>
     ) : (
-    <ActionSheetProvider>
-      <View style={styles.container}>
-        <View style={styles.header}></View>
-        {loading ? <Loader /> : <></>}
-        <View style={styles.profileContainer}>
-          <View style={styles.profileBox}>
-            <EditButton navigation={props.navigation} user={user} />
-            <ProfilePic
-              user={user}
-              imageUri={imageUri}
-              setImageUri={setImageUri}
-              setType={setType}
-              setFilename={setFilename}
-              setUploadButton={setUploadButton}
-            />
-            <ProfileBody
-              user={user}
-              uploadButton={uploadButton}
-              setUploadButton={setUploadButton}
-              setImageUri={setImageUri}
-              loading={loading}
-              UploadProfile={UploadProfile}
-            />
+          <View style={styles.profileContainer}>
+            <View style={styles.profileBox}>
+              <EditButton navigation={props.navigation} user={user} />
+              <ProfilePic
+                user={user}
+                imageUri={imageUri}
+                setImageUri={setImageUri}
+                setType={setType}
+                setFilename={setFilename}
+                setUploadButton={setUploadButton}
+              />
+              <ProfileBody
+                user={user}
+                uploadButton={uploadButton}
+                setUploadButton={setUploadButton}
+                setImageUri={setImageUri}
+                loading={loading}
+                UploadProfile={UploadProfile}
+              />
+            </View>
           </View>
-        </View>
+        )}
       </View>
     </ActionSheetProvider>
-    )}
-    </>
   );
 };
 
@@ -122,6 +118,7 @@ const styles = StyleSheet.create({
     width,
     justifyContent: "center",
     alignItems: "center",
+    flex: 1,
   },
   profileBox: {
     backgroundColor: "#fff",
@@ -130,3 +127,73 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+//   return (
+//     <>
+//     <Header navigation={props.navigation} />
+    // {Object.keys(user).length === 0 ? (
+    //   <View style={styles.center}>
+    //     <CustomText style={{ color: Colors.water.blue }}>{Messages["user.login.require"]}</CustomText>
+    //       <TouchableOpacity onPress={() => props.navigation.navigate("SignUp")}>
+    //         <View style={styles.nextButton}>
+    //           <CustomText style={{ color: Colors.white, fontSize: 18 }}>Login</CustomText>
+    //         </View>
+    //       </TouchableOpacity>
+    //   </View>
+    // ) : (
+//     <ActionSheetProvider>
+//       <View>
+//         <View style={styles.header}></View>
+//         {loading ? <Loader /> : <></>}
+//         <View style={styles.profileContainer}>
+//           <View style={styles.profileBox}>
+//             <EditButton navigation={props.navigation} user={user} />
+//             <ProfilePic
+//               user={user}
+//               imageUri={imageUri}
+//               setImageUri={setImageUri}
+//               setType={setType}
+//               setFilename={setFilename}
+//               setUploadButton={setUploadButton}
+//             />
+//             <ProfileBody
+//               user={user}
+//               uploadButton={uploadButton}
+//               setUploadButton={setUploadButton}
+//               setImageUri={setImageUri}
+//               loading={loading}
+//               UploadProfile={UploadProfile}
+//             />
+//           </View>
+//         </View>
+//       </View>
+//     </ActionSheetProvider>
+//     )}
+//     </>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+
+
+//   container: {
+//     flex: 1,
+//   },
+//   header: {
+//     width,
+//     flexDirection: "row",
+//     justifyContent: "center",
+//   },
+//   profileContainer: {
+//     width,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   profileBox: {
+//     backgroundColor: "#fff",
+//     borderRadius: 10,
+//     width,
+//     height,
+//     justifyContent: 'center',
+//     alignItems: "center",
+//   },
+// });

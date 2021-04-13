@@ -5,19 +5,20 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+// navigate fun
+import { navigate } from '../../../navigation/RootNavigation';
 import CustomText from "../../../components/UI/CustomText";
 import Colors from "../../../utils/Colors";
 import { LinearGradient } from "expo-linear-gradient";
-
 //PropTypes check
 import PropTypes from "prop-types";
 
-export const CategorySection2 = ({ data, name, navigation, image }) => {
+export const CategorySection2 = ({ data, name, image }) => {
   const DATA = data.filter((item) => name.toLowerCase().includes(item.type));
 
   return (
     <TouchableOpacity
-      onPress={() => {navigation.navigate("Category", {
+      onPress={() => {navigate("Category", {
         screen: "CategoryScreen",
         params: {
           categoryName: name,
@@ -47,7 +48,6 @@ export const CategorySection2 = ({ data, name, navigation, image }) => {
 
 CategorySection2.propTypes = {
   data: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

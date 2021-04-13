@@ -24,7 +24,7 @@ export const Item = ({ item, products, navigation }) => {
             end={{ x: 1, y: 1 }}>
             <FlatList
                 keyExtractor={(item, index) => '*' + index}
-                ListHeaderComponent={<ListHeader item={item} />}
+                // ListHeaderComponent={<ListHeader item={item} />}
                 data={data}
                 numColumns={2}
                 renderItem={({ item, index }) => (

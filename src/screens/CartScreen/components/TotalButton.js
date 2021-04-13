@@ -26,10 +26,8 @@ export class TotalButton extends React.PureComponent {
             justifyContent: "space-between",
           }}
         >
-          <CustomText
-            style={{ fontSize: 14, fontWeight: "500", color: Colors.text }}
-          >
-            {t("cart.total")}
+          <CustomText style={{ fontSize: 14, fontWeight: "500", color: Colors.text }}>
+            Total
           </CustomText>
           <NumberFormat price={total.toString()} style={{ fontSize: 14 }} />
         </View>
@@ -46,7 +44,7 @@ export class TotalButton extends React.PureComponent {
         >
           <View style={styles.btn}>
             <CustomText style={{ color: "#fff", fontSize: 16 }}>
-              {t("cart.proceed")}
+              Continue
             </CustomText>
           </View>
         </TouchableOpacity>

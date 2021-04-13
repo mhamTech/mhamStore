@@ -45,7 +45,7 @@ export const CategoryBody = (props) => {
       // TODO: add lottie to android
       Platform.OS === 'ios' ?
       <View style={{ height: '100%', width: '100%', alignItems: 'center', marginTop: 120 }}>
-        <Text style={{ color: Colors.water.blue}}>{t("categoryBody.noProducts")}</Text>
+        <Text style={{ color: Colors.water.blue}}>No products</Text>
         <LottieView
           source={require("../../../components/IconAnimation/empty.json")}
           autoPlay
@@ -53,7 +53,7 @@ export const CategoryBody = (props) => {
         />
         </View> :
         <View style={{ width: '100%', alignItems: 'center', marginTop: 25 }}>
-          <Text style={{ color: Colors.water.blue}}>{t("categoryBody.noProducts")}</Text>
+          <Text style={{ color: Colors.water.blue}}>No products</Text>
         </View>
         :
           !grid ? 

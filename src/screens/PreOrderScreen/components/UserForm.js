@@ -42,13 +42,13 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
 
   return (
     <View style={styles.container}>
-      <CustomText style={styles.title}>{t("user.shipmentDetails")}</CustomText>
+      <CustomText style={styles.title}>Shipment Details</CustomText>
       <View style={styles.inputContainer}>
         <View style={styles.inputBox}>
           <Field
             name="name"
             maxLength={35}
-            label={t("user.fullname")}
+            label={"Full Name"}
             keyboardType="default"
             component={renderField}
             onBeforeInput={() => setReceiverName(initialValues.name)}
@@ -58,7 +58,7 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
           <Field
             name="phone"
             maxLength={12}
-            label={t("user.phone")}
+            label={"Phone"}
             component={renderField}
             onBeforeInput={() => setPhone(initialValues.phone)}
             onChangeText={(value) => setPhone(value) }
@@ -70,7 +70,7 @@ const User = ({ getReceiver, checkValidation, initialValues }) => {
           {/* <Field
             name="address"
             maxLength={35}
-            label={t("user.address")}
+            label={"Address"}
             component={renderField}
             onBeforeInput={() => setAddress(initialValues.address)}
             onChangeText={(value) => setAddress(value) }

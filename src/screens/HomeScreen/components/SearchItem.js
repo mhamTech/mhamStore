@@ -14,12 +14,12 @@ export default SearchItem = ({ item, navigation }) => {
         onPress={() => navigation.navigate("Detail3", { item })}
         style={{ flexDirection: "row", alignItems: "center" }}
       >
-        <Ionicons
+        {/* <Ionicons
           name='ios-search'
           size={22}
           color={Colors.water.light_blue}
           style={{ marginRight: 20 }}
-        />
+        /> */}
         <Image style={styles.image} source={{ uri: item.thumb }} />
         <CustomText style={styles.name}>{item.filename}</CustomText>
       </TouchableOpacity>

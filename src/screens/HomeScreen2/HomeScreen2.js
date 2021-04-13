@@ -125,7 +125,7 @@ export const HomeScreen = ({ navigation }) => {
                     {/* <Carousel /> */}
                   </TouchableOpacity>
                   {recently && <>
-                  <CustomText style={{...styles.catText, marginBottom: 0, marginTop: 10 }}>{t('homeScreen.recently')}</CustomText>
+                  <CustomText style={{...styles.catText, marginBottom: 0, marginTop: 10 }}>Recently</CustomText>
                   <Animated.ScrollView
                     horizontal
                     snapToInterval={width}
@@ -154,7 +154,7 @@ export const HomeScreen = ({ navigation }) => {
                   </Animated.ScrollView>
                   </>
                   }
-                  <CustomText style={styles.catText}>{t('homeScreen.categories')}</CustomText>
+                  <CustomText style={styles.catText}>Categories</CustomText>
                 </View>
               )}
               onScroll={Animated.event(

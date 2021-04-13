@@ -52,29 +52,14 @@ export const Header = ({ navigation, scrollY, item }) => {
   return (
     <Animatable.View delay={500} animation="fadeInDown">
       <View style={styles.topBar}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}
-          style={styles.goBackIcon}
-        >
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <View>
             <Ionicons name="ios-arrow-back" size={25} color={Colors.black} />
           </View>
         </TouchableOpacity>
         <Animated.View style={{ opacity: headerOpacity }}>
-          <CustomText
-            style={{ fontSize: 26, color: Colors.light_grey, fontWeight: "500" }}>
-            {item.filename}
-          </CustomText>
+          <CustomText style={{ fontSize: 26, color: Colors.light_grey, fontWeight: "500" }}>{item.filename}</CustomText>
         </Animated.View>
-        {/* <View style={{...styles.shareIcon}}>
-          <ShareItem
-            imageURL={item.url}
-            title={item.filename}
-            message={item.filename}
-          />
-        </View> */}
       </View>
       <Animated.View
         style={{
@@ -111,9 +96,7 @@ export const Header = ({ navigation, scrollY, item }) => {
             transform: [{ translateY: headerTranslate }],
           },
         ]}
-        onLoadStart={() => {
-          setIsLoading(true);
-        }}
+        onLoadStart={() => setIsLoading(true)}
         onLoadEnd={() => setIsLoading(false)}
       />
       {isLoading && <ActivityIndicator size="large" color={Colors.black} />}

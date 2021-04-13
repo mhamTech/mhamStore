@@ -3,6 +3,7 @@ import { timeoutPromise } from "../../utils/Tools";
 export const FETCH_RECENTLY = 'FETCH_RECENTLY';
 export const RECENTLY_LOADING = 'RECENTLY_LOADING';
 export const RECENTLY_FAILURE = 'RECENTLY_FAILURE';
+export const RECENTLY_SUCCESS = "RECENTLY_SUCCESS";
 
 export const fetchRecentlyCategories = () => {
     return async (dispatch, getState) => {
@@ -39,5 +40,30 @@ export const fetchRecentlyCategories = () => {
         } catch (err) {
             throw(err);
         }
+    }
+}
+
+export const clearRecently = () => {
+    return async (dispatch, getState) => {
+      const user = getState().auth.user;
+      try {
+        const response = await timeoutPromise(
+          fetch(`${API_URL}/product/recently/clear`, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              userid: user.userid
+            },
+            method: 'DELETE'
+          })
+        );
+        if(response.ok){
+          dispatch({
+            type: RECENTLY_SUCCESS,
+          })
+        }
+      } catch (error) {
+        throw error;
+      }
     }
 }
